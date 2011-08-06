@@ -1,0 +1,1172 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>httxlib.httxconnection.HttxConnection</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="httxlib-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://code.google.com/p/httxlib/">HttxLib</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="httxlib-module.html">Package&nbsp;httxlib</a> ::
+        <a href="httxlib.httxconnection-module.html">Module&nbsp;httxconnection</a> ::
+        Class&nbsp;HttxConnection
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="httxlib.httxconnection.HttxConnection-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class HttxConnection</h1><p class="nomargin-top"><span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+           object --+        
+                    |        
+<a href="httxlib.httxobject.HttxObject-class.html">httxobject.HttxObject</a> --+    
+                        |    
+        <a href="httxlib.httxbase.HttxBase-class.html">httxbase.HttxBase</a> --+
+                            |
+                           <strong class="uidshort">HttxConnection</strong>
+</pre>
+
+<hr />
+<p>Connection connecting object. The HttxConnection is responsible for 
+  creating and managing an underlying httplib.HTTPConnection or a <a 
+  href="httxlib.httxs.HttxsConnection-class.html" 
+  class="link">HttxsConnection</a> (for HTTPS) to perform the actual 
+  connection</p>
+  <p>The creation of the underlying connection is based upon a dictionary 
+  holding the class types indexed by the connection scheme (http or 
+  https)</p>
+  <p>The connection handles automatically redirection, authentication (auth
+  and digest) and decompression (gzip, bzip2, deflate)</p>
+  <p>The behaviour can be altered through by managing the options</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxconnection.HttxConnection-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">url</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Constructor.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="httxlib.httxconnection.HttxConnection-class.html" 
+      class="link">HttxConnection</a></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxconnection.HttxConnection-class.html#__deepcopy__" class="summary-sig-name">__deepcopy__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">memo</span>)</span><br />
+      Deepcopy support.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.__deepcopy__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="httxlib.httxconnection.HttxConnection-class.html" 
+      class="link">HttxConnection</a></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxconnection.HttxConnection-class.html#clone" class="summary-sig-name">clone</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">options</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Clone the object using the supplied options or a new set of options 
+      if given.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.clone">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxconnection.HttxConnection-class.html#createconnection" class="summary-sig-name">createconnection</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">url</span>)</span><br />
+      Helper function to enable delayed creation of the underlying 
+      connection if needed.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.createconnection">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">opaque type for the caller (a Python sock)</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxconnection.HttxConnection-class.html#request" class="summary-sig-name">request</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">httxreq</span>)</span><br />
+      Send the <a href="httxlib.httxrequest.HttxRequest-class.html" 
+      class="link">HttxRequest</a> httxreq to the specified server inside 
+      the request It does so by creating a connection if needed, then 
+      setting headers with helper functions for ompression, cookies and 
+      authentication and then relaying the call to the underlying 
+      connection</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.request">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="httplib.HTTPResponse-class.html" 
+      class="link">HttxResponse</a> (compatible with httplib HTTPResponse)</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxconnection.HttxConnection-class.html#getresponse" class="summary-sig-name">getresponse</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sock</span>)</span><br />
+      Recover a <a href="httplib.HTTPResponse-class.html" 
+      class="link">HttxResponse</a></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.getresponse">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxconnection.HttxConnection-class.html#addcookies" class="summary-sig-name">addcookies</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">httxreq</span>)</span><br />
+      Add a Cookie header to httxreq if needed It uses a urllib2 cookiejar 
+      from the options set</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.addcookies">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxconnection.HttxConnection-class.html#adddecompress" class="summary-sig-name">adddecompress</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">httxreq</span>)</span><br />
+      Add a content-encoding header to httxreq if needed and set in the 
+      options</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.adddecompress">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxconnection.HttxConnection-class.html#addauth" class="summary-sig-name">addauth</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">httxreq</span>)</span><br />
+      Add a WWW-Authenticate or Proxy-Authenticate header to httxreq if 
+      needed and set in the options</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.addauth">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxconnection.HttxConnection-class.html#addkeepalive" class="summary-sig-name">addkeepalive</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">httxreq</span>)</span><br />
+      Adds the Connection Keep-Alive header</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.addkeepalive">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxconnection.HttxConnection-class.html#adduseragent" class="summary-sig-name">adduseragent</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">httxreq</span>)</span><br />
+      Adds the UserAgent header if needed to</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.adduseragent">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxconnection.HttxConnection-class.html#addcontent" class="summary-sig-name">addcontent</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">httxreq</span>)</span><br />
+      Add headers to httxreq if data is transmitted, borrowed from urllib2.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.addcontent">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxconnection.HttxConnection-class.html#extractcookies" class="summary-sig-name">extractcookies</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">response</span>)</span><br />
+      Perform cookie extraction from a response into a urllib2 cookiejar in
+      the options set</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.extractcookies">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxconnection.HttxConnection-class.html#decompress" class="summary-sig-name">decompress</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">response</span>)</span><br />
+      Perform body decompression if enabled by the options and present in 
+      the response</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.decompress">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="httplib.HTTPResponse-class.html" 
+      class="link">HttxResponse</a></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxconnection.HttxConnection-class.html#redirect" class="summary-sig-name">redirect</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">response</span>)</span><br />
+      Perform redirection if the response requests it and enabled by the 
+      options set</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.redirect">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="httplib.HTTPResponse-class.html" 
+      class="link">HttxResponse</a></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxconnection.HttxConnection-class.html#authenticate" class="summary-sig-name">authenticate</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">response</span>)</span><br />
+      Perform authentication if the response requests it and enabled by the
+      options set</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.authenticate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="httxlib.httxbase.HttxBase-class.html">httxbase.HttxBase</a></code></b>:
+      <code><a href="httxlib.httxbase.HttxBase-class.html#add_ca_cert">add_ca_cert</a></code>,
+      <code><a href="httxlib.httxbase.HttxBase-class.html#add_cert_req">add_cert_req</a></code>,
+      <code><a href="httxlib.httxbase.HttxBase-class.html#add_certkey">add_certkey</a></code>,
+      <code><a href="httxlib.httxbase.HttxBase-class.html#add_password">add_password</a></code>,
+      <code><a href="httxlib.httxbase.HttxBase-class.html#setdecompmethods">setdecompmethods</a></code>,
+      <code><a href="httxlib.httxbase.HttxBase-class.html#setoptions">setoptions</a></code>,
+      <code><a href="httxlib.httxbase.HttxBase-class.html#setproxy">setproxy</a></code>,
+      <code><a href="httxlib.httxbase.HttxBase-class.html#setuseragent">setuseragent</a></code>,
+      <code><a href="httxlib.httxbase.HttxBase-class.html#urlopen">urlopen</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>,
+      <code>__str__</code>,
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE VARIABLES ==================== -->
+<a name="section-InstanceVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">dict</span>
+    </td><td class="summary">
+        <a name="connFactory"></a><span class="summary-name">connFactory</span> = <code title="dict(http= HTTPConnection)">dict(http= HTTPConnection)</code><br />
+      class variable holding the dictionary of connection classes used to 
+      instantiate connections
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="httxlib.httxconnection.HttxConnection-class.html" 
+      class="link">HttxConnection</a></span>
+    </td><td class="summary">
+        <a name="auxhttx"></a><span class="summary-name">auxhttx</span><br />
+      Reference to the auxiliary connection used for either authentication 
+      or rediretion if needed
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">httplib.HTTPConnection or <a 
+      href="httxlib.httxs.HttxsConnection-class.html" 
+      class="link">HttxsConnection</a> - subclass of 
+      httplib.HTTPSConnection</span>
+    </td><td class="summary">
+        <a name="conn"></a><span class="summary-name">conn</span><br />
+      actual connection object
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="httxlib.httxrequest.HttxRequest-class.html" 
+      class="link">HttxRequest</a></span>
+    </td><td class="summary">
+        <a name="lastreq"></a><span class="summary-name">lastreq</span><br />
+      Last <a href="httxlib.httxrequest.HttxRequest-class.html" 
+      class="link">HttxRequest</a> request issued
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">namedtuple from urlsplit</span>
+    </td><td class="summary">
+        <a name="parsed"></a><span class="summary-name">parsed</span><br />
+      it holds the result of urlsplit(url) for practical purposes
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">int</span>
+    </td><td class="summary">
+        <a name="redircount"></a><span class="summary-name">redircount</span><br />
+      count of redirections so far performed
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="timestamp"></a><span class="summary-name">timestamp</span><br />
+      last time the connection was used @type int
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">str</span>
+    </td><td class="summary">
+        <a name="url"></a><span class="summary-name">url</span><br />
+      url used to set the net location to which connections will connect
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="httxlib.httxbase.HttxBase-class.html">httxbase.HttxBase</a></code></b>:
+      <code><a href="httxlib.httxbase.HttxBase-class.html#options">options</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="httxlib.httxobject.HttxObject-class.html">httxobject.HttxObject</a></code></b>:
+      <code><a href="httxlib.httxobject.HttxObject-class.html#lock">lock</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="httxlib.httxconnection.HttxConnection-class.html#sock" class="summary-name">sock</a><br />
+      Property to support easy and quick access to the underlying sock 
+      object from the underlying connection.
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">url</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Constructor. It delegates construction to the base class <a 
+  href="httxlib.httxbase.HttxBase-class.html" class="link">HttxBase</a> and
+  initializes the member variables with the help of the <a 
+  href="httxlib.httxconnection.HttxConnection-class.html#createconnection" 
+  class="link">createconnection</a> method</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>kwargs</code></strong> - keywords arguments passed to <a 
+          href="httxlib.httxbase.HttxBase-class.html" 
+          class="link">HttxBase</a></li>
+    </ul></dd>
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+<div class="fields">      <p><strong>See Also:</strong>
+        <a href="httxlib.httxoptions.HttxOptions-class.html" 
+        class="link">HttxOptions</a>
+      </p>
+</div></td></tr></table>
+</div>
+<a name="__deepcopy__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__deepcopy__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">memo</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.__deepcopy__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Deepcopy support.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>memo</code></strong> (dict @see <a 
+          href="httxlib.httxconnection.HttxConnection-class.html#clone" 
+          class="link">clone</a>) - standard __deepcopy__ parameter to avoid circular references</li>
+    </ul></dd>
+    <dt>Returns: <a href="httxlib.httxconnection.HttxConnection-class.html" 
+      class="link">HttxConnection</a></dt>
+        <dd>a cloned object</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="clone"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">clone</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">options</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.clone">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Clone the object using the supplied options or a new set of options if
+  given.</p>
+  <p>An equivalente set of <a 
+  href="httxlib.httxconnection.HttxConnection-class.html" 
+  class="link">HttxConnection</a> objects will be replicated</p>
+  <p>A new set of options will separate the clone object from the original 
+  object, since they will no longer share cookies, user/password/realm 
+  combinations or https certificates</p>
+  <p>To support a maximum redirection count, a redircount parameter is 
+  passed along during the construction of the clone</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>options</code></strong> (<a href="httxlib.httxoptions.HttxOptions-class.html" 
+          class="link">HttxOptions</a>) - options for the cloned object</li>
+    </ul></dd>
+    <dt>Returns: <a href="httxlib.httxconnection.HttxConnection-class.html" 
+      class="link">HttxConnection</a></dt>
+        <dd>a cloned object</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="createconnection"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">createconnection</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">url</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.createconnection">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Helper function to enable delayed creation of the underlying 
+  connection if needed. Called from the <a 
+  href="httxlib.httxconnection.HttxConnection-class.html#__init__" 
+  class="link">__init__</a> and from <a 
+  href="httxlib.httxconnection.HttxConnection-class.html#request" 
+  class="link">request</a> in order to ensure an underlying connection is 
+  created</p>
+  <p>It initializes the member variables: <i>url</i>, <i>parsed</i>, <a 
+  href="httxlib.httxconnection.HttxConnection-class.html#conn" 
+  class="link">conn</a>, <i>clock</i></p>
+  <p>In the case of https connections it will also set variables in the 
+  underlying connection object to ensure certificates and validation are 
+  used if requested and appropriate for the domain</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>url</code></strong> (str) - url to open a connection to</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="request"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">request</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">httxreq</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.request">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Send the <a href="httxlib.httxrequest.HttxRequest-class.html" 
+  class="link">HttxRequest</a> httxreq to the specified server inside the 
+  request It does so by creating a connection if needed, then setting 
+  headers with helper functions for ompression, cookies and authentication 
+  and then relaying the call to the underlying connection</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>httxreq</code></strong> (<a href="httxlib.httxrequest.HttxRequest-class.html" 
+          class="link">HttxRequest</a>) - Request to be executed</li>
+    </ul></dd>
+    <dt>Returns: opaque type for the caller (a Python sock)</dt>
+        <dd>sock</dd>
+    <dt>Overrides:
+        <a href="httxlib.httxbase.HttxBase-class.html#request">httxbase.HttxBase.request</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getresponse"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getresponse</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">sock</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.getresponse">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Recover a <a href="httplib.HTTPResponse-class.html" 
+  class="link">HttxResponse</a></p>
+  <p>The sock parameter is not used but the function follows the abstract 
+  definition of <a href="httxlib.httxbase.HttxBase-class.html" 
+  class="link">HttxBase</a> and the implementations of <a 
+  href="httxlib.httxmanager.HttxManager-class.html" 
+  class="link">HttxManager</a> and <a 
+  href="httxlib.httxnetlocation.HttxNetLocation-class.html" 
+  class="link">HttxNetLocation</a></p>
+  <p>Checks for authentication requests or redirectionare made. If the 
+  options allow to process those requests, new requests (with potentially 
+  new connections) are launched and the connection is marked as active to 
+  avoid any other part of the library to reuse it</p>
+  <p>Decompression of content and cookie extraction is also performed</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>sock</code></strong> (opaque (a Python sock)) - The opaque type returned by <a 
+          href="httxlib.httxconnection.HttxConnection-class.html#request" 
+          class="link">request</a></li>
+    </ul></dd>
+    <dt>Returns: <a href="httplib.HTTPResponse-class.html" 
+      class="link">HttxResponse</a> (compatible with httplib HTTPResponse)</dt>
+        <dd>response</dd>
+    <dt>Overrides:
+        <a href="httxlib.httxbase.HttxBase-class.html#getresponse">httxbase.HttxBase.getresponse</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="addcookies"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">addcookies</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">httxreq</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.addcookies">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Add a Cookie header to httxreq if needed It uses a urllib2 cookiejar 
+  from the options set</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>httxreq</code></strong> (<a href="httxlib.httxrequest.HttxRequest-class.html" 
+          class="link">HttxRequest</a>) - Request to be executed</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="adddecompress"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">adddecompress</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">httxreq</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.adddecompress">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Add a content-encoding header to httxreq if needed and set in the 
+  options</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>httxreq</code></strong> (<a href="httxlib.httxrequest.HttxRequest-class.html" 
+          class="link">HttxRequest</a>) - Request to be executed</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="addauth"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">addauth</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">httxreq</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.addauth">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Add a WWW-Authenticate or Proxy-Authenticate header to httxreq if 
+  needed and set in the options</p>
+  <p>It uses a <a href="httxlib.httxauthcache.HttxAuthCache-class.html" 
+  class="link">HttxAuthCache</a> from the options</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>httxreq</code></strong> (<a href="httxlib.httxrequest.HttxRequest-class.html" 
+          class="link">HttxRequest</a>) - Request to be executed</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="addkeepalive"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">addkeepalive</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">httxreq</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.addkeepalive">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Adds the Connection Keep-Alive header</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>httxreq</code></strong> (<a href="httxlib.httxrequest.HttxRequest-class.html" 
+          class="link">HttxRequest</a>) - Request to be executed</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="adduseragent"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">adduseragent</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">httxreq</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.adduseragent">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Adds the UserAgent header if needed to</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>httxreq</code></strong> (<a href="httxlib.httxrequest.HttxRequest-class.html" 
+          class="link">HttxRequest</a>) - Request to be executed</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="addcontent"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">addcontent</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">httxreq</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.addcontent">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Add headers to httxreq if data is transmitted, borrowed from 
+  urllib2.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>httxreq</code></strong> (<a href="httxlib.httxrequest.HttxRequest-class.html" 
+          class="link">HttxRequest</a>) - Request to be executed</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="extractcookies"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">extractcookies</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">response</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.extractcookies">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Perform cookie extraction from a response into a urllib2 cookiejar in 
+  the options set</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>response</code></strong> (<a href="httplib.HTTPResponse-class.html" 
+          class="link">HttxResponse</a>) - A response being processed</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="decompress"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">decompress</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">response</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.decompress">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Perform body decompression if enabled by the options and present in 
+  the response</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>response</code></strong> (<a href="httplib.HTTPResponse-class.html" 
+          class="link">HttxResponse</a>) - A response being processed</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="redirect"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">redirect</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">response</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.redirect">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Perform redirection if the response requests it and enabled by the 
+  options set</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>response</code></strong> (<a href="httplib.HTTPResponse-class.html" 
+          class="link">HttxResponse</a>) - A response being processed</li>
+    </ul></dd>
+    <dt>Returns: <a href="httplib.HTTPResponse-class.html" 
+      class="link">HttxResponse</a></dt>
+        <dd>The same response with a new sock if redirection is done to an 
+          external site</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="authenticate"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">authenticate</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">response</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.authenticate">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Perform authentication if the response requests it and enabled by the 
+  options set</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>response</code></strong> (<a href="httplib.HTTPResponse-class.html" 
+          class="link">HttxResponse</a>) - A response being processed</li>
+    </ul></dd>
+    <dt>Returns: <a href="httplib.HTTPResponse-class.html" 
+      class="link">HttxResponse</a></dt>
+        <dd>The same response preocessed</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== PROPERTY DETAILS ==================== -->
+<a name="section-PropertyDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Property Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-PropertyDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="sock"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">sock</h3>
+  <p>Property to support easy and quick access to the underlying sock 
+  object from the underlying connection.</p>
+  <p>The sock object is used in the library to index active connections inc
+  cache</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.sock(<span class="summary-sig-arg">self</span>)</span>
+        - Property to support easy and quick access to the underlying sock object 
+from the underlying connection.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="httxlib-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://code.google.com/p/httxlib/">HttxLib</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri May 27 01:34:03 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

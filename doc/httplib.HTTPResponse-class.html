@@ -1,0 +1,1180 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>httplib.HTTPResponse</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="httxlib-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://code.google.com/p/httxlib/">HttxLib</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        httplib ::
+        HTTPResponse ::
+        Class&nbsp;HTTPResponse
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="httplib.HTTPResponse-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class HTTPResponse</h1><p class="nomargin-top"></p>
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httplib.HTTPResponse-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sock</span>,
+        <span class="summary-sig-arg">debuglevel</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">strict</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">method</span>=<span class="summary-sig-default">None</span>)</span><br />
+      It replaces the HTTPResponse.__init__ to allow to add and initialize 
+      a member variable at object instantiation</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxinit">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_read_status"></a><span class="summary-sig-name">_read_status</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="begin"></a><span class="summary-sig-name">begin</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Wrapper for HTTPResponse.begin to allow for the body to be read and 
+      leave the connection free for further re-use</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxbegin">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_check_close"></a><span class="summary-sig-name">_check_close</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="close"></a><span class="summary-sig-name">close</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="isclosed"></a><span class="summary-sig-name">isclosed</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">str</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httplib.HTTPResponse-class.html#read" class="summary-sig-name">read</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">amt</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Wrapper for HTTPResponse.read to read the body contents from the 
+      StringIO object created during httxbegin connection free for further 
+      re-use</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxread">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_read_chunked"></a><span class="summary-sig-name">_read_chunked</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">amt</span>)</span></td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httplib.HTTPResponse-class.html#_safe_read" class="summary-sig-name" onclick="show_private();">_safe_read</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">amt</span>)</span><br />
+      Read the number of bytes requested, compensating for partial reads.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getheader"></a><span class="summary-sig-name">getheader</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">default</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getheaders"></a><span class="summary-sig-name">getheaders</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Return list of (header, value) tuples.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_httxbegin"></a><span class="summary-sig-name">_httxbegin</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_httxinit"></a><span class="summary-sig-name">_httxinit</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sock</span>,
+        <span class="summary-sig-arg">debuglevel</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">strict</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">method</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_httxread"></a><span class="summary-sig-name">_httxread</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">amt</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httplib.HTTPResponse-class.html#authenticating" class="summary-sig-name">authenticating</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Utility function to check if a response indicates that pending 
+      network activity exists, because a new request has been isssued 
+      following an authentication request</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxauthenticating">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">str</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httplib.HTTPResponse-class.html#getbody" class="summary-sig-name">getbody</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Utility function for a property get descriptor for body</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxgetbody">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getbodyfile"></a><span class="summary-sig-name">getbodyfile</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Utility function for a property tet descriptor for bodyfile</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxgetbodyfile">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">HTTPMessage</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httplib.HTTPResponse-class.html#info" class="summary-sig-name">info</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Utility function to make HTTPResponse fully compatible with CookieJar
+      requirements</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxinfo">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httplib.HTTPResponse-class.html#isactive" class="summary-sig-name">isactive</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Utility function to check if a response is underdoing a redirection 
+      or authentication and network activity is pending redirection</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxredirecting_or_authenticating">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httplib.HTTPResponse-class.html#isauth" class="summary-sig-name">isauth</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Utility function to check if a response is requesting authentication</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxisauth">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httplib.HTTPResponse-class.html#isauthproxy" class="summary-sig-name">isauthproxy</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Utility function to check if the requested authentication is 
+      proxy-authenticate</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxisauthproxy">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httplib.HTTPResponse-class.html#isauthuser" class="summary-sig-name">isauthuser</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Utility function to check if the requested authentication is 
+      www-authenticate</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxisauthuser">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httplib.HTTPResponse-class.html#isredir" class="summary-sig-name">isredir</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Utility function to check if a response is requesting redirection</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxisredir">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httplib.HTTPResponse-class.html#isredirget" class="summary-sig-name">isredirget</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Utility function to check if the redir codes are good for a GET 
+      request</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxisredirget">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httplib.HTTPResponse-class.html#isredirpost" class="summary-sig-name">isredirpost</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Utility function to check if the redir codes are good for a POST 
+      request</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxisredirpost">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httplib.HTTPResponse-class.html#isredirpostrfc2616" class="summary-sig-name">isredirpostrfc2616</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Utility function to check if the redir codes are good for a POST 
+      request according to RFC 2616</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxisredirpostrfc2616">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httplib.HTTPResponse-class.html#redirecting" class="summary-sig-name">redirecting</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Utility function to check if a response indicates that pending 
+      network activity exists, because a new request has been isssued 
+      following a redirect request</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxredirecting">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httplib.HTTPResponse-class.html#redirecting_or_authenticating" class="summary-sig-name">redirecting_or_authenticating</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Utility function to check if a response is underdoing a redirection 
+      or authentication and network activity is pending redirection</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxredirecting_or_authenticating">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httplib.HTTPResponse-class.html#setbody" class="summary-sig-name">setbody</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">value</span>)</span><br />
+      Utility function for a property set descriptor for body</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxsetbody">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">str</span>
+    </td><td class="summary">
+        <a href="httplib.HTTPResponse-class.html#body" class="summary-name">body</a><br />
+      Utility function for a property get descriptor for body
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="httplib.HTTPResponse-class.html#bodyfile" class="summary-name">bodyfile</a><br />
+      Utility function for a property tet descriptor for bodyfile
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="httplib.HTTPResponse-class.html#headers" class="summary-name">headers</a><br />
+      Return list of (header, value) tuples.
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">sock</span>,
+        <span class="sig-arg">debuglevel</span>=<span class="sig-default">0</span>,
+        <span class="sig-arg">strict</span>=<span class="sig-default">0</span>,
+        <span class="sig-arg">method</span>=<span class="sig-default">None</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxinit">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>It replaces the HTTPResponse.__init__ to allow to add and initialize a
+  member variable at object instantiation</p>
+  <p>Sock is the opaque type (actually a Python sock object) used in 
+  HttxLib to index connecting objects with pending network activity</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="read"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">read</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">amt</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxread">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Wrapper for HTTPResponse.read to read the body contents from the 
+  StringIO object created during httxbegin connection free for further 
+  re-use</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>amt</code></strong> (int or None) - amount of bytes to be read</li>
+    </ul></dd>
+    <dt>Returns: str</dt>
+        <dd>the read bytes</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_safe_read"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_safe_read</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">amt</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Read the number of bytes requested, compensating for partial 
+  reads.</p>
+  <p>Normally, we have a blocking socket, but a read() can be interrupted 
+  by a signal (resulting in a partial read).</p>
+  <p>Note that we cannot distinguish between EOF and an interrupt when zero
+  bytes have been read. IncompleteRead() will be raised in this 
+  situation.</p>
+  <p>This function should be used when &lt;amt&gt; bytes &quot;should&quot;
+  be present for reading. If the bytes are truly not available (due to 
+  EOF), then the IncompleteRead exception can be used to detect the 
+  problem.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="authenticating"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">authenticating</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxauthenticating">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Utility function to check if a response indicates that pending network
+  activity exists, because a new request has been isssued following an 
+  authentication request</p>
+  <dl class="fields">
+    <dt>Returns: bool</dt>
+        <dd>if a response is undergoing network activity because an 
+          authentication request has been sent</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getbody"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getbody</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxgetbody">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Utility function for a property get descriptor for body</p>
+  <dl class="fields">
+    <dt>Returns: str</dt>
+        <dd>the body of the http response</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="info"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">info</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxinfo">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Utility function to make HTTPResponse fully compatible with CookieJar 
+  requirements</p>
+  <dl class="fields">
+    <dt>Returns: HTTPMessage</dt>
+        <dd>the message object from HTTPResponse</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="isactive"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">isactive</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxredirecting_or_authenticating">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Utility function to check if a response is underdoing a redirection or
+  authentication and network activity is pending redirection</p>
+  <dl class="fields">
+    <dt>Returns: bool</dt>
+        <dd>if the response is underdoing a redirection or authentication and
+          network activity is pending</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="isauth"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">isauth</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxisauth">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Utility function to check if a response is requesting 
+  authentication</p>
+  <dl class="fields">
+    <dt>Returns: bool</dt>
+        <dd>if a response is requesting authentication</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="isauthproxy"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">isauthproxy</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxisauthproxy">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Utility function to check if the requested authentication is 
+  proxy-authenticate</p>
+  <dl class="fields">
+    <dt>Returns: bool</dt>
+        <dd>if the requested authentication is proxy-authenticate</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="isauthuser"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">isauthuser</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxisauthuser">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Utility function to check if the requested authentication is 
+  www-authenticate</p>
+  <dl class="fields">
+    <dt>Returns: bool</dt>
+        <dd>if the requested authentication is www-authenticate</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="isredir"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">isredir</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxisredir">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Utility function to check if a response is requesting redirection</p>
+  <dl class="fields">
+    <dt>Returns: bool</dt>
+        <dd>if the response is a request to redirect</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="isredirget"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">isredirget</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxisredirget">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Utility function to check if the redir codes are good for a GET 
+  request</p>
+  <dl class="fields">
+    <dt>Returns: bool</dt>
+        <dd>if the redir codes are good for a GET request</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="isredirpost"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">isredirpost</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxisredirpost">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Utility function to check if the redir codes are good for a POST 
+  request</p>
+  <dl class="fields">
+    <dt>Returns: bool</dt>
+        <dd>if the redir codes are good for a POST request</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="isredirpostrfc2616"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">isredirpostrfc2616</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxisredirpostrfc2616">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Utility function to check if the redir codes are good for a POST 
+  request according to RFC 2616</p>
+  <dl class="fields">
+    <dt>Returns: bool</dt>
+        <dd>if the redir codes are good for a POST request according to RFC 
+          2616</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="redirecting"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">redirecting</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxredirecting">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Utility function to check if a response indicates that pending network
+  activity exists, because a new request has been isssued following a 
+  redirect request</p>
+  <dl class="fields">
+    <dt>Returns: bool</dt>
+        <dd>if a response is undergoing network activity because a 
+          redirection request has been sent</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="redirecting_or_authenticating"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">redirecting_or_authenticating</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxredirecting_or_authenticating">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Utility function to check if a response is underdoing a redirection or
+  authentication and network activity is pending redirection</p>
+  <dl class="fields">
+    <dt>Returns: bool</dt>
+        <dd>if the response is underdoing a redirection or authentication and
+          network activity is pending</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="setbody"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setbody</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">value</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxresponse-pysrc.html#httxsetbody">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Utility function for a property set descriptor for body</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>value</code></strong> (str) - the body of the http response to set</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== PROPERTY DETAILS ==================== -->
+<a name="section-PropertyDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Property Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-PropertyDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="body"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">body</h3>
+  <p>Utility function for a property get descriptor for body</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.httxgetbody(<span class="summary-sig-arg">self</span>)</span>
+        - Utility function for a property get descriptor for body
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.httxsetbody(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">value</span>)</span>
+        - Utility function for a property set descriptor for body
+    </dd>
+    <dt>Type:</dt>
+      <dd>str</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="bodyfile"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">bodyfile</h3>
+  <p>Utility function for a property tet descriptor for bodyfile</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.httxgetbodyfile(<span class="summary-sig-arg">self</span>)</span>
+        - Utility function for a property tet descriptor for bodyfile
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="headers"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">headers</h3>
+  <p>Return list of (header, value) tuples.</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.getheaders(<span class="summary-sig-arg">self</span>)</span>
+        - Return list of (header, value) tuples.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="httxlib-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://code.google.com/p/httxlib/">HttxLib</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri May 27 01:34:03 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class Hierarchy</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="httxlib-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Trees&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://code.google.com/p/httxlib/">HttxLib</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">&nbsp;</td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="class-tree.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<center><b>
+ [ <a href="module-tree.html">Module Hierarchy</a>
+ | <a href="class-tree.html">Class Hierarchy</a> ]
+</b></center><br />
+<h1 class="epydoc">Class Hierarchy</h1>
+<ul class="nomargin-top">
+    <li> <strong class="uidlink">httplib.HTTPConnection</strong>
+    <ul>
+    <li> <strong class="uidlink">httplib.HTTPSConnection</strong>:
+      <em class="summary">This class allows communication via SSL.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="httxlib.httxs.HttxsConnection-class.html">httxlib.httxs.HttxsConnection</a></strong>:
+      <em class="summary">Reimplementation of HTTPSConnection to allow certificate validation</em>
+    </li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="httplib.HTTPResponse-class.html">httplib.HTTPResponse</a></strong>
+    </li>
+    <li> <strong class="uidlink">urllib2.Request</strong>
+    <ul>
+    <li> <strong class="uidlink"><a href="httxlib.httxrequest.HttxRequest-class.html">httxlib.httxrequest.HttxRequest</a></strong>:
+      <em class="summary">A subclass of urllib2 Request to retain compatibility and make it 
+        usable for cookies and whatever may be needed</em>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink">object</strong>:
+      <em class="summary">The most base type</em>
+    <ul>
+    <li> <strong class="uidlink">exceptions.BaseException</strong>:
+      <em class="summary">Common base class for all exceptions</em>
+    <ul>
+    <li> <strong class="uidlink">exceptions.Exception</strong>:
+      <em class="summary">Common base class for all non-exit exceptions.</em>
+    <ul>
+    <li> <strong class="uidlink">httplib.HTTPException</strong>
+    <ul>
+    <li> <strong class="uidlink"><a href="httxlib.httxerror.HttxException-class.html">httxlib.httxerror.HttxException</a></strong>:
+      <em class="summary">A class representing a HTTP related exceptions raised by HttxLib</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="httxlib.httxerror.RedirectError-class.html">httxlib.httxerror.RedirectError</a></strong>:
+      <em class="summary">A class representing a redirection error (like missing location 
+        header, not allowed in a POST request and others)</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="httxlib.httxerror.ExternalRedirectError-class.html">httxlib.httxerror.ExternalRedirectError</a></strong>:
+      <em class="summary">A class representing an error because external redirections are 
+        disabled but the response redirected to an external host</em>
+    </li>
+    <li> <strong class="uidlink"><a href="httxlib.httxerror.MaxRedirectError-class.html">httxlib.httxerror.MaxRedirectError</a></strong>:
+      <em class="summary">A class representing an error because the configure maxiumum number
+        of redirections has been reached</em>
+    </li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="httxlib.httxerror.SocketException-class.html">httxlib.httxerror.SocketException</a></strong>:
+      <em class="summary">A class representing a socket exception like closed connection, 
+        timeout, dns failure resolution and others</em>
+    </li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="httxlib.httxobject.HttxObject-class.html">httxlib.httxobject.HttxObject</a></strong>:
+      <em class="summary">Base HttxLib object to provide threading synchronization via means 
+        of an automatically instantiated lock object</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="httxlib.httxauthcache.HttxAuthCache-class.html">httxlib.httxauthcache.HttxAuthCache</a></strong>:
+      <em class="summary">An object that caches data from and for authentication requests</em>
+    </li>
+    <li> <strong class="uidlink"><a href="httxlib.httxbase.HttxBase-class.html">httxlib.httxbase.HttxBase</a></strong>:
+      <em class="summary">Base of HttxLib classes that make a connection providing the 
+        definition and (in some cases) the implementation of primitives</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="httxlib.httxconnection.HttxConnection-class.html">httxlib.httxconnection.HttxConnection</a></strong>:
+      <em class="summary">Connection connecting object.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="httxlib.httxmanager.HttxManager-class.html">httxlib.httxmanager.HttxManager</a></strong>:
+      <em class="summary">Main HttxLib Connecting object.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="httxlib.httxnetlocation.HttxNetLocation-class.html">httxlib.httxnetlocation.HttxNetLocation</a></strong>:
+      <em class="summary">Net Location Connecting object.</em>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="httxlib.httxcompressionset.HttxCompressionSet-class.html">httxlib.httxcompressionset.HttxCompressionSet</a></strong>:
+      <em class="summary">HttxLib Set with locking semanctics to store the allowed 
+        compression values</em>
+    </li>
+    <li> <strong class="uidlink"><a href="httxlib.httxcookiejar.HttxCookieJar-class.html">httxlib.httxcookiejar.HttxCookieJar</a></strong>:
+      <em class="summary">An CookieJar holder to enable deepcopy semantics with locking.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="httxlib.httxoptions.HttxOptions-class.html">httxlib.httxoptions.HttxOptions</a></strong>:
+      <em class="summary">Class implementing a set of options per domain to be held by 
+        HttxLib connecting objects like <a 
+        href="httxlib.httxmanager.HttxManager-class.html" 
+        class="link">HttxManager</a>, <a 
+        href="httxlib.httxnetlocation.HttxNetLocation-class.html" 
+        class="link">HttxNetLocation</a> and <a 
+        href="httxlib.httxconnection.HttxConnection-class.html" 
+        class="link">HttxConnection</a></em>
+    </li>
+    <li> <strong class="uidlink"><a href="httxlib.httxpassmanager.HttxPassManager-class.html">httxlib.httxpassmanager.HttxPassManager</a></strong>:
+      <em class="summary">An object manages username and password for url and realms with 
+        locking semantics to be used in <a 
+        href="httxlib.httxoptions.HttxOptions-class.html" 
+        class="link">HttxOptions</a></em>
+    <ul>
+    <li> <strong class="uidlink"><a href="httxlib.httxcertificates.HttxCACertManager-class.html">httxlib.httxcertificates.HttxCACertManager</a></strong>:
+      <em class="summary">A subclass of <a 
+        href="httxlib.httxpassmanager.HttxPassManager-class.html" 
+        class="link">HttxPassManager</a> to hold the path to a file 
+        containing the root (chain of) certificate(s) to be used in server 
+        certificate validation</em>
+    </li>
+    <li> <strong class="uidlink"><a href="httxlib.httxcertificates.HttxCertKeyManager-class.html">httxlib.httxcertificates.HttxCertKeyManager</a></strong>:
+      <em class="summary">A subclass of <a 
+        href="httxlib.httxpassmanager.HttxPassManager-class.html" 
+        class="link">HttxPassManager</a> to hold paths to private key and 
+        certificate files to be used in client validation in https 
+        connections</em>
+    </li>
+    <li> <strong class="uidlink"><a href="httxlib.httxcertificates.HttxCertReqManager-class.html">httxlib.httxcertificates.HttxCertReqManager</a></strong>:
+      <em class="summary">A subclass of <a 
+        href="httxlib.httxpassmanager.HttxPassManager-class.html" 
+        class="link">HttxPassManager</a> to hold the requirement for server
+        certificate validation in https connections.</em>
+    </li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="httxlib.httxoptions.HttxOption-class.html">httxlib.httxoptions.HttxOption</a></strong>:
+      <em class="summary">A class representing an individual option.</em>
+    </li>
+    <li> <strong class="uidlink">tuple</strong>:
+      <em class="summary">tuple() -&gt; empty tuple tuple(iterable) -&gt; tuple initialized 
+        from iterable's items</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="httxlib.httxauthcache.AuthCache-class.html">httxlib.httxauthcache.AuthCache</a></strong>:
+      <em class="summary">AuthCache(headername, scheme, answer, cachedata)</em>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink">type</strong>:
+      <em class="summary">type(object) -&gt; the object's type type(name, bases, dict) -&gt; 
+        a new type</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="httxlib.httxoptions.HttxOptionsMeta-class.html">httxlib.httxoptions.HttxOptionsMeta</a></strong>:
+      <em class="summary">Metaclass for <a href="httxlib.httxoptions.HttxOptions-class.html" 
+        class="link">HttxOptions</a> to initialize the list of options on 
+        instantiation</em>
+    </li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+</ul>
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="httxlib-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Trees&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://code.google.com/p/httxlib/">HttxLib</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri May 27 01:34:03 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

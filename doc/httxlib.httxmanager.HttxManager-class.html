@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>httxlib.httxmanager.HttxManager</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="httxlib-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://code.google.com/p/httxlib/">HttxLib</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="httxlib-module.html">Package&nbsp;httxlib</a> ::
+        <a href="httxlib.httxmanager-module.html">Module&nbsp;httxmanager</a> ::
+        Class&nbsp;HttxManager
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="httxlib.httxmanager.HttxManager-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class HttxManager</h1><p class="nomargin-top"><span class="codelink"><a href="httxlib.httxmanager-pysrc.html#HttxManager">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+           object --+        
+                    |        
+<a href="httxlib.httxobject.HttxObject-class.html">httxobject.HttxObject</a> --+    
+                        |    
+        <a href="httxlib.httxbase.HttxBase-class.html">httxbase.HttxBase</a> --+
+                            |
+                           <strong class="uidshort">HttxManager</strong>
+</pre>
+
+<hr />
+<p>Main HttxLib Connecting object. The HttxManager is responsible for 
+  creating and managing a set of <a 
+  href="httxlib.httxnetlocation.HttxNetLocation-class.html" 
+  class="link">HttxNetLocation</a> (net locations) objects that will in 
+  turn hold the actual connections.</p>
+  <p>The net location objects will be created on demand and kept in 
+  storage. A reference to active netlocations, (those with a pending <a 
+  href="httxlib.httxmanager.HttxManager-class.html#getresponse" 
+  class="link">getresponse</a> after a <a 
+  href="httxlib.httxmanager.HttxManager-class.html#request" 
+  class="link">request</a>) will also be stored in a cache.</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxmanager.HttxManager-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Constructor.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxmanager-pysrc.html#HttxManager.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="httxlib.httxmanager.HttxManager-class.html" 
+      class="link">HttxManager</a> @see <a 
+      href="httxlib.httxmanager.HttxManager-class.html#clone" 
+      class="link">clone</a></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxmanager.HttxManager-class.html#__deepcopy__" class="summary-sig-name">__deepcopy__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">memo</span>)</span><br />
+      Deepcopy support.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxmanager-pysrc.html#HttxManager.__deepcopy__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="httxlib.httxmanager.HttxManager-class.html" 
+      class="link">HttxManager</a></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxmanager.HttxManager-class.html#clone" class="summary-sig-name">clone</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">options</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">netLocations</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Clone the object using the supplied options or a new set of options 
+      if given.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxmanager-pysrc.html#HttxManager.clone">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxmanager.HttxManager-class.html#setproxy" class="summary-sig-name">setproxy</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">proxy</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Set the proxy options by opening specific netlocations for http 
+      and/or https schemes The proxy can be different for http and https 
+      connections.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxmanager-pysrc.html#HttxManager.setproxy">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="httxlib.httxnetlocation.HttxNetLocation-class.html" 
+      class="link">HttxNetLocation</a></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxmanager.HttxManager-class.html#_getnetlocation" class="summary-sig-name" onclick="show_private();">_getnetlocation</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">httxreq</span>)</span><br />
+      Internal interface to fetch the appropiate <a 
+      href="httxlib.httxnetlocation.HttxNetLocation-class.html" 
+      class="link">HttxNetLocation</a> net location object to use to issue 
+      a request as specified by httxreq</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxmanager-pysrc.html#HttxManager._getnetlocation">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">opaque type for the caller (a Python sock)</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxmanager.HttxManager-class.html#request" class="summary-sig-name">request</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">httxreq</span>)</span><br />
+      Send the <a href="httxlib.httxrequest.HttxRequest-class.html" 
+      class="link">HttxRequest</a> httxreq to the specified server inside 
+      the request</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxmanager-pysrc.html#HttxManager.request">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="httplib.HTTPResponse-class.html" 
+      class="link">HttxResponse</a> (compatible with httplib HTTPResponse)</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxmanager.HttxManager-class.html#getresponse" class="summary-sig-name">getresponse</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sock</span>)</span><br />
+      Recover a <a href="httplib.HTTPResponse-class.html" 
+      class="link">HttxResponse</a> using a net location from the cache of 
+      active <a href="httxlib.httxnetlocation.HttxNetLocation-class.html" 
+      class="link">HttxNetLocation</a> net locations and calling its 
+      getresponse</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxmanager-pysrc.html#HttxManager.getresponse">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="httxlib.httxbase.HttxBase-class.html">httxbase.HttxBase</a></code></b>:
+      <code><a href="httxlib.httxbase.HttxBase-class.html#add_ca_cert">add_ca_cert</a></code>,
+      <code><a href="httxlib.httxbase.HttxBase-class.html#add_cert_req">add_cert_req</a></code>,
+      <code><a href="httxlib.httxbase.HttxBase-class.html#add_certkey">add_certkey</a></code>,
+      <code><a href="httxlib.httxbase.HttxBase-class.html#add_password">add_password</a></code>,
+      <code><a href="httxlib.httxbase.HttxBase-class.html#setdecompmethods">setdecompmethods</a></code>,
+      <code><a href="httxlib.httxbase.HttxBase-class.html#setoptions">setoptions</a></code>,
+      <code><a href="httxlib.httxbase.HttxBase-class.html#setuseragent">setuseragent</a></code>,
+      <code><a href="httxlib.httxbase.HttxBase-class.html#urlopen">urlopen</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>,
+      <code>__str__</code>,
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE VARIABLES ==================== -->
+<a name="section-InstanceVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="httxlib.httxoptions.HttxOptions-class.html" 
+      class="link">HttxOptions</a></span>
+    </td><td class="summary">
+        <a name="options"></a><span class="summary-name">options</span><br />
+      The shared options for the connection(s)
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="httxlib.httxobject.HttxObject-class.html">httxobject.HttxObject</a></code></b>:
+      <code><a href="httxlib.httxobject.HttxObject-class.html#lock">lock</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxmanager-pysrc.html#HttxManager.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Constructor. It delegates construction to the base class HttxBase, 
+  except for the proxy that will be set specifically</p>
+  <p>Setting the proxy ensures the initialization of the storage of 
+  netlocations and the cache of active netlocations</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>kwargs</code></strong> - keywords arguments</li>
+    </ul></dd>
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+<div class="fields">      <p><strong>See Also:</strong>
+        <a href="httxlib.httxoptions.HttxOptions-class.html" 
+        class="link">HttxOptions</a>
+      </p>
+</div></td></tr></table>
+</div>
+<a name="__deepcopy__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__deepcopy__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">memo</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxmanager-pysrc.html#HttxManager.__deepcopy__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Deepcopy support.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>memo</code></strong> (dict) - standard __deepcopy__ parameter to avoid circular references</li>
+    </ul></dd>
+    <dt>Returns: <a href="httxlib.httxmanager.HttxManager-class.html" 
+      class="link">HttxManager</a> @see <a 
+      href="httxlib.httxmanager.HttxManager-class.html#clone" 
+      class="link">clone</a></dt>
+        <dd>cloned object</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="clone"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">clone</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">options</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">netLocations</span>=<span class="sig-default">True</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxmanager-pysrc.html#HttxManager.clone">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Clone the object using the supplied options or a new set of options if
+  given.</p>
+  <p>An equivalente set of <a 
+  href="httxlib.httxnetlocation.HttxNetLocation-class.html" 
+  class="link">HttxNetLocation</a> net locations will be replicated</p>
+  <p>A new set of options will separate the clone object from the original 
+  object, since they will no longer share cookies, user/password/realm 
+  combinations or https certificates</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>options</code></strong> (<a href="httxlib.httxoptions.HttxOptions-class.html" 
+          class="link">HttxOptions</a>) - options for the cloned object</li>
+        <li><strong class="pname"><code>netLocations</code></strong> (bool) - whether to clone the existing netlocations</li>
+    </ul></dd>
+    <dt>Returns: <a href="httxlib.httxmanager.HttxManager-class.html" 
+      class="link">HttxManager</a></dt>
+        <dd>cloned object</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="setproxy"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setproxy</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">proxy</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxmanager-pysrc.html#HttxManager.setproxy">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Set the proxy options by opening specific netlocations for http and/or
+  https schemes The proxy can be different for http and https 
+  connections.</p>
+  <p>The <a href="httxlib.httxnetlocation.HttxNetLocation-class.html" 
+  class="link">HttxNetLocation</a> net locations storage and cache of 
+  active net locations are initialized</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>proxy</code></strong> (dict) - proxy servers. Dictionary with scheme:url pairs. '*' as scheme 
+          stands for both http and https</li>
+    </ul></dd>
+    <dt>Overrides:
+        <a href="httxlib.httxbase.HttxBase-class.html#setproxy">httxbase.HttxBase.setproxy</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_getnetlocation"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_getnetlocation</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">httxreq</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxmanager-pysrc.html#HttxManager._getnetlocation">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Internal interface to fetch the appropiate <a 
+  href="httxlib.httxnetlocation.HttxNetLocation-class.html" 
+  class="link">HttxNetLocation</a> net location object to use to issue a 
+  request as specified by httxreq</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>httxreq</code></strong> (<a href="httxlib.httxrequest.HttxRequest-class.html" 
+          class="link">HttxRequest</a>) - Request to be executed</li>
+    </ul></dd>
+    <dt>Returns: <a href="httxlib.httxnetlocation.HttxNetLocation-class.html" 
+      class="link">HttxNetLocation</a></dt>
+        <dd>httxnetlocation</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="request"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">request</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">httxreq</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxmanager-pysrc.html#HttxManager.request">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Send the <a href="httxlib.httxrequest.HttxRequest-class.html" 
+  class="link">HttxRequest</a> httxreq to the specified server inside the 
+  request</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>httxreq</code></strong> (<a href="httxlib.httxrequest.HttxRequest-class.html" 
+          class="link">HttxRequest</a>) - Request to be executed</li>
+    </ul></dd>
+    <dt>Returns: opaque type for the caller (a Python sock)</dt>
+        <dd>sock</dd>
+    <dt>Overrides:
+        <a href="httxlib.httxbase.HttxBase-class.html#request">httxbase.HttxBase.request</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getresponse"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getresponse</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">sock</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxmanager-pysrc.html#HttxManager.getresponse">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Recover a <a href="httplib.HTTPResponse-class.html" 
+  class="link">HttxResponse</a> using a net location from the cache of 
+  active <a href="httxlib.httxnetlocation.HttxNetLocation-class.html" 
+  class="link">HttxNetLocation</a> net locations and calling its 
+  getresponse</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>sock</code></strong> (opaque (a Python sock)) - The opaque type returned by <a 
+          href="httxlib.httxmanager.HttxManager-class.html#request" 
+          class="link">request</a></li>
+    </ul></dd>
+    <dt>Returns: <a href="httplib.HTTPResponse-class.html" 
+      class="link">HttxResponse</a> (compatible with httplib HTTPResponse)</dt>
+        <dd>response</dd>
+    <dt>Overrides:
+        <a href="httxlib.httxbase.HttxBase-class.html#getresponse">httxbase.HttxBase.getresponse</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="httxlib-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://code.google.com/p/httxlib/">HttxLib</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri May 27 01:34:03 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

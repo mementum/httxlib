@@ -1,0 +1,861 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>httxlib.httxbase.HttxBase</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="httxlib-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://code.google.com/p/httxlib/">HttxLib</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="httxlib-module.html">Package&nbsp;httxlib</a> ::
+        <a href="httxlib.httxbase-module.html">Module&nbsp;httxbase</a> ::
+        Class&nbsp;HttxBase
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="httxlib.httxbase.HttxBase-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class HttxBase</h1><p class="nomargin-top"><span class="codelink"><a href="httxlib.httxbase-pysrc.html#HttxBase">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+           object --+    
+                    |    
+<a href="httxlib.httxobject.HttxObject-class.html">httxobject.HttxObject</a> --+
+                        |
+                       <strong class="uidshort">HttxBase</strong>
+</pre>
+
+<dl><dt>Known Subclasses:</dt>
+<dd>
+      <ul class="subclass-list">
+<li><a href="httxlib.httxconnection.HttxConnection-class.html">httxconnection.HttxConnection</a></li><li>, <a href="httxlib.httxnetlocation.HttxNetLocation-class.html">httxnetlocation.HttxNetLocation</a></li><li>, <a href="httxlib.httxmanager.HttxManager-class.html">httxmanager.HttxManager</a></li>  </ul>
+</dd></dl>
+
+<hr />
+<p>Base of HttxLib classes that make a connection providing the 
+  definition and (in some cases) the implementation of primitives</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxbase.HttxBase-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Contructor</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxbase-pysrc.html#HttxBase.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxbase.HttxBase-class.html#add_ca_cert" class="summary-sig-name">add_ca_cert</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">url</span>,
+        <span class="summary-sig-arg">ca_cert</span>)</span><br />
+      Sets the path to a file that contains the root (chain) certificate(s)
+      to be used if the certificate of the server pointed by url has been 
+      requested to be verified with <a 
+      href="httxlib.httxbase.HttxBase-class.html#add_cert_req" 
+      class="link">add_cert_req</a> and <i>ssl.CERT_OPTIONAL</i> or 
+      <i>ssl.CERT_REQUIRED</i> was specified Please check the Python SSL 
+      documentation</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxbase-pysrc.html#HttxBase.add_ca_cert">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxbase.HttxBase-class.html#add_cert_req" class="summary-sig-name">add_cert_req</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">url</span>,
+        <span class="summary-sig-arg">cert_req</span>)</span><br />
+      Sets the certificate verification level for the server certificate in
+      the given url.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxbase-pysrc.html#HttxBase.add_cert_req">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxbase.HttxBase-class.html#add_certkey" class="summary-sig-name">add_certkey</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">url</span>,
+        <span class="summary-sig-arg">certfile</span>,
+        <span class="summary-sig-arg">keyfile</span>)</span><br />
+      Sets a <i>certificate file</i> and (if needed) a <i>private key 
+      file</i> to be used for https authentication in the domain given in 
+      the url The private key file is needed if the private key is not 
+      stored in the certificate.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxbase-pysrc.html#HttxBase.add_certkey">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxbase.HttxBase-class.html#add_password" class="summary-sig-name">add_password</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">realm</span>,
+        <span class="summary-sig-arg">url</span>,
+        <span class="summary-sig-arg">username</span>,
+        <span class="summary-sig-arg">password</span>)</span><br />
+      Sets a <i>username</i> and <i>password</i> for a realm and base url</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxbase-pysrc.html#HttxBase.add_password">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="httplib.HTTPResponse-class.html" 
+      class="link">HttxResponse</a> (compatible with httplib HTTPResponse) 
+      @raise NotImplemented</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxbase.HttxBase-class.html#getresponse" class="summary-sig-name">getresponse</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sock</span>)</span><br />
+      Recover a <a href="httplib.HTTPResponse-class.html" 
+      class="link">HttxResponse</a> corresponding to the sock (returned by 
+      <a href="httxlib.httxbase.HttxBase-class.html#request" 
+      class="link">request</a> This is the abstract definition.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxbase-pysrc.html#HttxBase.getresponse">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">opaque type for the caller (a Python sock) @raise NotImplemented</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxbase.HttxBase-class.html#request" class="summary-sig-name">request</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">httxreq</span>)</span><br />
+      Send the <a href="httxlib.httxrequest.HttxRequest-class.html" 
+      class="link">HttxRequest</a> httxreq to the specified server inside 
+      the request This is the abstract definition.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxbase-pysrc.html#HttxBase.request">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxbase.HttxBase-class.html#setdecompmethods" class="summary-sig-name">setdecompmethods</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">decompmethods</span>)</span><br />
+      Helper method to set the decompression methods</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxbase-pysrc.html#HttxBase.setdecompmethods">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxbase.HttxBase-class.html#setoptions" class="summary-sig-name">setoptions</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Sets the <i>options</i> at any time during execution</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxbase-pysrc.html#HttxBase.setoptions">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxbase.HttxBase-class.html#setproxy" class="summary-sig-name">setproxy</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">proxy</span>)</span><br />
+      Set the proxy for the HttxLib connecting object.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxbase-pysrc.html#HttxBase.setproxy">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxbase.HttxBase-class.html#setuseragent" class="summary-sig-name">setuseragent</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">useragent</span>)</span><br />
+      Helper method to set the User-Agent header</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxbase-pysrc.html#HttxBase.setuseragent">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="httplib.HTTPResponse-class.html" 
+      class="link">HttxResponse</a> (compatible with httplib HTTPResponse)</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="httxlib.httxbase.HttxBase-class.html#urlopen" class="summary-sig-name">urlopen</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">httxreq</span>)</span><br />
+      Fecth a url specified in the  <a 
+      href="httxlib.httxrequest.HttxRequest-class.html" 
+      class="link">HttxRequest</a> httxreq object and return it in the form
+      of an <a href="httplib.HTTPResponse-class.html" 
+      class="link">HttxResponse</a></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxbase-pysrc.html#HttxBase.urlopen">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>,
+      <code>__str__</code>,
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE VARIABLES ==================== -->
+<a name="section-InstanceVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="httxlib.httxoptions.HttxOptions-class.html" 
+      class="link">HttxOptions</a></span>
+    </td><td class="summary">
+        <a name="options"></a><span class="summary-name">options</span><br />
+      The shared options for the connection(s)
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="httxlib.httxobject.HttxObject-class.html">httxobject.HttxObject</a></code></b>:
+      <code><a href="httxlib.httxobject.HttxObject-class.html#lock">lock</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxbase-pysrc.html#HttxBase.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Contructor</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>kwargs</code></strong> - keyword arguments for <a 
+          href="httxlib.httxoptions.HttxOptions-class.html" 
+          class="link">HttxOptions</a></li>
+    </ul></dd>
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+<div class="fields">      <p><strong>See Also:</strong>
+        <a href="httxlib.httxoptions.HttxOptions-class.html" 
+        class="link">HttxOptions</a>
+      </p>
+</div></td></tr></table>
+</div>
+<a name="add_ca_cert"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">add_ca_cert</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">url</span>,
+        <span class="sig-arg">ca_cert</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxbase-pysrc.html#HttxBase.add_ca_cert">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Sets the path to a file that contains the root (chain) certificate(s) 
+  to be used if the certificate of the server pointed by url has been 
+  requested to be verified with <a 
+  href="httxlib.httxbase.HttxBase-class.html#add_cert_req" 
+  class="link">add_cert_req</a> and <i>ssl.CERT_OPTIONAL</i> or 
+  <i>ssl.CERT_REQUIRED</i> was specified Please check the Python SSL 
+  documentation</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>url</code></strong> (str) - url (domain) for which to apply. It can be empty to match all</li>
+        <li><strong class="pname"><code>ca_cert</code></strong> (str) - path to a file containing the root (chain) certificate(s)</li>
+    </ul></dd>
+  </dl>
+<div class="fields">      <p><strong>See Also:</strong>
+        <a href="httxlib.httxbase.HttxBase-class.html#add_cert_req" 
+        class="link">add_cert_req</a>
+      </p>
+</div></td></tr></table>
+</div>
+<a name="add_cert_req"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">add_cert_req</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">url</span>,
+        <span class="sig-arg">cert_req</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxbase-pysrc.html#HttxBase.add_cert_req">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Sets the certificate verification level for the server certificate in 
+  the given url. A (chain of) root certificate(s) has to be supplied with 
+  <a href="httxlib.httxbase.HttxBase-class.html#add_ca_cert" 
+  class="link">add_ca_cert</a> Please check the Python SSL 
+  documentation</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>url</code></strong> (str) - url (domain) for which to apply. It can be empty to match all</li>
+        <li><strong class="pname"><code>cert_req</code></strong> (enumeration ssl.CERT_NONE, ssl.CERT_OPTIONAL, ssl.CERT_REQUIRED) - verification level</li>
+    </ul></dd>
+  </dl>
+<div class="fields">      <p><strong>See Also:</strong>
+        <a href="httxlib.httxbase.HttxBase-class.html#add_ca_cert" 
+        class="link">add_ca_cert</a>
+      </p>
+</div></td></tr></table>
+</div>
+<a name="add_certkey"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">add_certkey</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">url</span>,
+        <span class="sig-arg">certfile</span>,
+        <span class="sig-arg">keyfile</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxbase-pysrc.html#HttxBase.add_certkey">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Sets a <i>certificate file</i> and (if needed) a <i>private key 
+  file</i> to be used for https authentication in the domain given in the 
+  url The private key file is needed if the private key is not stored in 
+  the certificate. Please check the Python SSL documentation to learn 
+  more</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>url</code></strong> (str) - url (domain) for which to apply. It can be empty to match all</li>
+        <li><strong class="pname"><code>certfile</code></strong> (str) - path to the cerfiticate file to be used</li>
+        <li><strong class="pname"><code>keyfile</code></strong> (str) - path to the private key file (if not stored in the cerfiticate) 
+          corresponding to the certificate</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="add_password"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">add_password</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">realm</span>,
+        <span class="sig-arg">url</span>,
+        <span class="sig-arg">username</span>,
+        <span class="sig-arg">password</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxbase-pysrc.html#HttxBase.add_password">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Sets a <i>username</i> and <i>password</i> for a realm and base 
+  url</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>realm</code></strong> (str) - Realm of application. It can be None</li>
+        <li><strong class="pname"><code>url</code></strong> (str) - base url for which to apply. It can be empty to match all</li>
+        <li><strong class="pname"><code>username</code></strong> (str) - username for realm and base url</li>
+        <li><strong class="pname"><code>password</code></strong> (str) - username for realm and base url</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getresponse"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getresponse</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">sock</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxbase-pysrc.html#HttxBase.getresponse">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Recover a <a href="httplib.HTTPResponse-class.html" 
+  class="link">HttxResponse</a> corresponding to the sock (returned by <a 
+  href="httxlib.httxbase.HttxBase-class.html#request" 
+  class="link">request</a> This is the abstract definition. To be 
+  implemented by connecting objects</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>sock</code></strong> (opaque (a Python sock)) - The opaque type returned by <a 
+          href="httxlib.httxbase.HttxBase-class.html#request" 
+          class="link">request</a></li>
+    </ul></dd>
+    <dt>Returns: <a href="httplib.HTTPResponse-class.html" 
+      class="link">HttxResponse</a> (compatible with httplib HTTPResponse) 
+      @raise NotImplemented</dt>
+        <dd>response</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="request"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">request</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">httxreq</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxbase-pysrc.html#HttxBase.request">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Send the <a href="httxlib.httxrequest.HttxRequest-class.html" 
+  class="link">HttxRequest</a> httxreq to the specified server inside the 
+  request This is the abstract definition. To be implemented by connecting 
+  objects</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>httxreq</code></strong> (<a href="httxlib.httxrequest.HttxRequest-class.html" 
+          class="link">HttxRequest</a>) - Request to be executed</li>
+    </ul></dd>
+    <dt>Returns: opaque type for the caller (a Python sock) @raise NotImplemented</dt>
+        <dd>sock</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="setdecompmethods"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setdecompmethods</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">decompmethods</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxbase-pysrc.html#HttxBase.setdecompmethods">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Helper method to set the decompression methods</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>decompmethods</code></strong> (list) - desired decompression methods</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="setoptions"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setoptions</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxbase-pysrc.html#HttxBase.setoptions">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Sets the <i>options</i> at any time during execution</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>kwargs</code></strong> - keyword arguments for <a 
+          href="httxlib.httxbase.HttxBase-class.html#options" 
+          class="link">options</a></li>
+    </ul></dd>
+  </dl>
+<div class="fields">      <p><strong>See Also:</strong>
+        <a href="httxlib.httxoptions.HttxOptions-class.html" 
+        class="link">HttxOptions</a>
+      </p>
+</div></td></tr></table>
+</div>
+<a name="setproxy"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setproxy</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">proxy</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxbase-pysrc.html#HttxBase.setproxy">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Set the proxy for the HttxLib connecting object. This is the abstract 
+  definition. To be implemented by connecting objects The proxy can be 
+  different for http and https connections.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>proxy</code></strong> (dict @raise NotImplemented) - proxy servers. Dictionary with scheme:url pairs. '*' as scheme 
+          stands for both http and https</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="setuseragent"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setuseragent</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">useragent</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxbase-pysrc.html#HttxBase.setuseragent">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Helper method to set the User-Agent header</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>useragent</code></strong> (str) - the user agent to fake</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="urlopen"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">urlopen</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">httxreq</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="httxlib.httxbase-pysrc.html#HttxBase.urlopen">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Fecth a url specified in the  <a 
+  href="httxlib.httxrequest.HttxRequest-class.html" 
+  class="link">HttxRequest</a> httxreq object and return it in the form of 
+  an <a href="httplib.HTTPResponse-class.html" 
+  class="link">HttxResponse</a></p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>httxreq</code></strong> (<a href="httxlib.httxrequest.HttxRequest-class.html" 
+          class="link">HttxRequest</a>) - Request to be fetched</li>
+    </ul></dd>
+    <dt>Returns: <a href="httplib.HTTPResponse-class.html" 
+      class="link">HttxResponse</a> (compatible with httplib HTTPResponse)</dt>
+        <dd>response</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="httxlib-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://code.google.com/p/httxlib/">HttxLib</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri May 27 01:34:03 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

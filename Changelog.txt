@@ -1,0 +1,28 @@
+0.97
+-- Use time.time instead of time.clock on non-windows platforms (Closes issue #4)
+-- Correct import list to complete issue #1 (Closes issue #5)
+
+0.96
+-- Relative URL during redirection supported (Resolves issue #1)
+-- Content-Type set automatically (to www-urlencoded) if POST is used and not set (Resolves issue #2)
+-- Socket initial connection could launch standard exceptions rather than HttxError derived exception (Resolves issue #3)
+
+0.95
+-- Changes to file headers
+
+0.94
+-- Added option (default: True)  and code to add the header 'Connection: Keep-Alive' to connections
+
+0.93
+-- [Bug]: Fixed: HttxNetLocation clone when having active sessions
+-- [Feature]: HttxManager can be cloned without cloning the underlying HttxNetLocations
+-- [Feature]: HttxNetLocation can be cloned without cloning the underlying HttxConnections
+
+0.92
+-- Added helper method and option to set user agent and code to set it
+-- Added helper method to change decompression methods
+-- TCP_NODELAY on for all created sockets
+
+0.91
+-- Added expiration timer for HTTP 1.1 KeepAlive connections
+-- Moved to GoogleCode

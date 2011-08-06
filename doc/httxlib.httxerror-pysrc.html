@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>httxlib.httxerror</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="httxlib-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://code.google.com/p/httxlib/">HttxLib</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="httxlib-module.html">Package&nbsp;httxlib</a> ::
+        Module&nbsp;httxerror
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="httxlib.httxerror-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="httxlib.httxerror-module.html">Module httxlib.httxerror</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/env python</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: latin-1; py-indent-offset:4 -*-</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment">################################################################################</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment"># </tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment"># This file is part of HttxLib</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-comment"># HttxLib is an HTTP(s) Python library suited multithreaded/multidomain</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-comment"># applications</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-comment"># Copyright (C) 2010-2011  Daniel Rodriguez (aka Daniel Rodriksson)</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-comment"># Copyright (C) 2011  Sensible Odds Ltd</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-comment"># You can learn more and contact the author at:</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-comment">#    http://code.google.com/p/httxlib/</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-comment"># HttxLib is free software: you can redistribute it and/or modify</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-comment"># it under the terms of the GNU General Public License as published by</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-comment"># the Free Software Foundation, either version 3 of the License, or</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-comment"># (at your option) any later version.</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-comment"># HttxLib is distributed in the hope that it will be useful,</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-comment"># but WITHOUT ANY WARRANTY; without even the implied warranty of</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-comment"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-comment"># GNU General Public License for more details.</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-comment"># You should have received a copy of the GNU General Public License</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-comment"># along with HttxLib. If not, see &lt;http://www.gnu.org/licenses/&gt;.</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-comment">################################################################################</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-docstring">'''</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-docstring">Implementation of Exceptions raised by HttxLib</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-docstring">Because HttxLib is built on top of httplib, all exceptions derive from</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-docstring">HTTPException to enable a catch-all case</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-docstring">'''</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">httplib</tt> <tt class="py-keyword">import</tt> <tt class="py-name">HTTPException</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"> </tt>
+<a name="SocketException"></a><div id="SocketException-def"><a name="L41"></a><tt class="py-lineno"> 41</tt> <a class="py-toggle" href="#" id="SocketException-toggle" onclick="return toggle('SocketException');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="httxlib.httxerror.SocketException-class.html">SocketException</a><tt class="py-op">(</tt><tt class="py-base-class">HTTPException</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SocketException-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="SocketException-expanded"><a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">    <tt class="py-docstring">'''</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"><tt class="py-docstring">    A class representing a socket exception like closed connection,</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"><tt class="py-docstring">    timeout, dns failure resolution and others</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"><tt class="py-docstring">    HTTPException is HTTP centered, but the HttxLib wants to isolate</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"><tt class="py-docstring">    the user from having to install their own except for a socket</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt class="py-docstring">    exception and therefore socket errors are caught</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"><tt class="py-docstring">    '''</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"> </tt>
+<a name="SocketException.__init__"></a><div id="SocketException.__init__-def"><a name="L51"></a><tt class="py-lineno"> 51</tt> <a class="py-toggle" href="#" id="SocketException.__init__-toggle" onclick="return toggle('SocketException.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="httxlib.httxerror.SocketException-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">args</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SocketException.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SocketException.__init__-expanded"><a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">        <tt class="py-docstring">'''</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"><tt class="py-docstring">        Constructor. Passes the args to Exception as explicitly stated</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"><tt class="py-docstring">        in the HTTPException definition in httplib.py</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"><tt class="py-docstring">        @param args: list of arguments</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"><tt class="py-docstring">        @type args: tuple</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"><tt class="py-docstring">        '''</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">        <tt class="py-name">Exception</tt><tt class="py-op">.</tt><tt id="link-0" class="py-name" targets="Method httxlib.httxauthcache.HttxAuthCache.__init__()=httxlib.httxauthcache.HttxAuthCache-class.html#__init__,Method httxlib.httxbase.HttxBase.__init__()=httxlib.httxbase.HttxBase-class.html#__init__,Method httxlib.httxcertificates.HttxCACertManager.__init__()=httxlib.httxcertificates.HttxCACertManager-class.html#__init__,Method httxlib.httxcertificates.HttxCertKeyManager.__init__()=httxlib.httxcertificates.HttxCertKeyManager-class.html#__init__,Method httxlib.httxcertificates.HttxCertReqManager.__init__()=httxlib.httxcertificates.HttxCertReqManager-class.html#__init__,Method httxlib.httxcompressionset.HttxCompressionSet.__init__()=httxlib.httxcompressionset.HttxCompressionSet-class.html#__init__,Method httxlib.httxconnection.HttxConnection.__init__()=httxlib.httxconnection.HttxConnection-class.html#__init__,Method httxlib.httxcookiejar.HttxCookieJar.__init__()=httxlib.httxcookiejar.HttxCookieJar-class.html#__init__,Method httxlib.httxerror.ExternalRedirectError.__init__()=httxlib.httxerror.ExternalRedirectError-class.html#__init__,Method httxlib.httxerror.HttxException.__init__()=httxlib.httxerror.HttxException-class.html#__init__,Method httxlib.httxerror.MaxRedirectError.__init__()=httxlib.httxerror.MaxRedirectError-class.html#__init__,Method httxlib.httxerror.RedirectError.__init__()=httxlib.httxerror.RedirectError-class.html#__init__,Method httxlib.httxerror.SocketException.__init__()=httxlib.httxerror.SocketException-class.html#__init__,Method httxlib.httxmanager.HttxManager.__init__()=httxlib.httxmanager.HttxManager-class.html#__init__,Method httxlib.httxnetlocation.HttxNetLocation.__init__()=httxlib.httxnetlocation.HttxNetLocation-class.html#__init__,Method httxlib.httxobject.HttxObject.__init__()=httxlib.httxobject.HttxObject-class.html#__init__,Method httxlib.httxoptions.HttxOption.__init__()=httxlib.httxoptions.HttxOption-class.html#__init__,Method httxlib.httxoptions.HttxOptions.__init__()=httxlib.httxoptions.HttxOptions-class.html#__init__,Method httxlib.httxpassmanager.HttxPassManager.__init__()=httxlib.httxpassmanager.HttxPassManager-class.html#__init__,Method httxlib.httxrequest.HttxRequest.__init__()=httxlib.httxrequest.HttxRequest-class.html#__init__,Method httxlib.httxs.HttxsConnection.__init__()=httxlib.httxs.HttxsConnection-class.html#__init__"><a title="httxlib.httxauthcache.HttxAuthCache.__init__
+httxlib.httxbase.HttxBase.__init__
+httxlib.httxcertificates.HttxCACertManager.__init__
+httxlib.httxcertificates.HttxCertKeyManager.__init__
+httxlib.httxcertificates.HttxCertReqManager.__init__
+httxlib.httxcompressionset.HttxCompressionSet.__init__
+httxlib.httxconnection.HttxConnection.__init__
+httxlib.httxcookiejar.HttxCookieJar.__init__
+httxlib.httxerror.ExternalRedirectError.__init__
+httxlib.httxerror.HttxException.__init__
+httxlib.httxerror.MaxRedirectError.__init__
+httxlib.httxerror.RedirectError.__init__
+httxlib.httxerror.SocketException.__init__
+httxlib.httxmanager.HttxManager.__init__
+httxlib.httxnetlocation.HttxNetLocation.__init__
+httxlib.httxobject.HttxObject.__init__
+httxlib.httxoptions.HttxOption.__init__
+httxlib.httxoptions.HttxOptions.__init__
+httxlib.httxpassmanager.HttxPassManager.__init__
+httxlib.httxrequest.HttxRequest.__init__
+httxlib.httxs.HttxsConnection.__init__" class="py-name" href="#" onclick="return doclink('link-0', '__init__', 'link-0');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-name">args</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"><tt class="py-comment"># Alias</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"><tt class="py-name">HttxSocketException</tt> <tt class="py-op">=</tt> <tt id="link-1" class="py-name" targets="Class httxlib.httxerror.SocketException=httxlib.httxerror.SocketException-class.html"><a title="httxlib.httxerror.SocketException" class="py-name" href="#" onclick="return doclink('link-1', 'SocketException', 'link-1');">SocketException</a></tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"> </tt>
+<a name="HttxException"></a><div id="HttxException-def"><a name="L66"></a><tt class="py-lineno"> 66</tt> <a class="py-toggle" href="#" id="HttxException-toggle" onclick="return toggle('HttxException');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="httxlib.httxerror.HttxException-class.html">HttxException</a><tt class="py-op">(</tt><tt class="py-base-class">HTTPException</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="HttxException-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="HttxException-expanded"><a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">    <tt class="py-docstring">'''</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"><tt class="py-docstring">    A class representing a HTTP related exceptions raised by HttxLib</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"><tt class="py-docstring">    @ivar response: response that has triggered the exception</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"><tt class="py-docstring">    @type response: L{HttxResponse}</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"><tt class="py-docstring">    '''</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"> </tt>
+<a name="HttxException.__init__"></a><div id="HttxException.__init__-def"><a name="L74"></a><tt class="py-lineno"> 74</tt> <a class="py-toggle" href="#" id="HttxException.__init__-toggle" onclick="return toggle('HttxException.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="httxlib.httxerror.HttxException-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">response</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">args</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="HttxException.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="HttxException.__init__-expanded"><a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">        <tt class="py-docstring">'''</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"><tt class="py-docstring">        Constructor. Passes the args to Exception as explicitly stated</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"><tt class="py-docstring">        in the HTTPException definition in httplib.py</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"><tt class="py-docstring">        @param response: response that has triggered the exception</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt class="py-docstring">        @type response: L{HttxResponse}</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt class="py-docstring">        @param args: list of arguments</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"><tt class="py-docstring">        @type args: tuple</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"><tt class="py-docstring">        '''</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">        <tt class="py-name">Exception</tt><tt class="py-op">.</tt><tt id="link-2" class="py-name"><a title="httxlib.httxauthcache.HttxAuthCache.__init__
+httxlib.httxbase.HttxBase.__init__
+httxlib.httxcertificates.HttxCACertManager.__init__
+httxlib.httxcertificates.HttxCertKeyManager.__init__
+httxlib.httxcertificates.HttxCertReqManager.__init__
+httxlib.httxcompressionset.HttxCompressionSet.__init__
+httxlib.httxconnection.HttxConnection.__init__
+httxlib.httxcookiejar.HttxCookieJar.__init__
+httxlib.httxerror.ExternalRedirectError.__init__
+httxlib.httxerror.HttxException.__init__
+httxlib.httxerror.MaxRedirectError.__init__
+httxlib.httxerror.RedirectError.__init__
+httxlib.httxerror.SocketException.__init__
+httxlib.httxmanager.HttxManager.__init__
+httxlib.httxnetlocation.HttxNetLocation.__init__
+httxlib.httxobject.HttxObject.__init__
+httxlib.httxoptions.HttxOption.__init__
+httxlib.httxoptions.HttxOptions.__init__
+httxlib.httxpassmanager.HttxPassManager.__init__
+httxlib.httxrequest.HttxRequest.__init__
+httxlib.httxs.HttxsConnection.__init__" class="py-name" href="#" onclick="return doclink('link-2', '__init__', 'link-0');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-name">args</tt><tt class="py-op">)</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">response</tt> </tt>
+</div></div><a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"> </tt>
+<a name="RedirectError"></a><div id="RedirectError-def"><a name="L88"></a><tt class="py-lineno"> 88</tt> <a class="py-toggle" href="#" id="RedirectError-toggle" onclick="return toggle('RedirectError');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="httxlib.httxerror.RedirectError-class.html">RedirectError</a><tt class="py-op">(</tt><tt class="py-base-class">HttxException</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="RedirectError-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="RedirectError-expanded"><a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">    <tt class="py-docstring">'''</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"><tt class="py-docstring">    A class representing a redirection error (like missing location header,</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"><tt class="py-docstring">    not allowed in a POST request and others)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"><tt class="py-docstring">    '''</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"> </tt>
+<a name="RedirectError.__init__"></a><div id="RedirectError.__init__-def"><a name="L94"></a><tt class="py-lineno"> 94</tt> <a class="py-toggle" href="#" id="RedirectError.__init__-toggle" onclick="return toggle('RedirectError.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="httxlib.httxerror.RedirectError-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">response</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">args</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="RedirectError.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="RedirectError.__init__-expanded"><a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">        <tt class="py-docstring">'''</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-docstring">        Constructor. Delegates construction to the base class L{HttxException}</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-docstring">        @param response: response that has triggered the exception</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt class="py-docstring">        @type response: L{HttxResponse}</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"><tt class="py-docstring">        @param args: list of arguments</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"><tt class="py-docstring">        @type args: tuple</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"><tt class="py-docstring">        '''</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">        <tt id="link-3" class="py-name" targets="Class httxlib.httxerror.HttxException=httxlib.httxerror.HttxException-class.html"><a title="httxlib.httxerror.HttxException" class="py-name" href="#" onclick="return doclink('link-3', 'HttxException', 'link-3');">HttxException</a></tt><tt class="py-op">.</tt><tt id="link-4" class="py-name"><a title="httxlib.httxauthcache.HttxAuthCache.__init__
+httxlib.httxbase.HttxBase.__init__
+httxlib.httxcertificates.HttxCACertManager.__init__
+httxlib.httxcertificates.HttxCertKeyManager.__init__
+httxlib.httxcertificates.HttxCertReqManager.__init__
+httxlib.httxcompressionset.HttxCompressionSet.__init__
+httxlib.httxconnection.HttxConnection.__init__
+httxlib.httxcookiejar.HttxCookieJar.__init__
+httxlib.httxerror.ExternalRedirectError.__init__
+httxlib.httxerror.HttxException.__init__
+httxlib.httxerror.MaxRedirectError.__init__
+httxlib.httxerror.RedirectError.__init__
+httxlib.httxerror.SocketException.__init__
+httxlib.httxmanager.HttxManager.__init__
+httxlib.httxnetlocation.HttxNetLocation.__init__
+httxlib.httxobject.HttxObject.__init__
+httxlib.httxoptions.HttxOption.__init__
+httxlib.httxoptions.HttxOptions.__init__
+httxlib.httxpassmanager.HttxPassManager.__init__
+httxlib.httxrequest.HttxRequest.__init__
+httxlib.httxs.HttxsConnection.__init__" class="py-name" href="#" onclick="return doclink('link-4', '__init__', 'link-0');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">response</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-name">args</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"> </tt>
+<a name="MaxRedirectError"></a><div id="MaxRedirectError-def"><a name="L106"></a><tt class="py-lineno">106</tt> <a class="py-toggle" href="#" id="MaxRedirectError-toggle" onclick="return toggle('MaxRedirectError');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="httxlib.httxerror.MaxRedirectError-class.html">MaxRedirectError</a><tt class="py-op">(</tt><tt class="py-base-class">RedirectError</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MaxRedirectError-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="MaxRedirectError-expanded"><a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">    <tt class="py-docstring">'''</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line"><tt class="py-docstring">    A class representing an error because the configure maxiumum number</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line"><tt class="py-docstring">    of redirections has been reached</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"><tt class="py-docstring">    '''</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line"> </tt>
+<a name="MaxRedirectError.__init__"></a><div id="MaxRedirectError.__init__-def"><a name="L112"></a><tt class="py-lineno">112</tt> <a class="py-toggle" href="#" id="MaxRedirectError.__init__-toggle" onclick="return toggle('MaxRedirectError.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="httxlib.httxerror.MaxRedirectError-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">response</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">args</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MaxRedirectError.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MaxRedirectError.__init__-expanded"><a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">        <tt class="py-docstring">'''</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line"><tt class="py-docstring">        Constructor. Delegates construction to the base class L{HttxException}</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"><tt class="py-docstring">        @param response: response that has triggered the exception</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"><tt class="py-docstring">        @type response: L{HttxResponse}</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line"><tt class="py-docstring">        @param args: list of arguments</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line"><tt class="py-docstring">        @type args: tuple</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"><tt class="py-docstring">        '''</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">        <tt id="link-5" class="py-name"><a title="httxlib.httxerror.HttxException" class="py-name" href="#" onclick="return doclink('link-5', 'HttxException', 'link-3');">HttxException</a></tt><tt class="py-op">.</tt><tt id="link-6" class="py-name"><a title="httxlib.httxauthcache.HttxAuthCache.__init__
+httxlib.httxbase.HttxBase.__init__
+httxlib.httxcertificates.HttxCACertManager.__init__
+httxlib.httxcertificates.HttxCertKeyManager.__init__
+httxlib.httxcertificates.HttxCertReqManager.__init__
+httxlib.httxcompressionset.HttxCompressionSet.__init__
+httxlib.httxconnection.HttxConnection.__init__
+httxlib.httxcookiejar.HttxCookieJar.__init__
+httxlib.httxerror.ExternalRedirectError.__init__
+httxlib.httxerror.HttxException.__init__
+httxlib.httxerror.MaxRedirectError.__init__
+httxlib.httxerror.RedirectError.__init__
+httxlib.httxerror.SocketException.__init__
+httxlib.httxmanager.HttxManager.__init__
+httxlib.httxnetlocation.HttxNetLocation.__init__
+httxlib.httxobject.HttxObject.__init__
+httxlib.httxoptions.HttxOption.__init__
+httxlib.httxoptions.HttxOptions.__init__
+httxlib.httxpassmanager.HttxPassManager.__init__
+httxlib.httxrequest.HttxRequest.__init__
+httxlib.httxs.HttxsConnection.__init__" class="py-name" href="#" onclick="return doclink('link-6', '__init__', 'link-0');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">response</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-name">args</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line"> </tt>
+<a name="ExternalRedirectError"></a><div id="ExternalRedirectError-def"><a name="L124"></a><tt class="py-lineno">124</tt> <a class="py-toggle" href="#" id="ExternalRedirectError-toggle" onclick="return toggle('ExternalRedirectError');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="httxlib.httxerror.ExternalRedirectError-class.html">ExternalRedirectError</a><tt class="py-op">(</tt><tt class="py-base-class">RedirectError</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ExternalRedirectError-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ExternalRedirectError-expanded"><a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">    <tt class="py-docstring">'''</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"><tt class="py-docstring">    A class representing an error because external redirections are disabled</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line"><tt class="py-docstring">    but the response redirected to an external host</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line"><tt class="py-docstring">    '''</tt> </tt>
+<a name="ExternalRedirectError.__init__"></a><div id="ExternalRedirectError.__init__-def"><a name="L129"></a><tt class="py-lineno">129</tt> <a class="py-toggle" href="#" id="ExternalRedirectError.__init__-toggle" onclick="return toggle('ExternalRedirectError.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="httxlib.httxerror.ExternalRedirectError-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">response</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">args</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ExternalRedirectError.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ExternalRedirectError.__init__-expanded"><a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">        <tt class="py-docstring">'''</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"><tt class="py-docstring">        Constructor. Delegates construction to the base class L{HttxException}</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line"><tt class="py-docstring">        @param response: response that has triggered the exception</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"><tt class="py-docstring">        @type response: L{HttxResponse}</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line"><tt class="py-docstring">        @param args: list of arguments</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line"><tt class="py-docstring">        @type args: tuple</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"><tt class="py-docstring">        '''</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">        <tt id="link-7" class="py-name"><a title="httxlib.httxerror.HttxException" class="py-name" href="#" onclick="return doclink('link-7', 'HttxException', 'link-3');">HttxException</a></tt><tt class="py-op">.</tt><tt id="link-8" class="py-name"><a title="httxlib.httxauthcache.HttxAuthCache.__init__
+httxlib.httxbase.HttxBase.__init__
+httxlib.httxcertificates.HttxCACertManager.__init__
+httxlib.httxcertificates.HttxCertKeyManager.__init__
+httxlib.httxcertificates.HttxCertReqManager.__init__
+httxlib.httxcompressionset.HttxCompressionSet.__init__
+httxlib.httxconnection.HttxConnection.__init__
+httxlib.httxcookiejar.HttxCookieJar.__init__
+httxlib.httxerror.ExternalRedirectError.__init__
+httxlib.httxerror.HttxException.__init__
+httxlib.httxerror.MaxRedirectError.__init__
+httxlib.httxerror.RedirectError.__init__
+httxlib.httxerror.SocketException.__init__
+httxlib.httxmanager.HttxManager.__init__
+httxlib.httxnetlocation.HttxNetLocation.__init__
+httxlib.httxobject.HttxObject.__init__
+httxlib.httxoptions.HttxOption.__init__
+httxlib.httxoptions.HttxOptions.__init__
+httxlib.httxpassmanager.HttxPassManager.__init__
+httxlib.httxrequest.HttxRequest.__init__
+httxlib.httxs.HttxsConnection.__init__" class="py-name" href="#" onclick="return doclink('link-8', '__init__', 'link-0');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">response</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-name">args</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="httxlib-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://code.google.com/p/httxlib/">HttxLib</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri May 27 01:34:03 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
