@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>httxlib.httxcertificates.HttxCACertManager</title>
+  <title>httxlib.httxs.HTTPSxTunneled</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -43,8 +43,8 @@
     <td width="100%">
       <span class="breadcrumbs">
         <a href="httxlib-module.html">Package&nbsp;httxlib</a> ::
-        <a href="httxlib.httxcertificates-module.html">Module&nbsp;httxcertificates</a> ::
-        Class&nbsp;HttxCACertManager
+        <a href="httxlib.httxs-module.html">Module&nbsp;httxs</a> ::
+        Class&nbsp;HTTPSxTunneled
       </span>
     </td>
     <td>
@@ -54,38 +54,53 @@
     onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
         <tr><td align="right"><span class="options"
             >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="httxlib.httxcertificates.HttxCACertManager-class.html"
+            >]&nbsp;|&nbsp;<a href="httxlib.httxs.HTTPSxTunneled-class.html"
             target="_top">no&nbsp;frames</a>]</span></td></tr>
       </table>
     </td>
   </tr>
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
-<h1 class="epydoc">Class HttxCACertManager</h1><p class="nomargin-top"><span class="codelink"><a href="httxlib.httxcertificates-pysrc.html#HttxCACertManager">source&nbsp;code</a></span></p>
+<h1 class="epydoc">Class HTTPSxTunneled</h1><p class="nomargin-top"><span class="codelink"><a href="httxlib.httxs-pysrc.html#HTTPSxTunneled">source&nbsp;code</a></span></p>
 <pre class="base-tree">
-                 object --+        
-                          |        
-      <a href="httxlib.httxobject.HttxObject-class.html">httxobject.HttxObject</a> --+    
-                              |    
-<a href="httxlib.httxpassmanager.HttxPassManager-class.html">httxpassmanager.HttxPassManager</a> --+
-                                  |
-                                 <strong class="uidshort">HttxCACertManager</strong>
+httplib.HTTPConnection --+        
+                         |        
+   httplib.HTTPSConnection --+    
+                             |    
+              <a href="httxlib.httxs.HTTPSxConnection-class.html">HTTPSxConnection</a> --+
+                                 |
+                                <strong class="uidshort">HTTPSxTunneled</strong>
 </pre>
 
 <hr />
-<p>A subclass of <a 
-  href="httxlib.httxpassmanager.HttxPassManager-class.html" 
-  class="link">HttxPassManager</a> to hold the path to a file containing 
-  the root (chain of) certificate(s) to be used in server certificate 
-  validation</p>
-  <p>It stores the requirement on a per url basis by transforming the 
-  enumeration value into a string on storage and undoing the operation on 
-  retrieval</p>
-  <p>It is separate from the Validation Requirement storage because this 
-  file may be use for all servers, but validation may not be required for 
-  all servers</p>
-  <p>A catch_all empty string can be used to validate against any url</p>
+<p>Subclass of HTTPSxConnection that will use an existing connected 
+  sock</p>
 
+<!-- ==================== NESTED CLASSES ==================== -->
+<a name="section-NestedClasses"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Nested Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-NestedClasses"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>httplib.HTTPConnection</code></b>:
+      <code><a href="httplib.HTTPResponse-class.html">response_class</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
 <table class="summary" border="1" cellpadding="3"
@@ -109,10 +124,17 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="httxlib.httxcertificates.HttxCACertManager-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+          <td><span class="summary-sig"><a href="httxlib.httxs.HTTPSxTunneled-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sock</span>,
+        <span class="summary-sig-arg">host</span>,
+        <span class="summary-sig-arg">port</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">key_file</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">cert_file</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">strict</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">timeout</span>=<span class="summary-sig-default">socket._GLOBAL_DEFAULT_TIMEOUT</span>)</span><br />
       Constructor.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="httxlib.httxcertificates-pysrc.html#HttxCACertManager.__init__">source&nbsp;code</a></span>
+            <span class="codelink"><a href="httxlib.httxs-pysrc.html#HTTPSxTunneled.__init__">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -126,32 +148,10 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="httxlib.httxcertificates.HttxCACertManager-class.html#add_ca_cert" class="summary-sig-name">add_ca_cert</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">url</span>,
-        <span class="summary-sig-arg">cacert</span>)</span><br />
-      Add a path to a file with a root (chain of) certificates for the 
-      given url</td>
+          <td><span class="summary-sig"><a href="httxlib.httxs.HTTPSxTunneled-class.html#connect" class="summary-sig-name">connect</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Opens the connection and wraps it in a ssl socket</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="httxlib.httxcertificates-pysrc.html#HttxCACertManager.add_ca_cert">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">str|None</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="httxlib.httxcertificates.HttxCACertManager-class.html#find_ca_cert" class="summary-sig-name">find_ca_cert</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">url</span>)</span><br />
-      Retrieve the path to a file containing the root certificates for the 
-      given url</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="httxlib.httxcertificates-pysrc.html#HttxCACertManager.find_ca_cert">source&nbsp;code</a></span>
+            <span class="codelink"><a href="httxlib.httxs-pysrc.html#HTTPSxTunneled.connect">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -161,25 +161,59 @@
   </tr>
   <tr>
     <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="httxlib.httxpassmanager.HttxPassManager-class.html">httxpassmanager.HttxPassManager</a></code></b>:
-      <code><a href="httxlib.httxpassmanager.HttxPassManager-class.html#__deepcopy__">__deepcopy__</a></code>,
-      <code><a href="httxlib.httxpassmanager.HttxPassManager-class.html#add_password">add_password</a></code>,
-      <code><a href="httxlib.httxpassmanager.HttxPassManager-class.html#find_user_password">find_user_password</a></code>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>httplib.HTTPConnection</code></b>:
+      <code>close</code>,
+      <code>endheaders</code>,
+      <code>getresponse</code>,
+      <code>putheader</code>,
+      <code>putrequest</code>,
+      <code>request</code>,
+      <code>send</code>,
+      <code>set_debuglevel</code>,
+      <code>set_tunnel</code>
       </p>
-    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
-      <code>__delattr__</code>,
-      <code>__format__</code>,
-      <code>__getattribute__</code>,
-      <code>__hash__</code>,
-      <code>__new__</code>,
-      <code>__reduce__</code>,
-      <code>__reduce_ex__</code>,
-      <code>__repr__</code>,
-      <code>__setattr__</code>,
-      <code>__sizeof__</code>,
-      <code>__str__</code>,
-      <code>__subclasshook__</code>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>httplib.HTTPConnection</code></b> (private):
+      <code>_output</code>,
+      <code>_send_output</code>,
+      <code>_send_request</code>,
+      <code>_set_content_length</code>,
+      <code>_set_hostport</code>,
+      <code>_tunnel</code>
+      </p></div>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>httplib.HTTPSConnection</code></b>:
+      <code>default_port</code>
       </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>httplib.HTTPConnection</code></b>:
+      <code>auto_open</code>,
+      <code>debuglevel</code>,
+      <code>strict</code>
+      </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>httplib.HTTPConnection</code></b> (private):
+      <code>_http_vsn</code>,
+      <code>_http_vsn_str</code>
+      </p></div>
     </td>
   </tr>
 </table>
@@ -202,36 +236,9 @@
 </tr>
   <tr>
     <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="httxlib.httxpassmanager.HttxPassManager-class.html">httxpassmanager.HttxPassManager</a></code></b>:
-      <code><a href="httxlib.httxpassmanager.HttxPassManager-class.html#passmanager">passmanager</a></code>
-      </p>
-    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="httxlib.httxobject.HttxObject-class.html">httxobject.HttxObject</a></code></b>:
-      <code><a href="httxlib.httxobject.HttxObject-class.html#lock">lock</a></code>
-      </p>
-    </td>
-  </tr>
-</table>
-<!-- ==================== PROPERTIES ==================== -->
-<a name="section-Properties"></a>
-<table class="summary" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="table-header">
-  <td colspan="2" class="table-header">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-      <tr valign="top">
-        <td align="left"><span class="table-header">Properties</span></td>
-        <td align="right" valign="top"
-         ><span class="options">[<a href="#section-Properties"
-         class="privatelink" onclick="toggle_private();"
-         >hide private</a>]</span></td>
-      </tr>
-    </table>
-  </td>
-</tr>
-  <tr>
-    <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
-      <code>__class__</code>
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="httxlib.httxs.HTTPSxConnection-class.html">HTTPSxConnection</a></code></b>:
+      <code><a href="httxlib.httxs.HTTPSxConnection-class.html#ca_certs">ca_certs</a></code>,
+      <code><a href="httxlib.httxs.HTTPSxConnection-class.html#cert_reqs">cert_reqs</a></code>
       </p>
     </td>
   </tr>
@@ -261,75 +268,63 @@
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">sock</span>,
+        <span class="sig-arg">host</span>,
+        <span class="sig-arg">port</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">key_file</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">cert_file</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">strict</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">timeout</span>=<span class="sig-default">socket._GLOBAL_DEFAULT_TIMEOUT</span>)</span>
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="httxlib.httxcertificates-pysrc.html#HttxCACertManager.__init__">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="httxlib.httxs-pysrc.html#HTTPSxTunneled.__init__">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Constructor. It delegates construction to the base class <a 
-  href="httxlib.httxpassmanager.HttxPassManager-class.html" 
-  class="link">HttxPassManager</a></p>
+  <p>Constructor. It delegates construction to the base class 
+  HTTPConnection and initializes the new member variables with the default 
+  values from the Python documentation</p>
+  <p>HTTPConnection and initializes the new member variables with the 
+  default values from the Python documentation</p>
   <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>sock</code></strong> (socket) - connected sock to use</li>
+        <li><strong class="pname"><code>host</code></strong> (str) - host to connect to</li>
+        <li><strong class="pname"><code>port</code></strong> (int|None) - port to connect to. use None for the default HTTP port</li>
+        <li><strong class="pname"><code>key_file</code></strong> (str|None) - path to private key_file or None if stored in cert_file</li>
+        <li><strong class="pname"><code>cert_file</code></strong> (str|None) - path to certificate to be used for validation or None</li>
+        <li><strong class="pname"><code>strict</code></strong> (Unknown) - n/a</li>
+        <li><strong class="pname"><code>timeout</code></strong> (float) - default time for network operations</li>
+    </ul></dd>
     <dt>Overrides:
-        object.__init__
+        httplib.HTTPConnection.__init__
     </dt>
   </dl>
 </td></tr></table>
 </div>
-<a name="add_ca_cert"></a>
+<a name="connect"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">add_ca_cert</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">url</span>,
-        <span class="sig-arg">cacert</span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">connect</span>(<span class="sig-arg">self</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="httxlib.httxcertificates-pysrc.html#HttxCACertManager.add_ca_cert">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="httxlib.httxs-pysrc.html#HTTPSxTunneled.connect">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Add a path to a file with a root (chain of) certificates for the given
-  url</p>
+  <p>Opens the connection and wraps it in a ssl socket</p>
+  <p>Overrriding is needed to enable certificate validation</p>
   <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>url</code></strong> (str) - url to be matched for certificate/private key files</li>
-        <li><strong class="pname"><code>cacert</code></strong> (str) - path to a file containing the certificates</li>
-    </ul></dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="find_ca_cert"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">find_ca_cert</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">url</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="httxlib.httxcertificates-pysrc.html#HttxCACertManager.find_ca_cert">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Retrieve the path to a file containing the root certificates for the 
-  given url</p>
-  <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>url</code></strong> (str) - url to be matched for certificate/private key files</li>
-    </ul></dd>
-    <dt>Returns: str|None</dt>
-        <dd>the path to the file with the root certificates or None</dd>
+    <dt>Overrides:
+        httplib.HTTPConnection.connect
+    </dt>
   </dl>
 </td></tr></table>
 </div>

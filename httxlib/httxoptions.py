@@ -7,8 +7,8 @@
 # HttxLib is an HTTP(s) Python library suited multithreaded/multidomain
 # applications
 #
-# Copyright (C) 2010-2011  Daniel Rodriguez (aka Daniel Rodriksson)
-# Copyright (C) 2011  Sensible Odds Ltd
+# Copyright (C) 2010-2011 Daniel Rodriguez (aka Daniel Rodriksson)
+# Copyright (C) 2011 Sensible Odds Ltd
 #
 # You can learn more and contact the author at:
 #
@@ -157,6 +157,14 @@ class HttxOptions(HttxObject):
         Default value: True
         Timeout for HTTP Send the 'Connection: Keep-Alive' header
         
+      - httpsconnect
+        Default value: True
+        Use CONNECT for proxying HTTPS
+
+      - httpconnect
+        Default value: False
+        Use CONNECT for proxying HTTP
+
       - sendfullurl
         Default value: False
         HTTP 1.1 allows this, but some servers may crash if they receive the full url
@@ -165,6 +173,11 @@ class HttxOptions(HttxObject):
         Default value: None
         A dictionary of scheme:url tuples can be set to use proxy servers
         scheme can be * for any scheme or have the http/https values
+
+      - proxydefaults
+        Default value: False
+        If True try to automatically find and use the system (or via environment variables)
+        defined proxies
 
       - compression
         Default value: False
@@ -259,8 +272,11 @@ class HttxOptions(HttxObject):
         HttxOption('timeout', 15),
         HttxOption('keepalive', 90),
         HttxOption('connkeepalive', True),
+        HttxOption('httpsconnect', True),
+        HttxOption('httpconnect', False),
         HttxOption('sendfullurl', False),
         HttxOption('proxy', None),
+        HttxOption('proxydefaults', False),
         HttxOption('compression', False),
         HttxOption('compmethod', HttxCompressionSet('gzip')),
         HttxOption('decompression', True),

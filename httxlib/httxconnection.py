@@ -7,8 +7,8 @@
 # HttxLib is an HTTP(s) Python library suited multithreaded/multidomain
 # applications
 #
-# Copyright (C) 2010-2011  Daniel Rodriguez (aka Daniel Rodriksson)
-# Copyright (C) 2011  Sensible Odds Ltd
+# Copyright (C) 2010-2011 Daniel Rodriguez (aka Daniel Rodriksson)
+# Copyright (C) 2011 Sensible Odds Ltd
 #
 # You can learn more and contact the author at:
 #
@@ -28,42 +28,27 @@
 # along with HttxLib. If not, see <http://www.gnu.org/licenses/>.
 #
 ################################################################################
-'''
-HttxConnection connecting object. L{HttxConnection} implementation
-@var _httpsconnection: if ssl is active it will hold a reference to the class type
-                       to create https capable connections
-@type _httpsconnection: class
-'''
 
 from collections import deque
 from copy import deepcopy
 from cStringIO import StringIO
 from httplib import HTTPConnection
-try:
-    from httxs import HttxsConnection as _httpsconnection
-except ImportError:
-    _httpsconnection = None
-
 from socket import error as SocketError, IPPROTO_TCP, TCP_NODELAY
 from ssl import CERT_NONE
 from urlparse import urlsplit
-import sys
-if sys.platform == 'win32':
-    from time import clock as tclock
-else:
-    from time import time as tclock
 
 from httxauth import authbasic, authdigest
 from httxbase import HttxBase
 from httxcompression import httxdecompress
 from httxerror import SocketException, RedirectError, MaxRedirectError, ExternalRedirectError
-from httxutil import parse_keqv_list, parse_http_list
+from httxs import HTTPxTunneled, HTTPSxConnection, HTTPSxTunneled
+from httxutil import parse_keqv_list, parse_http_list, tclock
 
 
 class HttxConnection(HttxBase):
     '''
     Connection connecting object. The HttxConnection is responsible for creating
-    and managing an underlying httplib.HTTPConnection or a L{HttxsConnection} (for HTTPS)
+    and managing an underlying httplib.HTTPConnection or a L{HTTPSxConnection} (for HTTPS)
     to perform the actual connection
 
     The creation of the underlying connection is based upon a dictionary holding the
@@ -76,6 +61,9 @@ class HttxConnection(HttxBase):
 
     @ivar connFactory: class variable holding the dictionary of connection
                        classes used to instantiate connections
+    @type connFactory: dict
+    @ivar tunnelFactory: class variable holding the dictionary of connection
+                         classes used to instantiate tunneled connections
     @type connFactory: dict
 
     @ivar url: url used to set the net location to which connections will
@@ -91,16 +79,15 @@ class HttxConnection(HttxBase):
                    authentication or rediretion if needed
     @type auxhttx: L{HttxConnection}
     @ivar conn: actual connection object
-    @type conn: httplib.HTTPConnection or L{HttxsConnection} - subclass of
+    @type conn: httplib.HTTPConnection or L{HTTPSxConnection} - subclass of
                 httplib.HTTPSConnection
     @ivar timestamp: last time the connection was used
     @type int
     '''
-    connFactory = dict(http=HTTPConnection)
-    if _httpsconnection:
-        connFactory['https'] = _httpsconnection
+    connFactory = dict(http=HTTPConnection, https=HTTPSxConnection)
+    tunnelFactory = dict(http=HTTPxTunneled, https=HTTPSxTunneled)
 
-    def __init__(self, url = None, **kwargs):
+    def __init__(self, url=None, **kwargs):
         '''
         Constructor. It delegates construction to the base class
         L{HttxBase} and initializes the member variables with the help
@@ -114,6 +101,12 @@ class HttxConnection(HttxBase):
         self.redircount = kwargs.get('redircount', 0)
         self.lastreq = None
         self.auxhttx = None
+        self.tunnelreq = None
+
+        if url:
+            self.url = url
+            self.parsed = urlsplit(self.url)
+
         self.createconnection(url)
 
 
@@ -160,8 +153,7 @@ class HttxConnection(HttxBase):
         Property to support easy and quick access to the underlying sock object
         from the underlying connection.
 
-        The sock object is used in the library to index active connections inc
-        cache
+        The sock object is used in the library to index active connections in cache
         '''
 
         # @return: The opaque type to reference this connection
@@ -169,11 +161,39 @@ class HttxConnection(HttxBase):
         return self.conn.sock
 
 
-    def createconnection(self, url):
+    def reset(self):
+        '''
+        Reset the conn instance variable to None (possibly after an exception happened)
+        to allow the connection to re-issue a createconnection on "request"
+        '''
+        if self.conn is not None:
+            self.conn.close()
+            self.conn = None
+
+
+    def sslize(self, url):
+        '''
+        Add the appropriate "certificates" and/or paths and options to an underlying
+        https connection to allow it to successfully (and according to user request)
+        execute
+
+        @param url: url that contains the domain to use to pull certificate from the store
+        @type url: str
+        '''
+        key_file, cert_file = self.options.certkeyfile.find_certkey(url) 
+        self.conn.key_file = key_file
+        self.conn.cert_file = cert_file
+            
+        self.conn.cert_reqs = self.options.certreq.find_cert_req(url)
+        if self.conn.cert_reqs != CERT_NONE:
+            self.conn.ca_certs = self.options.cacert.find_ca_cert(url)
+
+
+    def createconnection(self, url, sock=None):
         '''
         Helper function to enable delayed creation of the underlying connection
         if needed. Called from the L{__init__} and from L{request} in order
-        to ensure an underlying connection is created
+        to ensure an underlying connection is created or recreated if tunneling
 
         It initializes the member variables: I{url}, I{parsed}, L{conn}, I{clock}
 
@@ -191,16 +211,13 @@ class HttxConnection(HttxBase):
         self.url = url
         self.parsed = urlsplit(self.url)
 
-        self.conn = self.connFactory[self.parsed.scheme](self.parsed.hostname, self.parsed.port, timeout=self.options.timeout)
+        if not sock:
+            self.conn = self.connFactory[self.parsed.scheme](self.parsed.hostname, self.parsed.port, timeout=self.options.timeout)
+        else:
+            self.conn = self.tunnelFactory[self.parsed.scheme](sock, self.parsed.hostname, self.parsed.port, timeout=self.options.timeout)
 
         if self.parsed.scheme == 'https':
-            key_file, cert_file = self.options.certkeyfile.find_certkey(self.url) 
-            self.conn.key_file = key_file
-            self.conn.cert_file = cert_file
-            
-            self.conn.cert_reqs = self.options.certreq.find_cert_req(self.url)
-            if self.conn.cert_reqs != CERT_NONE:
-                self.conn.ca_certs = self.options.cacert.find_ca_cert(self.url)
+           self.sslize(self.url)
 
         # Force HTTPConnection to connect to have the sock object available
         try:
@@ -218,6 +235,38 @@ class HttxConnection(HttxBase):
         self.timestamp = tclock()
 
 
+    def tunnelconnect(self, httxreq):
+        '''
+        Tunnel a connection over CONNECT if needed and not already done
+        and re-create the underlying connection to use the "CONNECT"ed
+        tunnel
+        
+        @param httxreq: Request to be executed
+        @type httxreq: L{HttxRequest}
+        '''
+        if self.tunnelreq:
+            # we are in the tunnel creation phase
+            return False
+
+        if self.parsed.netloc != httxreq.netloc and \
+            ((self.options.httpsconnect and httxreq.scheme == 'https') or \
+             (self.options.httpconnect and httxreq.scheme == 'http')):
+
+            self.tunnelreq = httxreq
+            hport = httxreq.parsed.port
+            if hport is None:
+                hport = HTTPSxConnection.default_port if httxreq.scheme == 'https' else HTTPConnection.default_port
+
+            try:
+                self.conn.request('CONNECT', '%s:%s' % (httxreq.parsed.hostname, hport), headers=httxreq.allheaders)
+            except SocketError, e:
+                raise SocketException(*e.args)
+
+            return True
+
+        return False
+        
+
     def request(self, httxreq):
         '''
         Send the L{HttxRequest} httxreq to the specified server inside the request
@@ -230,31 +279,35 @@ class HttxConnection(HttxBase):
         @return: sock
         @rtype: opaque type for the caller (a Python sock)
         '''
+
         # Create the connection if needed
-        if not self.conn:
+        if self.conn is None:
+            # Direct connection ... sure
             self.createconnection(httxreq.get_full_url())
 
-        # Add the appropriate headers for the outgoing request
-        self.addkeepalive(httxreq)
-        self.adddecompress(httxreq)
-        self.addcookies(httxreq)
-        self.addauth(httxreq)
-        self.adduseragent(httxreq)
-        self.addcontent(httxreq)
+        if  not self.tunnelconnect(httxreq):
+            # Regular request
+            # Add the appropriate headers for the outgoing request
+            self.addkeepalive(httxreq)
+            self.adddecompress(httxreq)
+            self.addcookies(httxreq)
+            self.addauth(httxreq)
+            self.adduseragent(httxreq)
+            self.addcontent(httxreq)
 
-        # Decide if which is the url to send to the server
-        if self.parsed.netloc != httxreq.netloc or self.options.sendfullurl:
-            # connection is proxying or the user wants to send the full url
-            url = httxreq.get_full_url()
-        else:
-            # use the short version of the url (less problematic if not proxying)
-            url = httxreq.get_selector()
+            # Decide which is the url to send to the server
+            if self.parsed.netloc != httxreq.netloc or self.options.sendfullurl:
+                # connection is proxying or the user wants to send the full url
+                url = httxreq.get_full_url()
+            else:
+                # use the short version of the url (less problematic if not proxying)
+                url = httxreq.get_selector()
 
-        # Execute the request
-        try:
-            self.conn.request(httxreq.get_method(), url, httxreq.body, httxreq.allheaders)
-        except SocketError, e:
-            raise SocketException(*e.args)
+            # Execute the request
+            try:
+                self.conn.request(httxreq.get_method(), url, httxreq.body, httxreq.allheaders)
+            except SocketError, e:
+                raise SocketException(*e.args)
 
         # If no exception, we may save the request to be used by getresponse
         self.lastreq = httxreq
@@ -323,6 +376,7 @@ class HttxConnection(HttxBase):
                 self.auxhttx = None
                 return response
 
+            self.tunnelreq = None # clear tunnelreq flag
             return self.authenticate(response)
 
         # clean any possible remaining auxhttx flag
@@ -332,6 +386,10 @@ class HttxConnection(HttxBase):
         if response.isredir():
             return self.redirect(response)
 
+        # Check for Tunneling
+        self.tunneling(response)
+
+        # return the response
         return response
 
 
@@ -435,6 +493,36 @@ class HttxConnection(HttxBase):
         httxdecompress(response)
 
 
+    def tunneling(self, response):
+        '''
+        Checks if a tunnel (CONNECT) request was in place and if it has been
+        correctly established.
+
+        If so, it will reissue the original request, cleaning proxy authorization
+        headers if they existed
+
+        @param response: A response being processed
+        @type response: L{HttxResponse}
+        '''
+        if self.tunnelreq:
+            tunnelreq = self.tunnelreq
+            self.tunnelreq = None
+            
+            # Remove proxy authorization if sent -- it does not apply to
+            # destination host over the connect - the first letter has been capitalized
+            # by some Python library
+            if 'Proxy-authorization' in tunnelreq.unredirected_hdrs:
+                del tunnelreq.unredirected_hdrs['Proxy-authorization']
+
+            if response.status == 200:
+                # Tunnel established - change our connection and data - over existing sock
+                self.createconnection(tunnelreq.get_full_url(), sock=self.conn.sock)
+
+                # Mark the response as active - completing tunnelreq
+                response.tunnelreq = tunnelreq
+                response.sock = self.request(tunnelreq)
+
+
     def redirect(self, response):
         '''
         Perform redirection if the response requests it and enabled by the
@@ -522,28 +610,56 @@ class HttxConnection(HttxBase):
             return response
 
         authheader = response.getheader(authheaderserver[response.status])
-        authscheme, authchallenge = authheader.split(' ', 1)
-        authscheme = authscheme.lower()
-        authchallenge = parse_keqv_list(parse_http_list(authchallenge))
 
-        realm = authchallenge['realm']
-        username, password = self.options.passmanager.find_user_password(realm, self.lastreq.get_full_url())
+        # Parse a potentially multi-challenge header
+        authschemes = dict()
+        lastscheme = None
+        # parse a list of ',' separated values ... some challenges, some params to challenges
+        # some a challenge plus a param
+        for elem in parse_http_list(authheader):
+            authparts = elem.split(' ', 1)
+            if lastscheme and '=' in authparts[0]:
+                # parameter, it must belong to previous scheme
+                authschemes[lastscheme].append(authparts[0])
+                continue
 
-        # None is "not empty strings"
-        if username is None or password is None:
-            return response
+            # else new scheme
+            lastscheme = authparts[0].lower()
+            authschemes[lastscheme] = list()
+
+            # we may still have the 1st parameter (because the 1st is "sp" separated and not "," separated)
+            if len(authparts) > 1:
+                authschemes[lastscheme].append(authparts[1])
+
+        for scheme, keqv_list in authschemes.iteritems():
+            authschemes[scheme] = parse_keqv_list(keqv_list)
 
         authanswer = None
         authcachedata = None
 
-        if authscheme == 'basic':
-            authanswer, authcachedata = authbasic(username, password, authchallenge)
+        if 'digest' in authschemes:
+            authscheme = 'digest'
+            authchallenge = authschemes['digest']
+            realm = authchallenge.get('realm', None)
+            authurl = self.lastreq.get_full_url() if response.status == 401 else self.url
+            username, password = self.options.passmanager.find_user_password(realm, authurl)
 
-        elif authscheme == 'digest':
+            if username is not None and password is not None:
+                authanswer, authcachedata = authbasic(username, password, authchallenge)
+
             if 'nonce' in authchallenge:
                 nonce_count = self.options.authcache.getnoncecount(authchallenge['nonce'])
                 authanswer, authcachedata = authdigest(username, password, authchallenge, self.lastreq, nonce_count)
 
+        elif 'basic' in authschemes:
+            authscheme = 'basic'
+            authchallenge = authschemes['basic']
+            realm = authchallenge.get('realm', None)
+            authurl = self.lastreq.get_full_url() if response.status == 401 else self.url
+            username, password = self.options.passmanager.find_user_password(realm, authurl)
+
+            if username is not None and password is not None:
+                authanswer, authcachedata = authbasic(username, password, authchallenge)
         else:
             # XXX Pluggable authhandlers
             # authhandler = self.options.authhandler.get(authscheme)
@@ -553,6 +669,7 @@ class HttxConnection(HttxBase):
         if not authanswer:
             return response
 
+        # Generate the authorization
         authorization = '%s %s' % (authscheme, authanswer)
 
         # Create a clone of the request with the new url
@@ -564,6 +681,6 @@ class HttxConnection(HttxBase):
 
         # store it together with the authorization string - with parsed.url
         parsed = urlsplit(authreq.get_full_url())
-        self.options.authcache.set(parsed.geturl(), authheaderclient[response.status], authscheme, authcachedata)
+        self.options.authcache.set(parsed.geturl(), authheaderclient[response.status], authscheme, authanswer, authcachedata)
 
         return response

@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>httxlib.httxoptions.HttxOption</title>
+  <title>httxlib.httxs.HTTPxTunneled</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -43,8 +43,8 @@
     <td width="100%">
       <span class="breadcrumbs">
         <a href="httxlib-module.html">Package&nbsp;httxlib</a> ::
-        <a href="httxlib.httxoptions-module.html">Module&nbsp;httxoptions</a> ::
-        Class&nbsp;HttxOption
+        <a href="httxlib.httxs-module.html">Module&nbsp;httxs</a> ::
+        Class&nbsp;HTTPxTunneled
       </span>
     </td>
     <td>
@@ -54,26 +54,49 @@
     onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
         <tr><td align="right"><span class="options"
             >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="httxlib.httxoptions.HttxOption-class.html"
+            >]&nbsp;|&nbsp;<a href="httxlib.httxs.HTTPxTunneled-class.html"
             target="_top">no&nbsp;frames</a>]</span></td></tr>
       </table>
     </td>
   </tr>
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
-<h1 class="epydoc">Class HttxOption</h1><p class="nomargin-top"><span class="codelink"><a href="httxlib.httxoptions-pysrc.html#HttxOption">source&nbsp;code</a></span></p>
+<h1 class="epydoc">Class HTTPxTunneled</h1><p class="nomargin-top"><span class="codelink"><a href="httxlib.httxs-pysrc.html#HTTPxTunneled">source&nbsp;code</a></span></p>
 <pre class="base-tree">
-object --+
-         |
-        <strong class="uidshort">HttxOption</strong>
+httplib.HTTPConnection --+
+                         |
+                        <strong class="uidshort">HTTPxTunneled</strong>
 </pre>
 
 <hr />
-<p>A class representing an individual option.</p>
-  <p>The class is implemented as a descriptor. The class locks access 
-  automatically on access (read/write) to the storage by using the lock 
-  from the instance object accessing the option.</p>
+<p>Subclass of HTTPSxConnection that will use an existing connected 
+  sock</p>
 
+<!-- ==================== NESTED CLASSES ==================== -->
+<a name="section-NestedClasses"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Nested Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-NestedClasses"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>httplib.HTTPConnection</code></b>:
+      <code><a href="httplib.HTTPResponse-class.html">response_class</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
 <table class="summary" border="1" cellpadding="3"
@@ -97,31 +120,15 @@ object --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="httxlib.httxoptions.HttxOption-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">name</span>,
-        <span class="summary-sig-arg">defvalue</span>)</span><br />
+          <td><span class="summary-sig"><a href="httxlib.httxs.HTTPxTunneled-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sock</span>,
+        <span class="summary-sig-arg">host</span>,
+        <span class="summary-sig-arg">port</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">strict</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">timeout</span>=<span class="summary-sig-default">socket._GLOBAL_DEFAULT_TIMEOUT</span>)</span><br />
       Constructor.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="httxlib.httxoptions-pysrc.html#HttxOption.__init__">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">Opaque type. Each option may have different types</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="httxlib.httxoptions.HttxOption-class.html#__get__" class="summary-sig-name">__get__</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">instance</span>,
-        <span class="summary-sig-arg">owner</span>)</span><br />
-      Descriptor get</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="httxlib.httxoptions-pysrc.html#HttxOption.__get__">source&nbsp;code</a></span>
+            <span class="codelink"><a href="httxlib.httxs-pysrc.html#HTTPxTunneled.__init__">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -135,12 +142,10 @@ object --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="httxlib.httxoptions.HttxOption-class.html#__set__" class="summary-sig-name">__set__</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">instance</span>,
-        <span class="summary-sig-arg">value</span>)</span><br />
-      Descriptor set</td>
+          <td><span class="summary-sig"><a href="httxlib.httxs.HTTPxTunneled-class.html#connect" class="summary-sig-name">connect</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Overrriding is needed to avoid establishing a new connection</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="httxlib.httxoptions-pysrc.html#HttxOption.__set__">source&nbsp;code</a></span>
+            <span class="codelink"><a href="httxlib.httxs-pysrc.html#HTTPxTunneled.connect">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -150,77 +155,39 @@ object --+
   </tr>
   <tr>
     <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
-      <code>__delattr__</code>,
-      <code>__format__</code>,
-      <code>__getattribute__</code>,
-      <code>__hash__</code>,
-      <code>__new__</code>,
-      <code>__reduce__</code>,
-      <code>__reduce_ex__</code>,
-      <code>__repr__</code>,
-      <code>__setattr__</code>,
-      <code>__sizeof__</code>,
-      <code>__str__</code>,
-      <code>__subclasshook__</code>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>httplib.HTTPConnection</code></b>:
+      <code>close</code>,
+      <code>endheaders</code>,
+      <code>getresponse</code>,
+      <code>putheader</code>,
+      <code>putrequest</code>,
+      <code>request</code>,
+      <code>send</code>,
+      <code>set_debuglevel</code>,
+      <code>set_tunnel</code>
       </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>httplib.HTTPConnection</code></b> (private):
+      <code>_output</code>,
+      <code>_send_output</code>,
+      <code>_send_request</code>,
+      <code>_set_content_length</code>,
+      <code>_set_hostport</code>,
+      <code>_tunnel</code>
+      </p></div>
     </td>
   </tr>
 </table>
-<!-- ==================== INSTANCE VARIABLES ==================== -->
-<a name="section-InstanceVariables"></a>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
 <table class="summary" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="table-header">
   <td colspan="2" class="table-header">
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
       <tr valign="top">
-        <td align="left"><span class="table-header">Instance Variables</span></td>
+        <td align="left"><span class="table-header">Class Variables</span></td>
         <td align="right" valign="top"
-         ><span class="options">[<a href="#section-InstanceVariables"
-         class="privatelink" onclick="toggle_private();"
-         >hide private</a>]</span></td>
-      </tr>
-    </table>
-  </td>
-</tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">Opaque type. Each option may have different types</span>
-    </td><td class="summary">
-        <a name="defvalue"></a><span class="summary-name">defvalue</span><br />
-      Default value of the option
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">str</span>
-    </td><td class="summary">
-        <a name="name"></a><span class="summary-name">name</span><br />
-      Name of the option
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">dict</span>
-    </td><td class="summary">
-        <a name="storage"></a><span class="summary-name">storage</span><br />
-      Actual storage for the option value(s) on a per instance (descriptor)
-      basis
-    </td>
-  </tr>
-</table>
-<!-- ==================== PROPERTIES ==================== -->
-<a name="section-Properties"></a>
-<table class="summary" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="table-header">
-  <td colspan="2" class="table-header">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-      <tr valign="top">
-        <td align="left"><span class="table-header">Properties</span></td>
-        <td align="right" valign="top"
-         ><span class="options">[<a href="#section-Properties"
+         ><span class="options">[<a href="#section-ClassVariables"
          class="privatelink" onclick="toggle_private();"
          >hide private</a>]</span></td>
       </tr>
@@ -229,9 +196,16 @@ object --+
 </tr>
   <tr>
     <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
-      <code>__class__</code>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>httplib.HTTPConnection</code></b>:
+      <code>auto_open</code>,
+      <code>debuglevel</code>,
+      <code>default_port</code>,
+      <code>strict</code>
       </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>httplib.HTTPConnection</code></b> (private):
+      <code>_http_vsn</code>,
+      <code>_http_vsn_str</code>
+      </p></div>
     </td>
   </tr>
 </table>
@@ -261,80 +235,55 @@ object --+
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">name</span>,
-        <span class="sig-arg">defvalue</span>)</span>
+        <span class="sig-arg">sock</span>,
+        <span class="sig-arg">host</span>,
+        <span class="sig-arg">port</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">strict</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">timeout</span>=<span class="sig-default">socket._GLOBAL_DEFAULT_TIMEOUT</span>)</span>
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="httxlib.httxoptions-pysrc.html#HttxOption.__init__">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="httxlib.httxs-pysrc.html#HTTPxTunneled.__init__">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Constructor. Initializes the member variables</p>
+  <p>Constructor. It delegates construction to the base class 
+  HTTPConnection and initializes the new member variables with the default 
+  values from the Python documentation</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>name</code></strong> (str) - Name of the option</li>
-        <li><strong class="pname"><code>defvalue</code></strong> (Opaque type. Each option may have different types) - Default value of the option</li>
+        <li><strong class="pname"><code>sock</code></strong> (socket) - connected sock to use</li>
+        <li><strong class="pname"><code>host</code></strong> (str) - host to connect to</li>
+        <li><strong class="pname"><code>port</code></strong> (int|None) - port to connect to. use None for the default HTTP port</li>
+        <li><strong class="pname"><code>strict</code></strong> (Unknown) - n/a</li>
+        <li><strong class="pname"><code>timeout</code></strong> (float) - default time for network operations</li>
     </ul></dd>
     <dt>Overrides:
-        object.__init__
+        httplib.HTTPConnection.__init__
     </dt>
   </dl>
 </td></tr></table>
 </div>
-<a name="__get__"></a>
+<a name="connect"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">__get__</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">instance</span>,
-        <span class="sig-arg">owner</span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">connect</span>(<span class="sig-arg">self</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="httxlib.httxoptions-pysrc.html#HttxOption.__get__">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="httxlib.httxs-pysrc.html#HTTPxTunneled.connect">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Descriptor get</p>
+  <p>Overrriding is needed to avoid establishing a new connection</p>
   <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>instance</code></strong> (object instance) - instance that wants to access the storage</li>
-        <li><strong class="pname"><code>owner</code></strong> (Not used) - Not used but needed for descriptor implementation</li>
-    </ul></dd>
-    <dt>Returns: Opaque type. Each option may have different types</dt>
-        <dd>the value of the requested option (the default value if the 
-          option had not been set yet</dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="__set__"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">__set__</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">instance</span>,
-        <span class="sig-arg">value</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="httxlib.httxoptions-pysrc.html#HttxOption.__set__">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Descriptor set</p>
-  <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>instance</code></strong> (object instance) - instance that wants to access the storage</li>
-        <li><strong class="pname"><code>value</code></strong> (Opaque type. Each option may have different types) - Value to set</li>
-    </ul></dd>
+    <dt>Overrides:
+        httplib.HTTPConnection.connect
+    </dt>
   </dl>
 </td></tr></table>
 </div>

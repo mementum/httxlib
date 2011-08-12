@@ -7,8 +7,8 @@
 # HttxLib is an HTTP(s) Python library suited multithreaded/multidomain
 # applications
 #
-# Copyright (C) 2010-2011  Daniel Rodriguez (aka Daniel Rodriksson)
-# Copyright (C) 2011  Sensible Odds Ltd
+# Copyright (C) 2010-2011 Daniel Rodriguez (aka Daniel Rodriksson)
+# Copyright (C) 2011 Sensible Odds Ltd
 #
 # You can learn more and contact the author at:
 #
@@ -69,14 +69,14 @@ HTTPResponse.__init__ = httxinit
 def httxredirecting_or_authenticating(self):
     '''
     Utility function to check if a response is underdoing a redirection
-    or authentication and network activity is pending
-    redirection
+    or authentication and network activity is pending redirection or a
+    CONNECT tunnel has been initiated
     
     @return: if the response is underdoing a redirection or authentication
              and network activity is pending
     @rtype: bool
     '''
-    return self.redirecting() or self.authenticating()
+    return self.redirecting() or self.authenticating() or hasattr(self, 'tunnelreq')
 
 def httxisredir(self):
     '''
@@ -207,10 +207,20 @@ def httxbegin(self):
     # Call the original begin method
     self._httxbegin()
 
+    # Response will close the connection with a this flawed logic if not chunked and no length
+    # This kills "CONNECT" connections and it is not logic to kill a connection simply because
+    # it has no content (202 doesn't usually carry content and 204 is NO_CONTENT)
+    # if not self.will_close and not self.chunked and self.length is None:
+    #     self.will_close = 1
+
+    # Redo the check with the appropriate logic
+    self.will_close = self._check_close()
+
     # Fill the body with all the content in which will set this
     # response as "closed" (just the response, no the connection)
     # Call the original read method
-    self.setbody(self._httxread())
+    if not self.will_close and (self.chunked or self.length):
+        self.setbody(self._httxread())
 
 
 HTTPResponse._httxbegin = HTTPResponse.begin

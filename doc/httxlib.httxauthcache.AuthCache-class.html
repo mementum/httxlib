@@ -96,7 +96,8 @@ object --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="httxlib.httxauthcache.AuthCache-class.html#__getnewargs__" class="summary-sig-name">__getnewargs__</a>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td><span class="summary-sig"><a href="httxlib.httxauthcache.AuthCache-class.html#__getnewargs__" class="summary-sig-name">__getnewargs__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Return self as a plain tuple.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="httxlib.httxauthcache-pysrc.html#AuthCache.__getnewargs__">source&nbsp;code</a></span>
             
@@ -113,7 +114,7 @@ object --+
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="httxlib.httxauthcache.AuthCache-class.html#__repr__" class="summary-sig-name">__repr__</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      repr(x)</td>
+      Return a nicely formatted representation string</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="httxlib.httxauthcache-pysrc.html#AuthCache.__repr__">source&nbsp;code</a></span>
             
@@ -129,8 +130,8 @@ object --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="_asdict"></a><span class="summary-sig-name">_asdict</span>(<span class="summary-sig-arg">t</span>)</span><br />
-      Return a new dict which maps field names to their values</td>
+          <td><span class="summary-sig"><a name="_asdict"></a><span class="summary-sig-name">_asdict</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Return a new OrderedDict which maps field names to their values</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="httxlib.httxauthcache-pysrc.html#AuthCache._asdict">source&nbsp;code</a></span>
             
@@ -220,7 +221,7 @@ object --+
         <tr>
           <td><span class="summary-sig"><a name="_make"></a><span class="summary-sig-name">_make</span>(<span class="summary-sig-arg">cls</span>,
         <span class="summary-sig-arg">iterable</span>,
-        <span class="summary-sig-arg">new</span>=<span class="summary-sig-default">&lt;built-in method __new__ of type object at 0x1E1CF998&gt;</span>,
+        <span class="summary-sig-arg">new</span>=<span class="summary-sig-default">&lt;built-in method __new__ of type object at 0x1E1D57F8&gt;</span>,
         <span class="summary-sig-arg">len</span>=<span class="summary-sig-default">&lt;built-in function len&gt;</span>)</span><br />
       Make a new AuthCache object from a sequence or iterable</td>
           <td align="right" valign="top">
@@ -260,7 +261,9 @@ object --+
         <span class="summary-sig-arg">headername</span>,
         <span class="summary-sig-arg">scheme</span>,
         <span class="summary-sig-arg">answer</span>,
-        <span class="summary-sig-arg">cachedata</span>)</span></td>
+        <span class="summary-sig-arg">cachedata</span>)</span><br />
+      Create new instance of AuthCache(headername, scheme, answer, 
+      cachedata)</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="httxlib.httxauthcache-pysrc.html#AuthCache.__new__">source&nbsp;code</a></span>
             
@@ -318,7 +321,7 @@ object --+
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="httxlib.httxauthcache.AuthCache-class.html#answer" class="summary-name">answer</a><br />
-      itemgetter(item, ...) --&gt; itemgetter object
+      Alias for field number 2
     </td>
   </tr>
 <tr>
@@ -326,7 +329,7 @@ object --+
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="httxlib.httxauthcache.AuthCache-class.html#cachedata" class="summary-name">cachedata</a><br />
-      itemgetter(item, ...) --&gt; itemgetter object
+      Alias for field number 3
     </td>
   </tr>
 <tr>
@@ -334,7 +337,7 @@ object --+
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="httxlib.httxauthcache.AuthCache-class.html#headername" class="summary-name">headername</a><br />
-      itemgetter(item, ...) --&gt; itemgetter object
+      Alias for field number 0
     </td>
   </tr>
 <tr>
@@ -342,7 +345,7 @@ object --+
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="httxlib.httxauthcache.AuthCache-class.html#scheme" class="summary-name">scheme</a><br />
-      itemgetter(item, ...) --&gt; itemgetter object
+      Alias for field number 1
     </td>
   </tr>
   <tr>
@@ -385,7 +388,7 @@ object --+
     </td>
   </tr></table>
   
-  
+  <p>Return self as a plain tuple.  Used by copy and pickle.</p>
   <dl class="fields">
     <dt>Overrides:
         tuple.__getnewargs__
@@ -412,12 +415,12 @@ object --+
     </td>
   </tr></table>
   
-  
+  <p>Create new instance of AuthCache(headername, scheme, answer, 
+  cachedata)</p>
   <dl class="fields">
     <dt>Returns: a new object with type S, a subtype of T</dt>
     <dt>Overrides:
         object.__new__
-        <dd><em class="note">(inherited documentation)</em></dd>
     </dt>
   </dl>
 </td></tr></table>
@@ -437,11 +440,10 @@ object --+
     </td>
   </tr></table>
   
-  <p>repr(x)</p>
+  <p>Return a nicely formatted representation string</p>
   <dl class="fields">
     <dt>Overrides:
         object.__repr__
-        <dd><em class="note">(inherited documentation)</em></dd>
     </dt>
   </dl>
 </td></tr></table>
@@ -471,14 +473,11 @@ object --+
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">answer</h3>
-  <p>itemgetter(item, ...) --&gt; itemgetter object</p>
-  <p>Return a callable object that fetches the given item(s) from its 
-  operand. After, f=itemgetter(2), the call f(r) returns r[2]. After, 
-  g=itemgetter(2,5,3), the call g(r) returns (r[2], r[5], r[3])</p>
+  <p>Alias for field number 2</p>
   <dl class="fields">
     <dt>Get Method:</dt>
     <dd class="value"><table><tr><td><pre class="variable">
-&lt;operator.itemgetter object at 0x00DB12F0&gt;
+&lt;operator.itemgetter object at 0x01B14E90&gt;
 </pre></td></tr></table>
 
     </dd>
@@ -491,14 +490,11 @@ object --+
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">cachedata</h3>
-  <p>itemgetter(item, ...) --&gt; itemgetter object</p>
-  <p>Return a callable object that fetches the given item(s) from its 
-  operand. After, f=itemgetter(2), the call f(r) returns r[2]. After, 
-  g=itemgetter(2,5,3), the call g(r) returns (r[2], r[5], r[3])</p>
+  <p>Alias for field number 3</p>
   <dl class="fields">
     <dt>Get Method:</dt>
     <dd class="value"><table><tr><td><pre class="variable">
-&lt;operator.itemgetter object at 0x00DB1310&gt;
+&lt;operator.itemgetter object at 0x01B14EB0&gt;
 </pre></td></tr></table>
 
     </dd>
@@ -511,14 +507,11 @@ object --+
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">headername</h3>
-  <p>itemgetter(item, ...) --&gt; itemgetter object</p>
-  <p>Return a callable object that fetches the given item(s) from its 
-  operand. After, f=itemgetter(2), the call f(r) returns r[2]. After, 
-  g=itemgetter(2,5,3), the call g(r) returns (r[2], r[5], r[3])</p>
+  <p>Alias for field number 0</p>
   <dl class="fields">
     <dt>Get Method:</dt>
     <dd class="value"><table><tr><td><pre class="variable">
-&lt;operator.itemgetter object at 0x00DB12B0&gt;
+&lt;operator.itemgetter object at 0x01B14E50&gt;
 </pre></td></tr></table>
 
     </dd>
@@ -531,14 +524,11 @@ object --+
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">scheme</h3>
-  <p>itemgetter(item, ...) --&gt; itemgetter object</p>
-  <p>Return a callable object that fetches the given item(s) from its 
-  operand. After, f=itemgetter(2), the call f(r) returns r[2]. After, 
-  g=itemgetter(2,5,3), the call g(r) returns (r[2], r[5], r[3])</p>
+  <p>Alias for field number 1</p>
   <dl class="fields">
     <dt>Get Method:</dt>
     <dd class="value"><table><tr><td><pre class="variable">
-&lt;operator.itemgetter object at 0x00DB12D0&gt;
+&lt;operator.itemgetter object at 0x01B14E70&gt;
 </pre></td></tr></table>
 
     </dd>
@@ -577,7 +567,7 @@ object --+
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri May 27 01:34:03 2011
+    Generated by Epydoc 3.0.1 on Fri Aug 12 12:03:59 2011
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

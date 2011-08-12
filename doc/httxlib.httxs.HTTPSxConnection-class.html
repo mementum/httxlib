@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>httxlib.httxs.HttxsConnection</title>
+  <title>httxlib.httxs.HTTPSxConnection</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -44,7 +44,7 @@
       <span class="breadcrumbs">
         <a href="httxlib-module.html">Package&nbsp;httxlib</a> ::
         <a href="httxlib.httxs-module.html">Module&nbsp;httxs</a> ::
-        Class&nbsp;HttxsConnection
+        Class&nbsp;HTTPSxConnection
       </span>
     </td>
     <td>
@@ -54,28 +54,34 @@
     onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
         <tr><td align="right"><span class="options"
             >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="httxlib.httxs.HttxsConnection-class.html"
+            >]&nbsp;|&nbsp;<a href="httxlib.httxs.HTTPSxConnection-class.html"
             target="_top">no&nbsp;frames</a>]</span></td></tr>
       </table>
     </td>
   </tr>
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
-<h1 class="epydoc">Class HttxsConnection</h1><p class="nomargin-top"><span class="codelink"><a href="httxlib.httxs-pysrc.html#HttxsConnection">source&nbsp;code</a></span></p>
+<h1 class="epydoc">Class HTTPSxConnection</h1><p class="nomargin-top"><span class="codelink"><a href="httxlib.httxs-pysrc.html#HTTPSxConnection">source&nbsp;code</a></span></p>
 <pre class="base-tree">
 httplib.HTTPConnection --+    
                          |    
    httplib.HTTPSConnection --+
                              |
-                            <strong class="uidshort">HttxsConnection</strong>
+                            <strong class="uidshort">HTTPSxConnection</strong>
 </pre>
 
+<dl><dt>Known Subclasses:</dt>
+<dd>
+      <ul class="subclass-list">
+<li><a href="httxlib.httxs.HTTPSxTunneled-class.html">HTTPSxTunneled</a></li>  </ul>
+</dd></dl>
+
 <hr />
-<p>Reimplementation of HTTPSConnection to allow certificate 
-  validation</p>
-  <p>HTTPSConnection omitted this possibilitiy which is supported by the 
+<p>Reimplementation of HTTPSConnection but sublcassing from 
+  HTTPSConnection to allow certificate validation if wished</p>
+  <p>HTTPxConnection omitted this possibilitiy which is supported by the 
   Python ssl library and the wrap_socket functionality</p>
-  <p>HTTPSConnection is subclassed, receives two new member variables and 
+  <p>HTTPxConnection is subclassed, receives two new member variables and 
   overrides connect to better call ssl.wrap_socket</p>
   <p>Please read the Python 2.6 documentation on SSL and certificate 
   validation</p>
@@ -128,7 +134,7 @@ httplib.HTTPConnection --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="httxlib.httxs.HttxsConnection-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+          <td><span class="summary-sig"><a href="httxlib.httxs.HTTPSxConnection-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">host</span>,
         <span class="summary-sig-arg">port</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">key_file</span>=<span class="summary-sig-default">None</span>,
@@ -137,7 +143,7 @@ httplib.HTTPConnection --+
         <span class="summary-sig-arg">timeout</span>=<span class="summary-sig-default">socket._GLOBAL_DEFAULT_TIMEOUT</span>)</span><br />
       Constructor.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="httxlib.httxs-pysrc.html#HttxsConnection.__init__">source&nbsp;code</a></span>
+            <span class="codelink"><a href="httxlib.httxs-pysrc.html#HTTPSxConnection.__init__">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -151,11 +157,10 @@ httplib.HTTPConnection --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="httxlib.httxs.HttxsConnection-class.html#connect" class="summary-sig-name">connect</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      Establishes the connection (ssl) to a host on a port and with the 
-      parameters given in the constructor</td>
+          <td><span class="summary-sig"><a href="httxlib.httxs.HTTPSxConnection-class.html#connect" class="summary-sig-name">connect</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Opens the connection and wraps it in a ssl socket</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="httxlib.httxs-pysrc.html#HttxsConnection.connect">source&nbsp;code</a></span>
+            <span class="codelink"><a href="httxlib.httxs-pysrc.html#HTTPSxConnection.connect">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -173,14 +178,15 @@ httplib.HTTPConnection --+
       <code>putrequest</code>,
       <code>request</code>,
       <code>send</code>,
-      <code>set_debuglevel</code>
+      <code>set_debuglevel</code>,
+      <code>set_tunnel</code>
       </p>
     <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>httplib.HTTPConnection</code></b> (private):
       <code>_output</code>,
       <code>_send_output</code>,
       <code>_send_request</code>,
+      <code>_set_content_length</code>,
       <code>_set_hostport</code>,
-      <code>_set_tunnel</code>,
       <code>_tunnel</code>
       </p></div>
     </td>
@@ -249,7 +255,7 @@ httplib.HTTPConnection --+
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">enumeration</span>
     </td><td class="summary">
-        <a href="httxlib.httxs.HttxsConnection-class.html#cert_reqs" class="summary-name">cert_reqs</a><br />
+        <a href="httxlib.httxs.HTTPSxConnection-class.html#cert_reqs" class="summary-name">cert_reqs</a><br />
       It dictates if certificate validation will be done.
     </td>
   </tr>
@@ -289,7 +295,7 @@ httplib.HTTPConnection --+
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="httxlib.httxs-pysrc.html#HttxsConnection.__init__">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="httxlib.httxs-pysrc.html#HTTPSxConnection.__init__">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
@@ -322,15 +328,12 @@ httplib.HTTPConnection --+
   <h3 class="epydoc"><span class="sig"><span class="sig-name">connect</span>(<span class="sig-arg">self</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="httxlib.httxs-pysrc.html#HttxsConnection.connect">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="httxlib.httxs-pysrc.html#HTTPSxConnection.connect">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>Establishes the connection (ssl) to a host on a port and with the 
-  parameters given in the constructor</p>
-  <p>Overrides the default HTTPSConnection.connect and uses the cert_reqs 
-  and ca_certs member variables to enable certificate validation if set to 
-  do so</p>
+  <p>Opens the connection and wraps it in a ssl socket</p>
+  <p>Overrriding is needed to enable certificate validation</p>
   <dl class="fields">
     <dt>Overrides:
         httplib.HTTPConnection.connect
@@ -403,7 +406,7 @@ httplib.HTTPConnection --+
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri May 27 01:34:03 2011
+    Generated by Epydoc 3.0.1 on Fri Aug 12 12:03:59 2011
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

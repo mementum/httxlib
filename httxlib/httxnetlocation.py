@@ -7,8 +7,8 @@
 # HttxLib is an HTTP(s) Python library suited multithreaded/multidomain
 # applications
 #
-# Copyright (C) 2010-2011  Daniel Rodriguez (aka Daniel Rodriksson)
-# Copyright (C) 2011  Sensible Odds Ltd
+# Copyright (C) 2010-2011 Daniel Rodriguez (aka Daniel Rodriksson)
+# Copyright (C) 2011 Sensible Odds Ltd
 #
 # You can learn more and contact the author at:
 #
@@ -33,14 +33,10 @@ Net Location connecting object L{HttxNetLocation} implementation
 '''
 
 from collections import deque
-import sys
-if sys.platform == 'win32':
-    from time import clock as tclock
-else:
-    from time import time as tclock
 
 from httxbase import HttxBase
 from httxconnection import HttxConnection
+from httxutil import tclock
 
 
 class HttxNetLocation(HttxBase):
@@ -161,7 +157,18 @@ class HttxNetLocation(HttxBase):
             # we are cloning an object and some threads find themselves issuing requests
             self.inopcache.add(httxconn)
 
-        sock = httxconn.request(httxreq)
+        try:
+            sock = httxconn.request(httxreq)
+        except:
+            # let it be reused
+            httxconn.reset()
+            with self.lock:
+                # no longer in operation
+                self.inopcache.discard(httxconn)
+                # back to conn queue
+                self.httxconnque.appendleft(httxconn)
+            # let the exception propagate
+            raise
 
         # Remove the cache from the in-operation cache and place it in the
         # cache for connections with pending network activity
@@ -188,7 +195,16 @@ class HttxNetLocation(HttxBase):
             # we are cloning an object and some threads find themselves issuing requests
             self.inopcache.add(httxconn)
 
-        response = httxconn.getresponse(sock)
+        try:
+            response = httxconn.getresponse(sock)
+        except:
+            httxconn.reset()
+            with self.lock:
+                self.inopcache.discard(httxconn)
+                self.httxconnque.appendleft(httxconn)
+
+            # Let the exception propagate
+            raise
 
         # Put it back into the connection queue unless not ready
         with self.lock:

@@ -7,8 +7,8 @@
 # HttxLib is an HTTP(s) Python library suited multithreaded/multidomain
 # applications
 #
-# Copyright (C) 2010-2011  Daniel Rodriguez (aka Daniel Rodriksson)
-# Copyright (C) 2011  Sensible Odds Ltd
+# Copyright (C) 2010-2011 Daniel Rodriguez (aka Daniel Rodriksson)
+# Copyright (C) 2011 Sensible Odds Ltd
 #
 # You can learn more and contact the author at:
 #
@@ -29,25 +29,87 @@
 #
 ################################################################################
 '''
-Reimplementation of HTTPSConnection to allow for certificate validation
+Reimplementation of HTTP/HTTPSConnection to improve usability and enable
+certificate validation
 '''
 
+from httplib import HTTPConnection
 import socket
 
+class HTTPxTunneled(HTTPConnection):
+    '''
+    Subclass of HTTPSxConnection that will use an existing connected sock
+    '''
+
+    def __init__(self, sock, host, port=None, strict=None, timeout=socket._GLOBAL_DEFAULT_TIMEOUT):
+        '''
+        Constructor. It delegates construction to the base class
+        HTTPConnection and initializes the new member variables
+        with the default values from the Python documentation
+
+        @param sock: connected sock to use
+        @type sock: socket
+        @param host: host to connect to
+        @type host: str
+        @param port: port to connect to. use None for the default HTTP port
+        @type port: int|None
+        @param strict: n/a
+        @type strict: Unknown
+        @param timeout: default time for network operations
+        @type timeout: float
+        '''
+        HTTPConnection.__init__(self, host, port, strict, timeout)
+        self.sock = sock
+
+
+    def connect(self):
+        '''
+        Overrriding is needed to avoid establishing a new connection
+        '''
+        pass
+
+
+
 try:
-    from httplib import HTTPSConnection
     import ssl
 except ImportError:
-    pass
-else:
-    class HttxsConnection(HTTPSConnection):
+    class HTTPSxConnection(object):
         '''
-        Reimplementation of HTTPSConnection to allow certificate validation
+        Stub class to raise an exception on instantiation and let the user know that SSL
+        failed
+        '''
+        def __init__(self, **kwargs):
+            '''
+            Constructor. It simply raises an exception
+            @raise NotImplemented
+            '''
+            raise NotImplemented('SSL support is missing. Https connections cannot be opened')
 
-        HTTPSConnection omitted this possibilitiy which is supported by the
+
+    class HTTPSxTunneled(object):
+        '''
+        Stub class to raise an exception on instantiation and let the user know that SSL
+        failed
+        '''
+        def __init__(self, **kwargs):
+            '''
+            Constructor. It simply raises an exception
+            @raise NotImplemented
+            '''
+            raise NotImplemented('SSL support is missing. Https connections cannot be opened')
+
+else:
+    from httplib import HTTPSConnection
+
+    class HTTPSxConnection(HTTPSConnection):
+        '''
+        Reimplementation of HTTPSConnection but sublcassing from L{HTTPSConnection} to allow
+        certificate validation if wished
+
+        HTTPxConnection omitted this possibilitiy which is supported by the
         Python ssl library and the wrap_socket functionality
 
-        HTTPSConnection is subclassed, receives two new member variables
+        HTTPxConnection is subclassed, receives two new member variables
         and overrides connect to better call ssl.wrap_socket
 
         Please read the Python 2.6 documentation on SSL and certificate validation
@@ -85,20 +147,64 @@ else:
             self.cert_reqs = ssl.CERT_NONE
             self.ca_certs = None
 
+
         def connect(self):
             '''
-            Establishes the connection (ssl) to a host on a port and with
-            the parameters given in the constructor
+            Opens the connection and wraps it in a ssl socket
 
-            Overrides the default HTTPSConnection.connect and uses the
-            cert_reqs and ca_certs member variables to enable certificate
-            validation if set to do so
+            Overrriding is needed to enable certificate validation
             '''
-            sock = socket.create_connection((self.host, self.port), self.timeout)
+            sock = socket.create_connection((self.host, self.port),
+                                            self.timeout, self.source_address)
             if self._tunnel_host:
                 self.sock = sock
                 self._tunnel()
-            self.sock = ssl.wrap_socket(sock,
+
+            self.sock = ssl.wrap_socket(self.sock,
                                         self.key_file, self.cert_file,
                                         cert_reqs=self.cert_reqs, ca_certs=self.ca_certs)
 
+
+    class HTTPSxTunneled(HTTPSxConnection):
+        '''
+        Subclass of HTTPSxConnection that will use an existing connected sock
+        '''
+
+        def __init__(self, sock, host, port=None, key_file=None, cert_file=None,
+                     strict=None, timeout=socket._GLOBAL_DEFAULT_TIMEOUT):
+            '''
+            Constructor. It delegates construction to the base class
+            HTTPConnection and initializes the new member variables
+            with the default values from the Python documentation
+
+            HTTPConnection and initializes the new member variables
+            with the default values from the Python documentation
+
+            @param sock: connected sock to use
+            @type sock: socket
+            @param host: host to connect to
+            @type host: str
+            @param port: port to connect to. use None for the default HTTP port
+            @type port: int|None
+            @param key_file: path to private key_file or None if stored in cert_file
+            @type key_file: str|None
+            @param cert_file: path to certificate to be used for validation or None
+            @type cert_file: str|None
+            @param strict: n/a
+            @type strict: Unknown
+            @param timeout: default time for network operations
+            @type timeout: float
+            '''
+            HTTPSxConnection.__init__(self, host, port, key_file, cert_file, strict, timeout)
+            self.sock = sock
+
+
+        def connect(self):
+            '''
+            Opens the connection and wraps it in a ssl socket
+
+            Overrriding is needed to enable certificate validation
+            '''
+            self.sock = ssl.wrap_socket(self.sock,
+                                        self.key_file, self.cert_file,
+                                        cert_reqs=self.cert_reqs, ca_certs=self.ca_certs)

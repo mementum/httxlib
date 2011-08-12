@@ -7,8 +7,8 @@
 # HttxLib is an HTTP(s) Python library suited multithreaded/multidomain
 # applications
 #
-# Copyright (C) 2010-2011  Daniel Rodriguez (aka Daniel Rodriksson)
-# Copyright (C) 2011  Sensible Odds Ltd
+# Copyright (C) 2010-2011 Daniel Rodriguez (aka Daniel Rodriksson)
+# Copyright (C) 2011 Sensible Odds Ltd
 #
 # You can learn more and contact the author at:
 #
@@ -61,7 +61,10 @@ class HttxManager(HttxBase):
         @see: L{HttxOptions}
         '''
         HttxBase.__init__(self, **kwargs)
-        self.setproxy(kwargs.get('proxy', None))
+        if self.options.proxydefaults:
+            self.setproxydefaults()
+        else:
+            self.setproxy(kwargs.get('proxy', None))
 
 
     def __deepcopy__(self, memo):
@@ -109,6 +112,30 @@ class HttxManager(HttxBase):
         return clone
 
 
+    def setproxydefaults(self):
+        '''
+        Set the proxy options from OS defaults or environment variables if present using
+        the functionality preset in urllib
+        '''
+        from urllib import getproxies
+        from urlparse import urlsplit
+        proxies = getproxies()
+
+        # Windows will return the "https" proxy with an "https" scheme when all protocols
+        # should be using the same proxy. But obviously the same netlocation is not
+        # simultaneously listening for clean and encrypted connections
+        http = proxies.get('http', None)
+        if http is not None:
+            https = proxies.get('https', None)
+            if https is not None:
+                httpparsed = urlsplit(http)
+                httpsparsed = urlsplit(https)
+                if httpparsed.netloc == httpparsed.netloc:
+                    proxies['https'] = http
+
+        self.setproxy(proxies)
+
+
     def setproxy(self, proxy=None):
         '''
         Set the proxy options by opening specific netlocations for http and/or https schemes
@@ -128,6 +155,8 @@ class HttxManager(HttxBase):
             if proxy:
                 if '*' in proxy:
                     proxy = {'http': proxy['*'], 'https': proxy['*']}
+                elif 'httpx' in proxy:
+                    proxy = {'http': proxy['httpx'], 'https': proxy['httpx']}
 
                 for scheme, url in proxy.iteritems():
                     self.netlocations[scheme] = HttxNetLocation(url, options=self.options)
@@ -145,11 +174,24 @@ class HttxManager(HttxBase):
         '''
         # Protected to avoid a change of proxy options
         with self.lock:
-            if httxreq.scheme in self.netlocations:
+            if httxreq.scheme == 'http' and 'http' in self.netlocations:
+                # http request and http proxy in place
                 httxnetlocation = self.netlocations[httxreq.scheme]
+            elif httxreq.scheme == 'https' and 'https' in self.netlocations:
+                # https request and http proxy in place
+                httxnetlocation = self.netlocations[httxreq.scheme]
+                if self.options.httpsconnect:
+                    # connect is requested. each "https netloc" must have its own httxnetlocation
+                    # create a new netlocation with the original https proxy url
+                    # or fetch and existing one for the netlocation
+                    httxnetlocation = self.netlocations.setdefault(httxreq.netloc,
+                                                                   HttxNetLocation(httxnetlocation.url,
+                                                                                   options=self.options))
             else:
+                # Regular direct connection
                 httxnetlocation = self.netlocations.setdefault(httxreq.netloc,
-                                                               HttxNetLocation(httxreq.get_full_url(), options=self.options))          
+                                                               HttxNetLocation(httxreq.get_full_url(),
+                                                                               options=self.options))
 
         # netlocation fetched - it can be given to different threads because it is also thread-safe
         return httxnetlocation

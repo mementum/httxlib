@@ -7,8 +7,8 @@
 # HttxLib is an HTTP(s) Python library suited multithreaded/multidomain
 # applications
 #
-# Copyright (C) 2010-2011  Daniel Rodriguez (aka Daniel Rodriksson)
-# Copyright (C) 2011  Sensible Odds Ltd
+# Copyright (C) 2010-2011 Daniel Rodriguez (aka Daniel Rodriksson)
+# Copyright (C) 2011 Sensible Odds Ltd
 #
 # You can learn more and contact the author at:
 #
@@ -26,7 +26,14 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with HttxLib. If not, see <http://www.gnu.org/licenses/>.
-#
+################################################################################
+import sys
+if sys.platform == 'win32':
+    from time import clock as tclock
+else:
+    from time import time as tclock
+
+
 ################################################################################
 #
 # NOTES:
