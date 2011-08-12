@@ -205,9 +205,27 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
+          <td><span class="summary-sig"><a name="doconnect"></a><span class="summary-sig-name">doconnect</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Actual connection (with https certificate preparation)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.doconnect">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
           <td><span class="summary-sig"><a href="httxlib.httxconnection.HttxConnection-class.html#createconnection" class="summary-sig-name">createconnection</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">url</span>,
-        <span class="summary-sig-arg">sock</span>=<span class="summary-sig-default">None</span>)</span><br />
+        <span class="summary-sig-arg">sock</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">plaintunnel</span>=<span class="summary-sig-default">False</span>)</span><br />
       Helper function to enable delayed creation of the underlying 
       connection if needed.</td>
           <td align="right" valign="top">
@@ -226,12 +244,31 @@
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="httxlib.httxconnection.HttxConnection-class.html#tunnelconnect" class="summary-sig-name">tunnelconnect</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">httxreq</span>)</span><br />
+        <span class="summary-sig-arg">httxreq</span>,
+        <span class="summary-sig-arg">plaintunnel</span>=<span class="summary-sig-default">False</span>)</span><br />
       Tunnel a connection over CONNECT if needed and not already done and 
       re-create the underlying connection to use the &quot;CONNECT&quot;ed 
       tunnel</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.tunnelconnect">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="tunnelsslize"></a><span class="summary-sig-name">tunnelsslize</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      If the user has connected a tunnel manually and asked for &quot;plain
+      tunnel&quot; the tunnel may still be wrapped by ssl manually</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.tunnelsslize">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -478,7 +515,8 @@
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="httxlib.httxconnection.HttxConnection-class.html#authenticate" class="summary-sig-name">authenticate</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">response</span>)</span><br />
+        <span class="summary-sig-arg">response</span>,
+        <span class="summary-sig-arg">plaintunnel</span>=<span class="summary-sig-default">False</span>)</span><br />
       Perform authentication if the response requests it and enabled by the
       options set</td>
           <td align="right" valign="top">
@@ -822,7 +860,8 @@
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">createconnection</span>(<span class="sig-arg">self</span>,
         <span class="sig-arg">url</span>,
-        <span class="sig-arg">sock</span>=<span class="sig-default">None</span>)</span>
+        <span class="sig-arg">sock</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">plaintunnel</span>=<span class="sig-default">False</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.createconnection">source&nbsp;code</a></span>&nbsp;
@@ -846,6 +885,9 @@
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
         <li><strong class="pname"><code>url</code></strong> (str) - url to open a connection to</li>
+        <li><strong class="pname"><code>sock</code></strong> (socket (Default: None)) - socket for a tunneled connection</li>
+        <li><strong class="pname"><code>plaintunnel</code></strong> (bool (Default: False)) - if tunnel should not be sslized (connections are fake that do 
+          nothing or ssl_wrap)</li>
     </ul></dd>
   </dl>
 </td></tr></table>
@@ -858,7 +900,8 @@
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">tunnelconnect</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">httxreq</span>)</span>
+        <span class="sig-arg">httxreq</span>,
+        <span class="sig-arg">plaintunnel</span>=<span class="sig-default">False</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.tunnelconnect">source&nbsp;code</a></span>&nbsp;
@@ -872,7 +915,9 @@
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
         <li><strong class="pname"><code>httxreq</code></strong> (<a href="httxlib.httxrequest.HttxRequest-class.html" 
-          class="link">HttxRequest</a>) - Request to be executed</li>
+          class="link">HttxRequest</a> or url (string)) - Request or url to be executed</li>
+        <li><strong class="pname"><code>plaintunnel</code></strong> (bool (Default: False)) - if tunnel should not be sslized (connections are fake that do 
+          nothing or ssl_wrap)</li>
     </ul></dd>
   </dl>
 </td></tr></table>
@@ -901,7 +946,7 @@
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
         <li><strong class="pname"><code>httxreq</code></strong> (<a href="httxlib.httxrequest.HttxRequest-class.html" 
-          class="link">HttxRequest</a>) - Request to be executed</li>
+          class="link">HttxRequest</a> or url (string)) - Request or url to be executed</li>
     </ul></dd>
     <dt>Returns: opaque type for the caller (a Python sock)</dt>
         <dd>sock</dd>
@@ -1230,7 +1275,8 @@
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">authenticate</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">response</span>)</span>
+        <span class="sig-arg">response</span>,
+        <span class="sig-arg">plaintunnel</span>=<span class="sig-default">False</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="httxlib.httxconnection-pysrc.html#HttxConnection.authenticate">source&nbsp;code</a></span>&nbsp;
@@ -1321,7 +1367,7 @@ from the underlying connection.
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Aug 12 12:03:59 2011
+    Generated by Epydoc 3.0.1 on Sat Aug 13 00:10:42 2011
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

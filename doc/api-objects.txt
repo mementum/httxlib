@@ -3,6 +3,7 @@ httxlib.IPPROTO_TCP	httxlib-module.html#IPPROTO_TCP
 httxlib.TCP_NODELAY	httxlib-module.html#TCP_NODELAY
 httxlib.CERT_NONE	httxlib-module.html#CERT_NONE
 httxlib.__package__	httxlib-module.html#__package__
+httxlib.proxydefaults	httxlib-module.html#proxydefaults
 httxlib._version	httxlib-module.html#_version
 httxlib.httxauth	httxlib.httxauth-module.html
 httxlib.httxauth.authdigest	httxlib.httxauth-module.html#authdigest
@@ -42,6 +43,7 @@ httxlib.httxnetlocation.__package__	httxlib.httxnetlocation-module.html#__packag
 httxlib.httxobject	httxlib.httxobject-module.html
 httxlib.httxobject.__package__	httxlib.httxobject-module.html#__package__
 httxlib.httxoptions	httxlib.httxoptions-module.html
+httxlib.httxoptions.proxydefaults	httxlib.httxoptions-module.html#proxydefaults
 httxlib.httxoptions.__package__	httxlib.httxoptions-module.html#__package__
 httxlib.httxpassmanager	httxlib.httxpassmanager-module.html
 httxlib.httxpassmanager.__package__	httxlib.httxpassmanager-module.html#__package__
@@ -204,6 +206,7 @@ httxlib.httxbase.HttxBase.add_password	httxlib.httxbase.HttxBase-class.html#add_
 httxlib.httxconnection.HttxConnection.sock	httxlib.httxconnection.HttxConnection-class.html#sock
 httxlib.httxconnection.HttxConnection.extractcookies	httxlib.httxconnection.HttxConnection-class.html#extractcookies
 httxlib.httxconnection.HttxConnection.conn	httxlib.httxconnection.HttxConnection-class.html#conn
+httxlib.httxconnection.HttxConnection.tunnelsslize	httxlib.httxconnection.HttxConnection-class.html#tunnelsslize
 httxlib.httxconnection.HttxConnection.__deepcopy__	httxlib.httxconnection.HttxConnection-class.html#__deepcopy__
 httxlib.httxconnection.HttxConnection.addkeepalive	httxlib.httxconnection.HttxConnection-class.html#addkeepalive
 httxlib.httxbase.HttxBase.add_cert_req	httxlib.httxbase.HttxBase-class.html#add_cert_req
@@ -218,6 +221,7 @@ httxlib.httxconnection.HttxConnection.tunnelFactory	httxlib.httxconnection.HttxC
 httxlib.httxconnection.HttxConnection.createconnection	httxlib.httxconnection.HttxConnection-class.html#createconnection
 httxlib.httxconnection.HttxConnection.reset	httxlib.httxconnection.HttxConnection-class.html#reset
 httxlib.httxconnection.HttxConnection.addcookies	httxlib.httxconnection.HttxConnection-class.html#addcookies
+httxlib.httxconnection.HttxConnection.doconnect	httxlib.httxconnection.HttxConnection-class.html#doconnect
 httxlib.httxconnection.HttxConnection.url	httxlib.httxconnection.HttxConnection-class.html#url
 httxlib.httxconnection.HttxConnection.connFactory	httxlib.httxconnection.HttxConnection-class.html#connFactory
 httxlib.httxconnection.HttxConnection.request	httxlib.httxconnection.HttxConnection-class.html#request
@@ -323,13 +327,12 @@ httxlib.httxoptions.HttxOptions.maxredirects	httxlib.httxoptions.HttxOptions-cla
 httxlib.httxoptions.HttxOptions.auth	httxlib.httxoptions.HttxOptions-class.html#auth
 httxlib.httxoptions.HttxOptions.update	httxlib.httxoptions.HttxOptions-class.html#update
 httxlib.httxoptions.HttxOptions.connkeepalive	httxlib.httxoptions.HttxOptions-class.html#connkeepalive
-httxlib.httxoptions.HttxOptions.authuser	httxlib.httxoptions.HttxOptions-class.html#authuser
 httxlib.httxoptions.HttxOptions.proxy	httxlib.httxoptions.HttxOptions-class.html#proxy
 httxlib.httxoptions.HttxOptions.cacert	httxlib.httxoptions.HttxOptions-class.html#cacert
 httxlib.httxoptions.HttxOptions.httpconnect	httxlib.httxoptions.HttxOptions-class.html#httpconnect
 httxlib.httxoptions.HttxOptions.externalredirect	httxlib.httxoptions.HttxOptions-class.html#externalredirect
 httxlib.httxoptions.HttxOptions.compmethod	httxlib.httxoptions.HttxOptions-class.html#compmethod
-httxlib.httxoptions.HttxOptions.proxydefaults	httxlib.httxoptions.HttxOptions-class.html#proxydefaults
+httxlib.httxoptions.HttxOptions.authuser	httxlib.httxoptions.HttxOptions-class.html#authuser
 httxlib.httxoptions.HttxOptions.authcache	httxlib.httxoptions.HttxOptions-class.html#authcache
 httxlib.httxoptions.HttxOptions.passmanager	httxlib.httxoptions.HttxOptions-class.html#passmanager
 httxlib.httxoptions.HttxOptions.timeout	httxlib.httxoptions.HttxOptions-class.html#timeout
@@ -361,12 +364,14 @@ httxlib.httxs.HTTPSxConnection.connect	httxlib.httxs.HTTPSxConnection-class.html
 httxlib.httxs.HTTPSxConnection.cert_reqs	httxlib.httxs.HTTPSxConnection-class.html#cert_reqs
 httxlib.httxs.HTTPSxConnection.__init__	httxlib.httxs.HTTPSxConnection-class.html#__init__
 httplib.HTTPConnection.response_class	httplib.HTTPResponse-class.html
+httxlib.httxs.HTTPSxConnection.sslwrap	httxlib.httxs.HTTPSxConnection-class.html#sslwrap
 httxlib.httxs.HTTPSxConnection.ca_certs	httxlib.httxs.HTTPSxConnection-class.html#ca_certs
 httxlib.httxs.HTTPSxTunneled	httxlib.httxs.HTTPSxTunneled-class.html
 httxlib.httxs.HTTPSxTunneled.connect	httxlib.httxs.HTTPSxTunneled-class.html#connect
 httxlib.httxs.HTTPSxConnection.cert_reqs	httxlib.httxs.HTTPSxConnection-class.html#cert_reqs
 httxlib.httxs.HTTPSxTunneled.__init__	httxlib.httxs.HTTPSxTunneled-class.html#__init__
 httplib.HTTPConnection.response_class	httplib.HTTPResponse-class.html
+httxlib.httxs.HTTPSxConnection.sslwrap	httxlib.httxs.HTTPSxConnection-class.html#sslwrap
 httxlib.httxs.HTTPSxConnection.ca_certs	httxlib.httxs.HTTPSxConnection-class.html#ca_certs
 httxlib.httxs.HTTPxTunneled	httxlib.httxs.HTTPxTunneled-class.html
 httxlib.httxs.HTTPxTunneled.connect	httxlib.httxs.HTTPxTunneled-class.html#connect
