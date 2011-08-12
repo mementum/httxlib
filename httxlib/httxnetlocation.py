@@ -136,8 +136,8 @@ class HttxNetLocation(HttxBase):
         It does get a connection or create one and relay the request down to it, taking
         into account the HTTP keepalive timeout
         
-        @param httxreq: Request to be executed
-        @type httxreq: L{HttxRequest}
+        @param httxreq: Request or url to be executed
+        @type httxreq: L{HttxRequest} or url (string)
         @return: sock
         @rtype: opaque type for the caller (a Python sock)
         '''

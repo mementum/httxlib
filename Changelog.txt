@@ -1,3 +1,11 @@
+1.00
+-- Tunnels can now be opened manually (and left in binary non-ssl mode)
+-- New methods tunnelconnect and urltunnel to manipulate tunnels at HttxConnection level (both accept HttxReq or url string)
+
+0.99
+-- urlopen and request methods now can accept strings (url) and HttxRequest to fecth a url
+-- httplib was closing connections that received no content (like Connect or even 202/204 responses) - hacked
+
 0.98
 -- Added full support for "connect" even over a https proxy with the option to disable it
 -- Authorization supports multiple challenges in one answer (the library can still only answer basic and digest)

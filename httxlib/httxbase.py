@@ -35,6 +35,7 @@ Base Object for Connecting objects and primitives
 from httxcompressionset import HttxCompressionSet
 from httxobject import HttxObject
 from httxoptions import HttxOptions
+from httxrequest import HttxRequest
 
 class HttxBase(HttxObject):
     '''
@@ -172,8 +173,8 @@ class HttxBase(HttxObject):
         Send the L{HttxRequest} httxreq to the specified server inside the request
         This is the abstract definition. To be implemented by connecting objects
 
-        @param httxreq: Request to be executed
-        @type httxreq: L{HttxRequest}
+        @param httxreq: Request or url to be executed
+        @type httxreq: L{HttxRequest} or url (string)
         @return: sock
         @rtype: opaque type for the caller (a Python sock)
         @raise NotImplemented
@@ -200,11 +201,14 @@ class HttxBase(HttxObject):
         Fecth a url specified in the  L{HttxRequest} httxreq object
         and return it in the form of an L{HttxResponse}
 
-        @param httxreq: Request to be fetched
-        @type httxreq: L{HttxRequest}
+        @param httxreq: Request or url to be fetched
+        @type httxreq: L{HttxRequest} or url (string)
         @return: response
         @rtype: L{HttxResponse} (compatible with httplib HTTPResponse)
         '''
+        if isinstance(httxreq, basestring):
+            httxreq = HttxRequest(httxreq)
+
         sock = self.request(httxreq)
 
         while True:
@@ -219,8 +223,3 @@ class HttxBase(HttxObject):
             sock = response.sock
 
         return response
-
-
-
-
-    

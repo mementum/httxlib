@@ -42,6 +42,10 @@ the original.
 
 Since options can be directly instantiated by L{HttxNetLocation} and L{HttxConnection}, the
 same logic applies on cloning
+
+@var proxydefaults: If True try to automatically find and use the system
+                    (via environment variables, registry or others) defined proxies
+@type proxydefault: bool (Default: False)
 '''
 
 from copy import deepcopy
@@ -52,6 +56,8 @@ from httxcookiejar import HttxCookieJar
 from httxcompressionset import HttxCompressionSet
 from httxobject import HttxObject
 from httxpassmanager import HttxPassManager
+
+proxydefaults = False
 
 
 class HttxOption(object):
@@ -174,11 +180,6 @@ class HttxOptions(HttxObject):
         A dictionary of scheme:url tuples can be set to use proxy servers
         scheme can be * for any scheme or have the http/https values
 
-      - proxydefaults
-        Default value: False
-        If True try to automatically find and use the system (or via environment variables)
-        defined proxies
-
       - compression
         Default value: False
         If True the body of a POST will be sent compressed. This is supported
@@ -276,7 +277,6 @@ class HttxOptions(HttxObject):
         HttxOption('httpconnect', False),
         HttxOption('sendfullurl', False),
         HttxOption('proxy', None),
-        HttxOption('proxydefaults', False),
         HttxOption('compression', False),
         HttxOption('compmethod', HttxCompressionSet('gzip')),
         HttxOption('decompression', True),

@@ -41,4 +41,4 @@ from httxoptions import *
 from httxrequest import *
 from httxresponse import *
 
-_version = 0.98
+_version = 1.00

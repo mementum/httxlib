@@ -41,6 +41,7 @@ from httxauth import authbasic, authdigest
 from httxbase import HttxBase
 from httxcompression import httxdecompress
 from httxerror import SocketException, RedirectError, MaxRedirectError, ExternalRedirectError
+from httxrequest import HttxRequest
 from httxs import HTTPxTunneled, HTTPSxConnection, HTTPSxTunneled
 from httxutil import parse_keqv_list, parse_http_list, tclock
 
@@ -189,7 +190,28 @@ class HttxConnection(HttxBase):
             self.conn.ca_certs = self.options.cacert.find_ca_cert(url)
 
 
-    def createconnection(self, url, sock=None):
+    def doconnect(self):
+        '''
+        Actual connection (with https certificate preparation)
+        '''
+        if self.parsed.scheme == 'https':
+            self.sslize(self.url)
+
+        # Force HTTPConnection to connect to have the sock object available
+        try:
+            self.conn.connect()
+        except SocketError, e:
+            raise SocketException(*e.args)
+        
+        # Set TCP_NODELAY
+        try:
+            self.conn.sock.setsockopt(IPPROTO_TCP, TCP_NODELAY, 1)
+        except:
+            # It may not be supported on all systems
+            pass
+
+
+    def createconnection(self, url, sock=None, plaintunnel=False):
         '''
         Helper function to enable delayed creation of the underlying connection
         if needed. Called from the L{__init__} and from L{request} in order
@@ -203,6 +225,11 @@ class HttxConnection(HttxBase):
 
         @param url: url to open a connection to
         @type url: str
+        @param sock: socket for a tunneled connection
+        @type sock: socket (Default: None)
+        @param plaintunnel: if tunnel should not be sslized
+                            (connections are fake that do nothing or ssl_wrap)
+        @type plaintunnel: bool (Default: False)
         '''
         if not url:
             self.conn = None
@@ -216,43 +243,39 @@ class HttxConnection(HttxBase):
         else:
             self.conn = self.tunnelFactory[self.parsed.scheme](sock, self.parsed.hostname, self.parsed.port, timeout=self.options.timeout)
 
-        if self.parsed.scheme == 'https':
-           self.sslize(self.url)
-
-        # Force HTTPConnection to connect to have the sock object available
-        try:
-            self.conn.connect()
-        except SocketError, e:
-            raise SocketException(*e.args)
-
-        # Set TCP_NODELAY
-        try:
-            self.conn.sock.setsockopt(IPPROTO_TCP, TCP_NODELAY, 1)
-        except:
-            # It may not be supported on all systems
-            pass
+        if not sock or not plaintunnel:
+            self.doconnect()
 
         self.timestamp = tclock()
 
 
-    def tunnelconnect(self, httxreq):
+    def tunnelconnect(self, httxreq, plaintunnel=False):
         '''
         Tunnel a connection over CONNECT if needed and not already done
         and re-create the underlying connection to use the "CONNECT"ed
         tunnel
         
-        @param httxreq: Request to be executed
-        @type httxreq: L{HttxRequest}
+        @param httxreq: Request or url to be executed
+        @type httxreq: L{HttxRequest} or url (string)
+        @param plaintunnel: if tunnel should not be sslized
+                            (connections are fake that do nothing or ssl_wrap)
+        @type plaintunnel: bool (Default: False)
         '''
         if self.tunnelreq:
             # we are in the tunnel creation phase
             return False
 
+        if isinstance(httxreq, basestring):
+            httxreq = HttxRequest(httxreq)
+
         if self.parsed.netloc != httxreq.netloc and \
             ((self.options.httpsconnect and httxreq.scheme == 'https') or \
              (self.options.httpconnect and httxreq.scheme == 'http')):
 
+            # Save the tunnel creation parameters - destination and nature (plain or not)
             self.tunnelreq = httxreq
+            self.tunnelreq.plaintunnel = plaintunnel
+
             hport = httxreq.parsed.port
             if hport is None:
                 hport = HTTPSxConnection.default_port if httxreq.scheme == 'https' else HTTPConnection.default_port
@@ -260,12 +283,22 @@ class HttxConnection(HttxBase):
             try:
                 self.conn.request('CONNECT', '%s:%s' % (httxreq.parsed.hostname, hport), headers=httxreq.allheaders)
             except SocketError, e:
+                self.tunnelreq = None # clear the tunneling flag and data
                 raise SocketException(*e.args)
 
-            return True
+            self.lastreq = httxreq
+            return self.conn.sock
 
         return False
         
+
+    def tunnelsslize(self):
+        '''
+        If the user has connected a tunnel manually and asked for "plain tunnel"
+        the tunnel may still be wrapped by ssl manually
+        '''
+        self.doconnect()
+
 
     def request(self, httxreq):
         '''
@@ -274,18 +307,20 @@ class HttxConnection(HttxBase):
         helper functions for ompression, cookies and authentication and then
         relaying the call to the underlying connection
         
-        @param httxreq: Request to be executed
-        @type httxreq: L{HttxRequest}
+        @param httxreq: Request or url to be executed
+        @type httxreq: L{HttxRequest} or url (string)
         @return: sock
         @rtype: opaque type for the caller (a Python sock)
         '''
+        if isinstance(httxreq, basestring):
+            httxreq = HttxRequest(httxreq)
 
         # Create the connection if needed
         if self.conn is None:
             # Direct connection ... sure
             self.createconnection(httxreq.get_full_url())
 
-        if  not self.tunnelconnect(httxreq):
+        if not self.tunnelconnect(httxreq, plaintunnel=getattr(httxreq, 'plaintunnel', False)):
             # Regular request
             # Add the appropriate headers for the outgoing request
             self.addkeepalive(httxreq)
@@ -309,8 +344,8 @@ class HttxConnection(HttxBase):
             except SocketError, e:
                 raise SocketException(*e.args)
 
-        # If no exception, we may save the request to be used by getresponse
-        self.lastreq = httxreq
+            # If no exception, we may save the request to be used by getresponse
+            self.lastreq = httxreq
 
         # Update the timestamp
         self.timestamp = tclock()
@@ -357,6 +392,7 @@ class HttxConnection(HttxBase):
         try:
             response = self.conn.getresponse()
         except SocketError, e:
+            self.tunnelreq = None # clear tunneling flag
             raise SocketException(*e.args)
 
         if self.options.sendfullurl:
@@ -376,8 +412,9 @@ class HttxConnection(HttxBase):
                 self.auxhttx = None
                 return response
 
+            plaintunnel = getattr(self.tunnelreq, 'plaintunnel', False)
             self.tunnelreq = None # clear tunnelreq flag
-            return self.authenticate(response)
+            return self.authenticate(response, plaintunnel=plaintunnel)
 
         # clean any possible remaining auxhttx flag
         self.auxhttx = None
@@ -516,11 +553,16 @@ class HttxConnection(HttxBase):
 
             if response.status == 200:
                 # Tunnel established - change our connection and data - over existing sock
-                self.createconnection(tunnelreq.get_full_url(), sock=self.conn.sock)
+                self.createconnection(tunnelreq.get_full_url(),
+                                      sock=self.conn.sock, plaintunnel=tunnelreq.plaintunnel)
 
-                # Mark the response as active - completing tunnelreq
-                response.tunnelreq = tunnelreq
-                response.sock = self.request(tunnelreq)
+                if not tunnelreq.plaintunnel:
+                    # Mark the response as active - completing tunnelreq
+                    response.tunnelreq = tunnelreq
+                    response.sock = self.request(tunnelreq)
+
+                # else - a plain tunnel should deliver nothing else
+                # free lunch for the user over a binary connection
 
 
     def redirect(self, response):
@@ -581,13 +623,12 @@ class HttxConnection(HttxBase):
 
         # send the request and store the socket in the response
         response.sock = auxhttx.request(redirreq)
-
         self.auxhttx = auxhttx
 
         return response
 
 
-    def authenticate(self, response):
+    def authenticate(self, response, plaintunnel=False):
         '''
         Perform authentication if the response requests it and enabled by the
         options set
@@ -674,6 +715,7 @@ class HttxConnection(HttxBase):
 
         # Create a clone of the request with the new url
         authreq = self.lastreq
+        authreq.plaintunnel = plaintunnel
         authreq.add_unredirected_header(authheaderclient[response.status], authorization)
 
         response.sock = self.request(authreq)

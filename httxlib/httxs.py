@@ -64,10 +64,10 @@ class HTTPxTunneled(HTTPConnection):
 
     def connect(self):
         '''
-        Overrriding is needed to avoid establishing a new connection
+        Overrriding is needed to avoid establishing a new connection ... this goes over
+        an existing socket
         '''
         pass
-
 
 
 try:
@@ -154,12 +154,15 @@ else:
 
             Overrriding is needed to enable certificate validation
             '''
-            sock = socket.create_connection((self.host, self.port),
-                                            self.timeout, self.source_address)
-            if self._tunnel_host:
-                self.sock = sock
-                self._tunnel()
+            self.sock = socket.create_connection((self.host, self.port),
+                                                  self.timeout, self.source_address)
+            self.sslwrap()
 
+
+        def sslwrap(self):
+            '''
+            Wraps the connection into a ssl socket
+            '''
             self.sock = ssl.wrap_socket(self.sock,
                                         self.key_file, self.cert_file,
                                         cert_reqs=self.cert_reqs, ca_certs=self.ca_certs)
@@ -201,10 +204,6 @@ else:
 
         def connect(self):
             '''
-            Opens the connection and wraps it in a ssl socket
-
-            Overrriding is needed to enable certificate validation
+            Wraps the existing socket into SSL
             '''
-            self.sock = ssl.wrap_socket(self.sock,
-                                        self.key_file, self.cert_file,
-                                        cert_reqs=self.cert_reqs, ca_certs=self.ca_certs)
+            self.sslwrap()

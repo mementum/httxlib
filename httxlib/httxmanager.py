@@ -34,6 +34,8 @@ Main connecting object L{HttxManager} implementation
 
 from httxbase import HttxBase
 from httxnetlocation import HttxNetLocation
+import httxoptions
+
 
 class HttxManager(HttxBase):
     '''
@@ -61,10 +63,16 @@ class HttxManager(HttxBase):
         @see: L{HttxOptions}
         '''
         HttxBase.__init__(self, **kwargs)
-        if self.options.proxydefaults:
+        self.netlocations = dict()
+        self.locationcache = dict()
+
+        if httxoptions.proxydefaults:
             self.setproxydefaults()
-        else:
-            self.setproxy(kwargs.get('proxy', None))
+
+        # The user may have enforced a private proxy for a particular protocol
+        # not necessarily overriding all system proxies (or yes)
+        if 'proxy' in kwargs:
+            self.setproxy(kwargs['proxy'])
 
 
     def __deepcopy__(self, memo):
@@ -145,7 +153,7 @@ class HttxManager(HttxBase):
         are initialized
         
         @param proxy: proxy servers. Dictionary with scheme:url pairs.
-                      '*' as scheme stands for both http and https
+                      '*' or 'httx' as the scheme stands for both http and https
         @type proxy: dict
         '''
         with self.lock:
@@ -201,8 +209,8 @@ class HttxManager(HttxBase):
         '''
         Send the L{HttxRequest} httxreq to the specified server inside the request
         
-        @param httxreq: Request to be executed
-        @type httxreq: L{HttxRequest}
+        @param httxreq: Request or url to be executed
+        @type httxreq: L{HttxRequest} or url (string)
         @return: sock
         @rtype: opaque type for the caller (a Python sock)
         '''
