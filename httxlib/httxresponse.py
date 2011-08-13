@@ -65,7 +65,6 @@ HTTPResponse._httxinit = HTTPResponse.__init__
 HTTPResponse.__init__ = httxinit
 
 
-
 def httxredirecting_or_authenticating(self):
     '''
     Utility function to check if a response is underdoing a redirection
@@ -207,9 +206,10 @@ def httxbegin(self):
     # Call the original begin method
     self._httxbegin()
 
-    # Response will close the connection with a this flawed logic if not chunked and no length
+    # Response will close the connection with a the flawed logic seen below if not chunked and no length
     # This kills "CONNECT" connections and it is not logic to kill a connection simply because
     # it has no content (202 doesn't usually carry content and 204 is NO_CONTENT)
+    #
     # if not self.will_close and not self.chunked and self.length is None:
     #     self.will_close = 1
 
@@ -221,11 +221,13 @@ def httxbegin(self):
     # Call the original read method
     if not self.will_close and (self.chunked or self.length):
         self.setbody(self._httxread())
+    else:
+        # set an empty body
+        self.setbody('')
 
 
 HTTPResponse._httxbegin = HTTPResponse.begin
 HTTPResponse.begin = httxbegin
-
 
 def httxread(self, amt=None):
     '''
@@ -245,7 +247,6 @@ def httxread(self, amt=None):
 
 HTTPResponse._httxread = HTTPResponse.read
 HTTPResponse.read = httxread
-
 
 # Property alias to manage the body and the creation of the
 # body file object
@@ -286,6 +287,23 @@ HTTPResponse.bodyfile = property(HTTPResponse.getbodyfile)
 # Property alias
 HTTPResponse.headers = property(HTTPResponse.getheaders)
 
+def _httxgetheaderlist(self, name):
+    '''
+    return a list of all header returned with the same name
+    (www-authenticate is an example)
+
+    @param name: name of the header
+    @type value: str
+
+    @return: a list of the values sent for the header
+    @rtype: list
+    '''
+    if self.msg is None:
+        raise ResponseNotReady()
+    return self.msg.getheaders(name)
+
+# Alias
+HTTPResponse.getheaderlist = _httxgetheaderlist
 
 # Make a class alias
 HttxResponse = HTTPResponse

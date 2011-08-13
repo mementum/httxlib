@@ -122,7 +122,7 @@ class HttxAuthCache(HttxObject):
             self.cache[url] = AuthCache(headername, scheme, answer, cachedata)
 
 
-    def get(self, url):
+    def get(self, url, opaque=False):
         '''
         Get a cache entry for a url
 
@@ -132,6 +132,9 @@ class HttxAuthCache(HttxObject):
 
         @param url: url for the http request
         @type url: str
+        @param opaque: if no assumption has to be made about the stored data
+                       and just cachedata has to be returned
+        @type opaque: bool (Default: False)
         @return: A tuple with the headername to be sent and the header content
                  Both values can be None to indicate that no entry was found
         @rtype: tuple
@@ -155,12 +158,14 @@ class HttxAuthCache(HttxObject):
         headerval = None
 
         if authcache:
+            if opaque:
+                # for external handlers
+                return authcache.cachedata
 
-            if authcache.scheme == 'basic':
+            elif authcache.scheme == 'basic':
                 authanswer = authcache.answer
 
             elif authcache.scheme == 'digest':
-
                 authchallenge = parse_keqv_list(parse_http_list(authcache.answer))
 
                 nonce = authchallenge['nonce']
@@ -169,5 +174,8 @@ class HttxAuthCache(HttxObject):
 
             headerval = '%s %s' % (authcache.scheme, authanswer)
             headername = authcache.headername
+
+        if opaque:
+            return None
 
         return (headername, headerval)

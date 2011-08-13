@@ -70,7 +70,7 @@ def authbasic(username, password, authchallenge):
     # base64auth = base64encode('%s:%s' % (username, password))[:-1]
     base64auth = b64encode('%s:%s' % (username, password)).rstrip()
 
-    return (base64auth, None)
+    return ('basic', base64auth, None)
 
 
 def authdigest(username, password, challenge, request, nonce_count):
@@ -106,7 +106,7 @@ def authdigest(username, password, challenge, request, nonce_count):
         realm = challenge['realm']
         nonce = challenge['nonce']
     except KeyError:
-        return (None, None)
+        return (None, None, None)
 
     qop = challenge.get('qop')
     algorithm = challenge.get('algorithm', 'MD5')
@@ -115,7 +115,7 @@ def authdigest(username, password, challenge, request, nonce_count):
 
     H, KD = get_algorithm_impls(algorithm)
     if H is None:
-        return (None, None)
+        return (None, None, None)
 
     entdig = None
 
@@ -142,7 +142,7 @@ def authdigest(username, password, challenge, request, nonce_count):
     else:
         # XXX handle auth-int.
         # raise URLError("qop '%s' is not supported." % qop)
-        return (None, None)
+        return (None, None, None)
 
     # XXX should the partial digests be encoded too?
 
@@ -156,4 +156,4 @@ def authdigest(username, password, challenge, request, nonce_count):
     if qop:
         base += ', qop=auth, nc=%s, cnonce="%s"' % (ncvalue, cnonce)
 
-    return (base, HA1)
+    return ('digest', base, HA1)

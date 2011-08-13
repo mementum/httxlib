@@ -29,9 +29,6 @@
 #
 ################################################################################
 
-from collections import deque
-from copy import deepcopy
-from cStringIO import StringIO
 from httplib import HTTPConnection
 from socket import error as SocketError, IPPROTO_TCP, TCP_NODELAY
 from ssl import CERT_NONE
@@ -547,7 +544,7 @@ class HttxConnection(HttxBase):
             
             # Remove proxy authorization if sent -- it does not apply to
             # destination host over the connect - the first letter has been capitalized
-            # by some Python library
+            # by urllib2 when adding the header... (any good reason for it?)
             if 'Proxy-authorization' in tunnelreq.unredirected_hdrs:
                 del tunnelreq.unredirected_hdrs['Proxy-authorization']
 
@@ -650,6 +647,7 @@ class HttxConnection(HttxBase):
         if response.isauthproxy() and not self.options.authproxy:
             return response
 
+        # This will return several "xxx-authenticate" into a "," separated list
         authheader = response.getheader(authheaderserver[response.status])
 
         # Parse a potentially multi-challenge header
@@ -675,54 +673,56 @@ class HttxConnection(HttxBase):
         for scheme, keqv_list in authschemes.iteritems():
             authschemes[scheme] = parse_keqv_list(keqv_list)
 
+        # if 401, we authenticate against the request we sent and not where the connection points to
+        # because that is a 407 then: a proxy and we authenticate against the proxy url
+        authurl = self.lastreq.get_full_url() if response.status == 401 else self.url
+
+        authscheme = None
         authanswer = None
         authcachedata = None
 
-        if 'digest' in authschemes:
-            authscheme = 'digest'
-            authchallenge = authschemes['digest']
-            realm = authchallenge.get('realm', None)
-            authurl = self.lastreq.get_full_url() if response.status == 401 else self.url
-            username, password = self.options.passmanager.find_user_password(realm, authurl)
+        if self.options.authhandler:
+            authcachedata = self.options.authcache.get(authurl, opaque=True)
+            authscheme, authanswer, authcachedata = self.options.authhandler(authurl, authschemes, authcachedata)
 
-            if username is not None and password is not None:
-                authanswer, authcachedata = authbasic(username, password, authchallenge)
+        if authscheme is None or authanswer is None:
+            # No external handling (absent or not capable) - try internal ones
+            if 'digest' in authschemes:
+                authchallenge = authschemes['digest']
+                realm = authchallenge.get('realm', None)
+                username, password = self.options.passmanager.find_user_password(realm, authurl)
 
-            if 'nonce' in authchallenge:
-                nonce_count = self.options.authcache.getnoncecount(authchallenge['nonce'])
-                authanswer, authcachedata = authdigest(username, password, authchallenge, self.lastreq, nonce_count)
+                if 'nonce' in authchallenge:
+                    nonce_count = self.options.authcache.getnoncecount(authchallenge['nonce'])
+                    authscheme, authanswer, authcachedata = authdigest(username, password, authchallenge, self.lastreq, nonce_count)
 
-        elif 'basic' in authschemes:
-            authscheme = 'basic'
-            authchallenge = authschemes['basic']
-            realm = authchallenge.get('realm', None)
-            authurl = self.lastreq.get_full_url() if response.status == 401 else self.url
-            username, password = self.options.passmanager.find_user_password(realm, authurl)
+            elif 'basic' in authschemes:
+                authchallenge = authschemes['basic']
+                realm = authchallenge.get('realm', None)
+                username, password = self.options.passmanager.find_user_password(realm, authurl)
 
-            if username is not None and password is not None:
-                authanswer, authcachedata = authbasic(username, password, authchallenge)
-        else:
-            # XXX Pluggable authhandlers
-            # authhandler = self.options.authhandler.get(authscheme)
-            # authanswer, authcachedata = authhandler(username, password, authchallenge)
-            pass
+                if username is not None and password is not None:
+                    authscheme, authanswer, authcachedata = authbasic(username, password, authchallenge)
 
-        if not authanswer:
+        if authscheme is None or authanswer is None:
             return response
 
         # Generate the authorization
         authorization = '%s %s' % (authscheme, authanswer)
+        # Choose the response authorization header
+        authheaderresp = authheaderclient[response.status]
 
         # Create a clone of the request with the new url
         authreq = self.lastreq
+        authreq.add_unredirected_header(authheaderresp, authorization)
+        # Remember type of tunnel if "connect" has to be attempted after auth (obviously via a proxy)
         authreq.plaintunnel = plaintunnel
-        authreq.add_unredirected_header(authheaderclient[response.status], authorization)
+
+        if authcachedata is not None:
+            # store it together with the authorization string - with parsed.url
+            self.options.authcache.set(authreq.parsed.geturl(), authheaderresp, authscheme, authanswer, authcachedata)
 
         response.sock = self.request(authreq)
         self.auxhttx = self
-
-        # store it together with the authorization string - with parsed.url
-        parsed = urlsplit(authreq.get_full_url())
-        self.options.authcache.set(parsed.geturl(), authheaderclient[response.status], authscheme, authanswer, authcachedata)
 
         return response

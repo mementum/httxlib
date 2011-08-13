@@ -1,3 +1,6 @@
+1.01
+-- Support for external authentication handlers (that could handle kerberos, negotiate, ...)
+
 1.00
 -- Tunnels can now be opened manually (and left in binary non-ssl mode)
 -- New methods tunnelconnect and urltunnel to manipulate tunnels at HttxConnection level (both accept HttxReq or url string)
