@@ -246,25 +246,26 @@ class HttxOptions(HttxObject):
         Default value: None
         It can hold a reference to a function (or callable object) that accepts
         the following parameters:
-            authhandler(authurl, authschemes, authcachedata)
-               authurl is the url that generated the authorization request
-               authschemes is a dictionary. The keys contain the names of the
-               authentication schemes the server supports. Each value is a dictionary
-               or paramaters (ex: realm='My AuthRealm', where realm is the key and
-                              'My AuthRealm' is the associated value)
 
-               The function has to return a tuple:
-                   (authscheme, authanswer, authcachedata) If either authscheme or authanswer
-                   happen to be None then the handler cannot handle authentication)
+            - authhandler(authurl, authschemes, authcachedata)
+              authurl is the url that generated the authorization request
+              authschemes is a dictionary. The keys contain the names of the
+              authentication schemes the server supports. Each value is a dictionary
+              or paramaters (ex: realm='My AuthRealm', where realm is the key and
+              'My AuthRealm' is the associated value)
+
+            - The function has to return a tuple:
+              (authscheme, authanswer, authcachedata) If either authscheme or authanswer
+              happen to be None then the handler cannot handle authentication)
  
-                   authscheme contains the chosen scheme from the varios that may have
-                   been presented to the handler
+              authscheme contains the chosen scheme from the varios that may have
+              been presented to the handler
 
-                   authanswer contains the answer to the authentication challenge
+              authanswer contains the answer to the authentication challenge
 
-                   authcachedata is a value that the handler may wish to store and will receive
-                   on next authentication challenges for the same url. If None is returned
-                   nothing will be stored
+              authcachedata is a value that the handler may wish to store and will receive
+              on next authentication challenges for the same url. If None is returned
+              nothing will be stored
 
       - passmanager
         Default value: HttxPassManager

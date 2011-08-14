@@ -133,7 +133,7 @@
 <a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">    <tt class="py-comment"># base64auth = base64encode('%s:%s' % (username, password))[:-1]</tt> </tt>
 <a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">    <tt class="py-name">base64auth</tt> <tt class="py-op">=</tt> <tt class="py-name">b64encode</tt><tt class="py-op">(</tt><tt class="py-string">'%s:%s'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">username</tt><tt class="py-op">,</tt> <tt class="py-name">password</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">rstrip</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
 <a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"> </tt>
-<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">base64auth</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">)</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-string">'basic'</tt><tt class="py-op">,</tt> <tt class="py-name">base64auth</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">)</tt> </tt>
 </div><a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"> </tt>
 <a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"> </tt>
 <a name="authdigest"></a><div id="authdigest-def"><a name="L76"></a><tt class="py-lineno"> 76</tt> <a class="py-toggle" href="#" id="authdigest-toggle" onclick="return toggle('authdigest');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="httxlib.httxauth-module.html#authdigest">authdigest</a><tt class="py-op">(</tt><tt class="py-param">username</tt><tt class="py-op">,</tt> <tt class="py-param">password</tt><tt class="py-op">,</tt> <tt class="py-param">challenge</tt><tt class="py-op">,</tt> <tt class="py-param">request</tt><tt class="py-op">,</tt> <tt class="py-param">nonce_count</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
@@ -169,7 +169,7 @@
 <a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">        <tt class="py-name">realm</tt> <tt class="py-op">=</tt> <tt class="py-name">challenge</tt><tt class="py-op">[</tt><tt class="py-string">'realm'</tt><tt class="py-op">]</tt> </tt>
 <a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">        <tt class="py-name">nonce</tt> <tt class="py-op">=</tt> <tt class="py-name">challenge</tt><tt class="py-op">[</tt><tt class="py-string">'nonce'</tt><tt class="py-op">]</tt> </tt>
 <a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">    <tt class="py-keyword">except</tt> <tt class="py-name">KeyError</tt><tt class="py-op">:</tt> </tt>
-<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">)</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">)</tt> </tt>
 <a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"> </tt>
 <a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">    <tt class="py-name">qop</tt> <tt class="py-op">=</tt> <tt class="py-name">challenge</tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Method httxlib.httxauthcache.HttxAuthCache.get()=httxlib.httxauthcache.HttxAuthCache-class.html#get"><a title="httxlib.httxauthcache.HttxAuthCache.get" class="py-name" href="#" onclick="return doclink('link-1', 'get', 'link-1');">get</a></tt><tt class="py-op">(</tt><tt class="py-string">'qop'</tt><tt class="py-op">)</tt> </tt>
 <a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">    <tt class="py-name">algorithm</tt> <tt class="py-op">=</tt> <tt class="py-name">challenge</tt><tt class="py-op">.</tt><tt id="link-2" class="py-name"><a title="httxlib.httxauthcache.HttxAuthCache.get" class="py-name" href="#" onclick="return doclink('link-2', 'get', 'link-1');">get</a></tt><tt class="py-op">(</tt><tt class="py-string">'algorithm'</tt><tt class="py-op">,</tt> <tt class="py-string">'MD5'</tt><tt class="py-op">)</tt> </tt>
@@ -178,7 +178,7 @@
 <a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"> </tt>
 <a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">    <tt class="py-name">H</tt><tt class="py-op">,</tt> <tt class="py-name">KD</tt> <tt class="py-op">=</tt> <tt id="link-4" class="py-name" targets="Function httxlib.httxutil.get_algorithm_impls()=httxlib.httxutil-module.html#get_algorithm_impls"><a title="httxlib.httxutil.get_algorithm_impls" class="py-name" href="#" onclick="return doclink('link-4', 'get_algorithm_impls', 'link-4');">get_algorithm_impls</a></tt><tt class="py-op">(</tt><tt class="py-name">algorithm</tt><tt class="py-op">)</tt> </tt>
 <a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">H</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
-<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">)</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">)</tt> </tt>
 <a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line"> </tt>
 <a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">    <tt class="py-name">entdig</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
 <a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"> </tt>
@@ -211,7 +211,7 @@ httxlib.httxnetlocation.HttxNetLocation.request" class="py-name" href="#" onclic
 <a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
 <a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">        <tt class="py-comment"># XXX handle auth-int.</tt> </tt>
 <a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">        <tt class="py-comment"># raise URLError("qop '%s' is not supported." % qop)</tt> </tt>
-<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">)</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">)</tt> </tt>
 <a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"> </tt>
 <a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">    <tt class="py-comment"># XXX should the partial digests be encoded too?</tt> </tt>
 <a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line"> </tt>
@@ -228,7 +228,7 @@ httxlib.httxnetlocation.HttxNetLocation.request" class="py-name" href="#" onclic
 <a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">qop</tt><tt class="py-op">:</tt> </tt>
 <a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">        <tt class="py-name">base</tt> <tt class="py-op">+=</tt> <tt class="py-string">', qop=auth, nc=%s, cnonce="%s"'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">ncvalue</tt><tt class="py-op">,</tt> <tt class="py-name">cnonce</tt><tt class="py-op">)</tt> </tt>
 <a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line"> </tt>
-<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">base</tt><tt class="py-op">,</tt> <tt class="py-name">HA1</tt><tt class="py-op">)</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-string">'digest'</tt><tt class="py-op">,</tt> <tt class="py-name">base</tt><tt class="py-op">,</tt> <tt class="py-name">HA1</tt><tt class="py-op">)</tt> </tt>
 </div><a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line"> </tt><script type="text/javascript">
 <!--
 expandto(location.href);
@@ -267,7 +267,7 @@ expandto(location.href);
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sat Aug 13 00:10:42 2011
+    Generated by Epydoc 3.0.1 on Sat Aug 13 14:56:41 2011
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

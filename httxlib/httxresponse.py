@@ -293,7 +293,7 @@ def _httxgetheaderlist(self, name):
     (www-authenticate is an example)
 
     @param name: name of the header
-    @type value: str
+    @type name: str
 
     @return: a list of the values sent for the header
     @rtype: list
@@ -307,4 +307,3 @@ HTTPResponse.getheaderlist = _httxgetheaderlist
 
 # Make a class alias
 HttxResponse = HTTPResponse
-
