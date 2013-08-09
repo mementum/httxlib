@@ -59,7 +59,7 @@ def httxinit(self, sock, debuglevel=0, strict=0, method=None):
     to index connecting objects with pending network activity
     '''
     self._httxinit(sock, debuglevel=debuglevel, strict=strict, method=method)
-    self.sock = None
+    self.sock = sock
 
 HTTPResponse._httxinit = HTTPResponse.__init__
 HTTPResponse.__init__ = httxinit
@@ -215,6 +215,11 @@ def httxbegin(self):
 
     # Redo the check with the appropriate logic
     self.will_close = self._check_close()
+
+    if self.version == 10 and self._method == "CONNECT" and self.status == 200:
+        # Seen proxies (ex: Squid3) that send a 200 with no headers
+        # The binary connection is obviously alive
+        self.will_close = 0
 
     # Fill the body with all the content in which will set this
     # response as "closed" (just the response, no the connection)
