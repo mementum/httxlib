@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: latin-1; py-indent-offset:4 -*-
 ################################################################################
-# 
+#
 # This file is part of HttxLib
 #
 # HttxLib is an HTTP(s) Python library suited multithreaded/multidomain
@@ -41,4 +41,4 @@ from httxoptions import *
 from httxrequest import *
 from httxresponse import *
 
-_version = 1.00
+__version__ = '1.0.3'
