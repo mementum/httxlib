@@ -33,6 +33,8 @@ HttxLib main module. It imports the main objects
 to let them be re-imported into any other module
 '''
 
+from version import __version__
+
 from httxconnection import *
 from httxerror import *
 from httxmanager import *
@@ -40,5 +42,4 @@ from httxnetlocation import *
 from httxoptions import *
 from httxrequest import *
 from httxresponse import *
-
-__version__ = '1.0.3'
+from httxcertificates import *

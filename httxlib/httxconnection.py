@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: latin-1; py-indent-offset:4 -*-
 ################################################################################
-# 
+#
 # This file is part of HttxLib
 #
 # HttxLib is an HTTP(s) Python library suited multithreaded/multidomain
@@ -119,7 +119,7 @@ class HttxConnection(HttxBase):
         @rtype: L{HttxConnection}
         '''
         return self.clone()
-    
+
 
     def clone(self, options=None):
         '''
@@ -178,10 +178,10 @@ class HttxConnection(HttxBase):
         @param url: url that contains the domain to use to pull certificate from the store
         @type url: str
         '''
-        key_file, cert_file = self.options.certkeyfile.find_certkey(url) 
+        key_file, cert_file = self.options.certkeyfile.find_certkey(url)
         self.conn.key_file = key_file
         self.conn.cert_file = cert_file
-            
+
         self.conn.cert_reqs = self.options.certreq.find_cert_req(url)
         if self.conn.cert_reqs != CERT_NONE:
             self.conn.ca_certs = self.options.cacert.find_ca_cert(url)
@@ -199,7 +199,7 @@ class HttxConnection(HttxBase):
             self.conn.connect()
         except SocketError, e:
             raise SocketException(*e.args)
-        
+
         # Set TCP_NODELAY
         try:
             self.conn.sock.setsockopt(IPPROTO_TCP, TCP_NODELAY, 1)
@@ -251,7 +251,7 @@ class HttxConnection(HttxBase):
         Tunnel a connection over CONNECT if needed and not already done
         and re-create the underlying connection to use the "CONNECT"ed
         tunnel
-        
+
         @param httxreq: Request or url to be executed
         @type httxreq: L{HttxRequest} or url (string)
         @param plaintunnel: if tunnel should not be sslized
@@ -287,7 +287,7 @@ class HttxConnection(HttxBase):
             return self.conn.sock
 
         return False
-        
+
 
     def tunnelsslize(self):
         '''
@@ -303,7 +303,7 @@ class HttxConnection(HttxBase):
         It does so by creating a connection if needed, then setting headers with
         helper functions for ompression, cookies and authentication and then
         relaying the call to the underlying connection
-        
+
         @param httxreq: Request or url to be executed
         @type httxreq: L{HttxRequest} or url (string)
         @return: sock
@@ -335,6 +335,10 @@ class HttxConnection(HttxBase):
                 # use the short version of the url (less problematic if not proxying)
                 url = httxreq.get_selector()
 
+            # record de used url
+            self.lasturl = url
+            self.tempreq = httxreq
+
             # Execute the request
             try:
                 self.conn.request(httxreq.get_method(), url, httxreq.body, httxreq.allheaders)
@@ -365,7 +369,7 @@ class HttxConnection(HttxBase):
         to avoid any other part of the library to reuse it
 
         Decompression of content and cookie extraction is also performed
-        
+
         @param sock: The opaque type returned by L{request}
         @type sock: opaque (a Python sock)
         @return: response
@@ -431,7 +435,7 @@ class HttxConnection(HttxBase):
         '''
         Add a Cookie header to httxreq if needed
         It uses a urllib2 cookiejar from the options set
-        
+
         @param httxreq: Request to be executed
         @type httxreq: L{HttxRequest}
         '''
@@ -442,7 +446,7 @@ class HttxConnection(HttxBase):
     def adddecompress(self, httxreq):
         '''
         Add a content-encoding header to httxreq if needed and set in the options
-        
+
         @param httxreq: Request to be executed
         @type httxreq: L{HttxRequest}
         '''
@@ -456,7 +460,7 @@ class HttxConnection(HttxBase):
         if needed and set in the options
 
         It uses a L{HttxAuthCache} from the options
-        
+
         @param httxreq: Request to be executed
         @type httxreq: L{HttxRequest}
         '''
@@ -541,7 +545,7 @@ class HttxConnection(HttxBase):
         if self.tunnelreq:
             tunnelreq = self.tunnelreq
             self.tunnelreq = None
-            
+
             # Remove proxy authorization if sent -- it does not apply to
             # destination host over the connect - the first letter has been capitalized
             # by urllib2 when adding the header... (any good reason for it?)
@@ -632,7 +636,7 @@ class HttxConnection(HttxBase):
 
         @param response: A response being processed
         @type response: L{HttxResponse}
-        @return: The same response preocessed 
+        @return: The same response preocessed
         @rtype: L{HttxResponse}
         '''
         authheaderserver = {401:'www-authenticate', 407:'proxy-authenticate'}
@@ -663,15 +667,20 @@ class HttxConnection(HttxBase):
                 continue
 
             # else new scheme
-            lastscheme = authparts[0].lower()
+            # lastscheme = authparts[0].lower()
+            lastscheme = authparts[0]
             authschemes[lastscheme] = list()
 
             # we may still have the 1st parameter (because the 1st is "sp" separated and not "," separated)
             if len(authparts) > 1:
                 authschemes[lastscheme].append(authparts[1])
 
+        loauthschemes = dict()
         for scheme, keqv_list in authschemes.iteritems():
             authschemes[scheme] = parse_keqv_list(keqv_list)
+            # Need this indirectio for servers that don't know "authscheme" is
+            # case insensitive
+            loauthschemes[scheme.lower()] = scheme
 
         # if 401, we authenticate against the request we sent and not where the connection points to
         # because that is a 407 then: a proxy and we authenticate against the proxy url
@@ -687,7 +696,9 @@ class HttxConnection(HttxBase):
 
         if authscheme is None or authanswer is None:
             # No external handling (absent or not capable) - try internal ones
-            if 'digest' in authschemes:
+
+            if 'digest' in loauthschemes:
+                authchallenge = authschemes[loauthschemes['digest']]
                 authchallenge = authschemes['digest']
                 realm = authchallenge.get('realm', None)
                 username, password = self.options.passmanager.find_user_password(realm, authurl)
@@ -696,13 +707,14 @@ class HttxConnection(HttxBase):
                     nonce_count = self.options.authcache.getnoncecount(authchallenge['nonce'])
                     authscheme, authanswer, authcachedata = authdigest(username, password, authchallenge, self.lastreq, nonce_count)
 
-            elif 'basic' in authschemes:
-                authchallenge = authschemes['basic']
+            elif 'basic' in loauthschemes:
+                authchallenge = authschemes[loauthschemes['basic']]
                 realm = authchallenge.get('realm', None)
                 username, password = self.options.passmanager.find_user_password(realm, authurl)
 
                 if username is not None and password is not None:
                     authscheme, authanswer, authcachedata = authbasic(username, password, authchallenge)
+                    authscheme = loauthschemes[authscheme]
 
         if authscheme is None or authanswer is None:
             return response
@@ -721,7 +733,6 @@ class HttxConnection(HttxBase):
         if authcachedata is not None:
             # store it together with the authorization string - with parsed.url
             self.options.authcache.set(authreq.parsed.geturl(), authheaderresp, authscheme, authanswer, authcachedata)
-
         response.sock = self.request(authreq)
         self.auxhttx = self
 

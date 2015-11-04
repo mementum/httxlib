@@ -28,12 +28,12 @@ import httxlib
 here = os.path.abspath(os.path.dirname(__file__))
 
 # Get the long description from the relevant file
-with codecs.open(os.path.join(here, 'README'), encoding='utf-8') as f:
+with codecs.open(os.path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 pname = 'httxlib'
-pmod = sys.modules[pname]
-pversion = getattr(pmod, '__version__')
+execfile(os.path.join(pname, 'version.py'))
+pversion = __version__
 gurl = 'https://github.com/mementum/' + pname
 gdurl = gurl + '/tarball/' + pversion
 
@@ -96,7 +96,7 @@ setuptools.setup(
     # simple. Or you can use find_packages().
     # packages=setuptools.find_packages(exclude=['docs', 'samples']),
     # packages=setuptools.find_packages(),
-    packages=['httxlib'],
+    packages=[pname],
 
     # List run-time dependencies here.
     # These will be installed by pip when your

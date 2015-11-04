@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: latin-1; py-indent-offset:4 -*-
 ################################################################################
-# 
+#
 # This file is part of HttxLib
 #
 # HttxLib is an HTTP(s) Python library suited multithreaded/multidomain
@@ -52,8 +52,16 @@ sys.stderr = flushfile(sys.stderr)
 manager = HttxManager()
 request = HttxRequest('http://www.gmail.com')
 
+# No exception should occur in this case
+try:
+    response = manager.urlopen(request)
+except RedirectError, e:
+    print "Exception"
+    print e
+
+
 print response.status
-print response.headers
+for hname, hval in response.headers:
+    print '%s: %s' % (hname, hval)
+# print response.headers
 # print response.body
-
-

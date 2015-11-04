@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: latin-1; py-indent-offset:4 -*-
 ################################################################################
-# 
+#
 # This file is part of HttxLib
 #
 # HttxLib is an HTTP(s) Python library suited multithreaded/multidomain
@@ -36,6 +36,7 @@ import ssl
 import sys
 import time
 
+import httxlib
 from httxlib import *
 
 class flushfile(object):
@@ -69,7 +70,7 @@ print
 print '--->Requesting server certificate validation<---'
 print
 
-manager.add_cert_req(request.url, ssl.CERT_REQ)
+manager.add_cert_req(request.get_full_url(), httxlib.CERT_REQUIRED)
 
 #
 # PLEASE PROVIDE A PATH TO A CERTIFICATE ROOT TO
@@ -91,4 +92,3 @@ except RedirectError, e:
     # print e.response.status
     # print e.response.headers
     # print response.body
-
